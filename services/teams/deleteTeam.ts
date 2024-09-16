@@ -1,15 +1,15 @@
-import axiosIntance from "@/lib/axios.config";
+import axiosIntance from '@/lib/axios.config'
 
 interface Params {
-  id: string;
+	id: string
 }
 export const deleteTeam = async ({ id }: Params) => {
-  try {
-    const response = await axiosIntance.delete(`/teams/${id}`);
-    const data = await response.data;
+	try {
+		const response = await axiosIntance.delete(`/teams/${id}`)
+		const data = await response.data
 
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-};
+		return data
+	} catch (error) {
+		console.error(error)
+	}
+}

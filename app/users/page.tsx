@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react'
 
-import UsersComponent from "@/components/pages/users/users";
+import UsersComponent from '@/components/pages/users/users'
 
 const Page = () => {
-  return <UsersComponent />;
-};
+	return <UsersComponent />
+}
 
-export default Page;
+export default Page

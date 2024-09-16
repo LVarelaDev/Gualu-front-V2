@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 
 const Filters = () => {
-  return <div />;
-};
+	return <div />
+}
 
-export default Filters;
+export default Filters
