@@ -12,8 +12,9 @@ export enum EnumEndpoints {
 export const getAllUsers = async (): Promise<UserDto[]> => {
   try {
     const response = await axiosIntance.get<UserDto[]>(
-      `${EnumEndpoints.GetAllUsers}`
+      `${EnumEndpoints.GetAllUsers}`,
     );
+
     return response.data;
   } catch (err) {
     throw "error in getAllUsers";
@@ -23,8 +24,9 @@ export const getAllUsers = async (): Promise<UserDto[]> => {
 export const getUsersById = async (id: string): Promise<usersById> => {
   try {
     const response = await axiosIntance.get<usersById>(
-      `${EnumEndpoints.GetUsersById}?id=${id}`
+      `${EnumEndpoints.GetUsersById}?id=${id}`,
     );
+
     return response.data;
   } catch (err) {
     throw "error in GetUsersById";
@@ -35,8 +37,9 @@ export const createUser = async (payload: CreateUserDto): Promise<KeyValue> => {
   try {
     const response = await axiosIntance.post<KeyValue>(
       `${EnumEndpoints.UpdateUser}`,
-      payload
+      payload,
     );
+
     return response.data;
   } catch (err) {
     throw "error in createUser";
@@ -45,13 +48,14 @@ export const createUser = async (payload: CreateUserDto): Promise<KeyValue> => {
 
 export const updateUser = async (
   payload: CreateUserDto,
-  id: string
+  id: string,
 ): Promise<KeyValue> => {
   try {
     const response = await axiosIntance.post<KeyValue>(
       `${EnumEndpoints.CreateUser}?id=${id}`,
-      payload
+      payload,
     );
+
     return response.data;
   } catch (err) {
     throw "error in createUser";

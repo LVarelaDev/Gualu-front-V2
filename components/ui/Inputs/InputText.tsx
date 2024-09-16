@@ -20,16 +20,17 @@ const InputText = ({
   type = "text",
 }: props) => {
   const { register } = form;
+
   return (
     <Input
       {...register(name, rules)}
-      type={type}
-      variant="bordered"
       classNames={{
         inputWrapper: "bg-white group-data-[focus=true]:bg-white",
       }}
-      placeholder={placeholder}
       label={label}
+      placeholder={placeholder}
+      type={type}
+      variant="bordered"
     />
   );
 };

@@ -1,8 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { routes } from "./menu";
 import Link from "next/link";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+
+import { routes } from "./menu";
 
 const Sidenav = () => {
   return (
@@ -16,15 +17,15 @@ const Sidenav = () => {
             key={item.url}
             className="hover:bg-[#744BA3] p-4 transition-all duration-200 ease-in-out rounded-xl"
           >
-            <Link href={item.url} className="flex justify-between items-center">
+            <Link className="flex justify-between items-center" href={item.url}>
               <div className="flex gap-4 text-base text-white">
-                <FontAwesomeIcon icon={item.icon} className="w-4" />
+                <FontAwesomeIcon className="w-4" icon={item.icon} />
                 <p className="text-base font-medium">{item.name}</p>
               </div>
               {item.showMore && (
                 <FontAwesomeIcon
-                  icon={faChevronDown}
                   className="w-4 text-white"
+                  icon={faChevronDown}
                 />
               )}
             </Link>

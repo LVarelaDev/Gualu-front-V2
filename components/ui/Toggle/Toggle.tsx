@@ -11,6 +11,7 @@ type props = {
 
 const Toggle = ({ form, name, label, rules }: props) => {
   const { register } = form;
+
   return (
     <div className="flex gap-2">
       <Switch aria-label="Active" {...register(name, rules)} />

@@ -1,10 +1,11 @@
+import React, { useEffect } from "react";
+import { UseFormReturn } from "react-hook-form";
+
 import SelectComponent from "@/components/ui/Inputs/AutoComplete";
 import InputText from "@/components/ui/Inputs/InputText";
 import Toggle from "@/components/ui/Toggle/Toggle";
 import { usersById } from "@/models/users/userDTO";
 import { categories, rols } from "@/utils/constanst/constanst";
-import React, { useEffect } from "react";
-import { UseFormReturn } from "react-hook-form";
 
 type props = {
   form: UseFormReturn<any, any>;
@@ -28,38 +29,38 @@ const PersonalInformationForm = ({ form, userData }: props) => {
       <p className="text-base font-bold text-slate-600">Información personal</p>
       <div className="flex flex-col gap-5">
         <div className="flex gap-5">
-          <InputText form={form} name="names" label="Nombres" type="text" />
+          <InputText form={form} label="Nombres" name="names" type="text" />
           <InputText
             form={form}
-            name="lastNames"
             label="Apellidos"
+            name="lastNames"
             type="text"
           />
         </div>
         <div className="flex gap-5">
-          <InputText form={form} name="nif" label="NIF" type="text" />
-          <InputText form={form} name="email" label="Email" type="email" />
+          <InputText form={form} label="NIF" name="nif" type="text" />
+          <InputText form={form} label="Email" name="email" type="email" />
         </div>
         <div className="flex gap-5">
           <SelectComponent
-            form={form}
             dataList={rols}
             displayValue="label"
+            form={form}
             itemValue="value"
-            placeholder="Selecciona un rol"
             keyIdentifier="value"
-            name="rol"
             label="Roles"
+            name="rol"
+            placeholder="Selecciona un rol"
           />
           <SelectComponent
-            form={form}
             dataList={categories}
             displayValue="label"
+            form={form}
             itemValue="value"
-            placeholder="Selecciona una categoria"
             keyIdentifier="label"
-            name="typeCategory"
             label="Categoria"
+            name="typeCategory"
+            placeholder="Selecciona una categoria"
           />
         </div>
         <Toggle form={form} label="Activo" name="status" />

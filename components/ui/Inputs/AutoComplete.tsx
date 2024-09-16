@@ -27,12 +27,13 @@ const SelectComponent = ({
   rules,
 }: props) => {
   const { register } = form;
+
   return (
     <Select
-      label={label}
-      variant={variant}
-      placeholder={placeholder}
       className="w-full"
+      label={label}
+      placeholder={placeholder}
+      variant={variant}
       {...register(name, rules)}
     >
       {dataList.map((item) => (

@@ -2,7 +2,6 @@ import {
   Breadcrumbs as NextBreadcrumbs,
   BreadcrumbItem,
 } from "@nextui-org/react";
-import { useRouter } from "next/router";
 import React from "react";
 
 const Breadcrumbs = ({ route }: { route: string }) => {

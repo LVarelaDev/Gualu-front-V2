@@ -2,6 +2,7 @@ import axios from "axios";
 
 // Verifica que la URL base esté configurada
 const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
 if (!baseURL) {
   throw new Error("NEXT_PUBLIC_API_BASE_URL no está configurado");
 }
@@ -30,8 +31,9 @@ axiosIntance.interceptors.response.use(
     } else {
       console.error("Error in setting up request:", error.message);
     }
+
     return Promise.reject(new Error(error));
-  }
+  },
 );
 
 export default axiosIntance;

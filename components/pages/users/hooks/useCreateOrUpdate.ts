@@ -1,9 +1,10 @@
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+
 import { CreateUserDto } from "@/models/users/userDTO";
 import { createUser } from "@/services/users/user.service";
 import { TypeResponse } from "@/utils/enums/enums";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { toast } from "react-toastify";
+import { toast } from "sonner";
 
 export const useCreateOrUpdate = (id?: string) => {
   const router = useRouter();
@@ -84,6 +85,6 @@ export const useCreateOrUpdate = (id?: string) => {
   return {
     handleCreateUser,
     loading,
-    handleUpdateUser
+    handleUpdateUser,
   };
 };

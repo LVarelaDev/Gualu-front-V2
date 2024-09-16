@@ -1,13 +1,14 @@
 import "@/styles/globals.css";
 import clsx from "clsx";
 import { Metadata, Viewport } from "next";
+import { Toaster } from "sonner";
+
 import { Providers } from "./providers";
-import "react-toastify/dist/ReactToastify.css";
+
 import NavbarComponent from "@/components/layout/navbar/navbar";
 import Sidenav from "@/components/layout/sidenav";
 import { fontSans } from "@/config/fonts";
 import { siteConfig } from "@/config/site";
-import { ToastContainer } from "react-toastify";
 
 export const metadata: Metadata = {
   title: {
@@ -38,7 +39,7 @@ export default function RootLayout({
       <body
         className={clsx(
           "min-h-screen font-sans antialiased",
-          fontSans.variable
+          fontSans.variable,
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
@@ -49,11 +50,11 @@ export default function RootLayout({
                 <NavbarComponent />
                 <div className="flex-1 overflow-y-auto px-5 py-4 custom-scroll-primary">
                   {children}
-                  <ToastContainer />
                 </div>
               </div>
             </main>
           </div>
+          <Toaster />
         </Providers>
       </body>
     </html>

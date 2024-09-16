@@ -24,6 +24,7 @@ const CustomGrid = <T,>({
       <div className="flex p-4 gap-5">
         {columns.map((column) => {
           const col = column as React.ReactElement<CustomGridColumnProps<T>>;
+
           return (
             <div key={col.props.labelHeader} className="flex-1 font-bold">
               {col.props.labelHeader}
@@ -35,7 +36,9 @@ const CustomGrid = <T,>({
         {dataList.map((item) => (
           <div key={item[keyIdentifier] as React.Key} className="flex">
             {columns.map((column, colIndex) => {
-              const col = column as React.ReactElement<CustomGridColumnProps<T>>;
+              const col = column as React.ReactElement<
+                CustomGridColumnProps<T>
+              >;
 
               const isFirstColumn = colIndex === 0;
               const isLastColumn = colIndex === columns.length - 1;
@@ -49,10 +52,18 @@ const CustomGrid = <T,>({
                   className={`flex items-center flex-1 py-4 bg-white px-3 border-y-1 ${borderClasses} ${roundedClasses}`}
                 >
                   {col.props.colRender
-                    ? col.props.colRender(item[col.props.keyColumnIdentifier as keyof T], item)
-                    : typeof item[col.props.keyColumnIdentifier as keyof T] === "string" ||
-                      typeof item[col.props.keyColumnIdentifier as keyof T] === "number" ||
-                      typeof item[col.props.keyColumnIdentifier as keyof T] === "boolean"
+                    ? col.props.colRender(
+                        item[col.props.keyColumnIdentifier as keyof T],
+                        item,
+                      )
+                    : typeof item[col.props.keyColumnIdentifier as keyof T] ===
+                          "string" ||
+                        typeof item[
+                          col.props.keyColumnIdentifier as keyof T
+                        ] === "number" ||
+                        typeof item[
+                          col.props.keyColumnIdentifier as keyof T
+                        ] === "boolean"
                       ? String(item[col.props.keyColumnIdentifier as keyof T])
                       : null}
                 </div>

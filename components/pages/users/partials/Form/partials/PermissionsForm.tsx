@@ -1,8 +1,9 @@
-import { usersById } from "@/models/users/userDTO";
-import { permissions } from "@/utils/constanst/constanst";
 import { Checkbox, CheckboxGroup } from "@nextui-org/react";
 import React, { useEffect } from "react";
 import { UseFormReturn } from "react-hook-form";
+
+import { permissions } from "@/utils/constanst/constanst";
+import { usersById } from "@/models/users/userDTO";
 type props = {
   form: UseFormReturn<any, any>;
   userData: usersById | null;
@@ -12,6 +13,7 @@ const PermissionsForm = ({ form, userData }: props) => {
 
   useEffect(() => {
     const permissions = userData?.permissions.map((item) => item.name);
+
     form.setValue("permissions", permissions);
   }, [userData?.permissions]);
 

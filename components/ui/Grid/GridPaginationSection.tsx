@@ -1,12 +1,10 @@
 import {
   faAnglesLeft,
   faAnglesRight,
-  faArrowAltCircleLeft,
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Image } from "next/dist/client/image-component";
 import { useState } from "react";
 
 type TGridPaginationSectionProps = {
@@ -34,7 +32,7 @@ export const GridPaginationSection = ({
 
   const arrayOfPages = Array.from(
     { length: maxPagesToShow },
-    (_, i) => startPage + i
+    (_, i) => startPage + i,
   );
 
   const handleFirstPage = () => {
@@ -46,6 +44,7 @@ export const GridPaginationSection = ({
     setPage(totalPages);
     const lastBlockInitialPage =
       Math.floor((totalPages - 1) / maxPagesToShow) * maxPagesToShow + 1;
+
     setStartPage(lastBlockInitialPage);
   };
 
@@ -74,12 +73,12 @@ export const GridPaginationSection = ({
         de un total de <b>{totalRecords} resultados</b>
       </div>
       <div className="flex gap-3">
-        <button onClick={() => handleFirstPage()} disabled={currentPage === 1}>
+        <button disabled={currentPage === 1} onClick={() => handleFirstPage()}>
           <FontAwesomeIcon icon={faAnglesLeft} />
         </button>
         <button
-          onClick={() => handlePreviousPage()}
           disabled={currentPage === 1}
+          onClick={() => handlePreviousPage()}
         >
           <FontAwesomeIcon icon={faChevronLeft} />
         </button>
@@ -88,24 +87,27 @@ export const GridPaginationSection = ({
             return (
               <button
                 key={page.toString()}
-                onClick={() => {console.log(page); setPage(page)}}
                 className={`flex h-6 w-6 items-center justify-center rounded-full ${
                   page === currentPage ? "bg-green-700" : "bg-greenSmooth"
                 } p-4 text-white`}
+                onClick={() => {
+                  console.log(page);
+                  setPage(page);
+                }}
               >
                 {page}
               </button>
             );
         })}
         <button
-          onClick={() => handleNextPage()}
           disabled={currentPage === totalPages}
+          onClick={() => handleNextPage()}
         >
           <FontAwesomeIcon icon={faChevronRight} />
         </button>
         <button
-          onClick={() => handleLastPage()}
           disabled={currentPage === totalPages}
+          onClick={() => handleLastPage()}
         >
           <FontAwesomeIcon icon={faAnglesRight} />
         </button>

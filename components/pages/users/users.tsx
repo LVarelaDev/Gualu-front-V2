@@ -1,19 +1,21 @@
 "use client";
-import { EnumRols } from "@/enums/users/enumRols";
-import { UserDto } from "@/models/users/userDTO";
-import { EnumEndpoints, getAllUsers } from "@/services/users/user.service";
 import useSWR from "swr";
-import { CustomGrid, CustomGridColumn } from "../../ui/Table/FTable";
 import { useForm } from "react-hook-form";
-import InputText from "@/components/ui/Inputs/InputText";
 import { Button, Tooltip } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-icons";
 
+import { CustomGrid, CustomGridColumn } from "../../ui/Table/FTable";
+
+import InputText from "@/components/ui/Inputs/InputText";
+import { EnumEndpoints, getAllUsers } from "@/services/users/user.service";
+import { UserDto } from "@/models/users/userDTO";
+import { EnumRols } from "@/enums/users/enumRols";
+
 const UsersComponent = () => {
   const { data: users } = useSWR([EnumEndpoints.GetAllUsers], () =>
-    getAllUsers()
+    getAllUsers(),
   );
 
   const router = useRouter();
@@ -66,17 +68,17 @@ const UsersComponent = () => {
   const renderDetails = (r: UserDto) => {
     return (
       <div className="flex gap-3">
-        <Tooltip content="Editar usuario" delay={0} closeDelay={0}>
+        <Tooltip closeDelay={0} content="Editar usuario" delay={0}>
           <FontAwesomeIcon
-            icon={faPencilAlt}
             className="text-sky-700 cursor-pointer"
+            icon={faPencilAlt}
             onClick={() => router.push("/users/" + r.id)}
           />
         </Tooltip>
-        <Tooltip content="Eliminar usuario" delay={0} closeDelay={0}>
+        <Tooltip closeDelay={0} content="Eliminar usuario" delay={0}>
           <FontAwesomeIcon
-            icon={faTrash}
             className="text-red-500 cursor-pointer"
+            icon={faTrash}
           />
         </Tooltip>
       </div>
@@ -94,8 +96,8 @@ const UsersComponent = () => {
           <div className="flex gap-4">
             <InputText
               form={form}
-              name="search"
               label="Buscar"
+              name="search"
               placeholder="Valor de busqueda"
             />
           </div>
@@ -109,28 +111,28 @@ const UsersComponent = () => {
         </div>
         <CustomGrid<UserDto> dataList={users ?? []} keyIdentifier="id">
           <CustomGridColumn<UserDto>
-            labelHeader="Nombre"
             colRender={(_, user) => renderNames(user)}
+            labelHeader="Nombre"
           />
           <CustomGridColumn<UserDto>
-            labelHeader="NIF"
             keyColumnIdentifier="nif"
+            labelHeader="NIF"
           />
           <CustomGridColumn<UserDto>
-            labelHeader="Correo"
             keyColumnIdentifier="email"
+            labelHeader="Correo"
           />
           <CustomGridColumn<UserDto>
-            labelHeader="Estado"
             colRender={(_, user) => renderStatus(user)}
+            labelHeader="Estado"
           />
           <CustomGridColumn<UserDto>
-            labelHeader="Rol"
             colRender={(_, user) => renderRol(user)}
+            labelHeader="Rol"
           />
           <CustomGridColumn<UserDto>
-            labelHeader="Acciones"
             colRender={(_, user) => renderDetails(user)}
+            labelHeader="Acciones"
           />
         </CustomGrid>
       </div>

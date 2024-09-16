@@ -2,11 +2,13 @@ import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { ReactNode, useEffect, useState } from "react";
 import { UseFormReturn } from "react-hook-form";
+
 import { FGridColumn, TFGridColumnProps } from "./FGridColumn";
 import FGridColumnHeader from "./FGridColumnHeader";
 import FGridDeleteConfirmation from "./FGridDeleteConfirmation";
 import { FGridFooter, TFGridFooterProps } from "./FGridFooter";
 import { GridPaginationSection } from "./GridPaginationSection";
+
 import {
   convertToCLP,
   convertToPercentage,
@@ -79,7 +81,7 @@ const FGrid = <T,>(prop: TFGridProps<T>) => {
     noDataComponent,
   } = prop;
   const footerElements = React.Children.toArray(children).filter(
-    (child) => React.isValidElement(child) && child.type === FGridFooter
+    (child) => React.isValidElement(child) && child.type === FGridFooter,
   );
 
   if (footerElements.length > 1) {
@@ -96,7 +98,7 @@ const FGrid = <T,>(prop: TFGridProps<T>) => {
     string: (value: string | T[keyof T]) => value,
   };
   const [confirmDeleteKey, setConfirmDeleteKey] = useState<T[keyof T] | null>(
-    null
+    null,
   );
 
   const handleDeleteConfirmation = (key: any) => {
@@ -166,8 +168,8 @@ const FGrid = <T,>(prop: TFGridProps<T>) => {
 
                 return (
                   <FGridColumnHeader
-                    labelHeader={props.labelHeader}
                     classNameHeader={props.classNameHeader}
+                    labelHeader={props.labelHeader}
                   />
                 );
               })}
@@ -198,11 +200,11 @@ const FGrid = <T,>(prop: TFGridProps<T>) => {
                 if (confirmDeleteKey === element[keyIdentifier]) {
                   return (
                     <FGridDeleteConfirmation
+                      key={`tr-${String(element[keyIdentifier])}`}
+                      buttonDeleteText={prop.buttonDeleteText}
                       element={element}
                       handleDeleteRow={prop.handleDeleteRow!}
                       setConfirmDeleteKey={setConfirmDeleteKey}
-                      buttonDeleteText={prop.buttonDeleteText}
-                      key={`tr-${String(element[keyIdentifier])}`}
                       templateConfirmText={prop.templateConfirmText}
                     />
                   );
@@ -224,6 +226,7 @@ const FGrid = <T,>(prop: TFGridProps<T>) => {
                       let value = props.keyColumnIdentifier
                         ? element[props.keyColumnIdentifier]
                         : "";
+
                       if (props.colRender)
                         return (
                           <FGridColumnPrivate
@@ -243,6 +246,7 @@ const FGrid = <T,>(prop: TFGridProps<T>) => {
                     {/* Agrega el botón de eliminar */}
                     {prop.handleDeleteRow && (
                       <FGridColumnPrivate
+                        className="text-center"
                         value={
                           <button
                             onClick={() =>
@@ -250,15 +254,14 @@ const FGrid = <T,>(prop: TFGridProps<T>) => {
                             }
                           >
                             <FontAwesomeIcon
+                              className="cursor-pointer text-red-500"
                               icon={faTrashAlt}
                               style={{
                                 fontSize: "15px",
                               }}
-                              className="cursor-pointer text-red-500"
                             />
                           </button>
                         }
-                        className="text-center"
                       />
                     )}
                   </tr>
@@ -270,18 +273,19 @@ const FGrid = <T,>(prop: TFGridProps<T>) => {
             if (!React.isValidElement(child) || child.type !== FGridFooter)
               return;
             const props: TFGridFooterProps = child.props;
+
             return <tfoot>{props.footerRender}</tfoot>;
           })}
         </table>
       </div>
       {prop.type === "paginated" && prop.totalRecords > prop.pageSize && (
         <GridPaginationSection
+          currentListLength={dataList.length}
           currentPage={prop.currentPage}
           pageSize={prop.pageSize}
           setPage={prop.setPage}
-          totalRecords={prop.totalRecords}
           setPageSize={prop.setPageSize}
-          currentListLength={dataList.length}
+          totalRecords={prop.totalRecords}
         />
       )}
     </div>

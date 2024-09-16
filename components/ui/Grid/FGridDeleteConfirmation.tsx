@@ -21,7 +21,7 @@ const FGridDeleteConfirmation = <T,>({
       /\{\{(.*?)\}\}/g,
       function (_, p1: keyof T) {
         return element[p1] as string;
-      }
+      },
     );
 
     return templateText;

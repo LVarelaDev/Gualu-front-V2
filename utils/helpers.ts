@@ -9,6 +9,7 @@ export const convertToCLP = (value: number) => {
 
 export const isValidDate = (dateString: Date | null): boolean => {
   const date = new Date(dateString ?? "");
+
   return !isNaN(date.getTime());
 };
 
@@ -152,7 +153,7 @@ export function getDaysRemainingInMonth(date: Date): number | null {
   const lastDayOfMonth = new Date(
     date.getFullYear(),
     date.getMonth() + 1,
-    0
+    0,
   ).getDate();
   const currentDay = currentDate.getDate();
 
@@ -168,9 +169,11 @@ export function getCurrentDateWithYYYYMMFormat(): string {
   const date = new Date();
   const year = date.getFullYear();
   let month = (date.getMonth() + 1).toString();
+
   if (month.length === 1) {
     month = "0" + month;
   }
+
   return year.toString() + month;
 }
 
@@ -249,6 +252,7 @@ export const months: any = {
 // Función para obtener el nombre del mes a partir de la fecha en formato yyyyMMdd
 export const getMonth = (date: string) => {
   const month = date.slice(4, 6);
+
   return months[month];
 };
 

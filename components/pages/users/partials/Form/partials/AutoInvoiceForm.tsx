@@ -1,9 +1,10 @@
+import React, { useEffect } from "react";
+import { UseFormReturn } from "react-hook-form";
+
 import SelectComponent from "@/components/ui/Inputs/AutoComplete";
 import InputText from "@/components/ui/Inputs/InputText";
 import { usersById } from "@/models/users/userDTO";
 import { iva } from "@/utils/constanst/constanst";
-import React, { useEffect } from "react";
-import { UseFormReturn } from "react-hook-form";
 
 type props = {
   form: UseFormReturn<any, any>;
@@ -22,7 +23,7 @@ const AutoInvoiceForm = ({ form, userData }: props) => {
       form.setValue("bankAccount", userData?.auto_invoices[0].bank_account);
       form.setValue(
         "retentionImport",
-        userData?.auto_invoices[0].retention_percent
+        userData?.auto_invoices[0].retention_percent,
       );
       form.setValue("iban", userData?.auto_invoices[0].iban);
       form.setValue("iva", userData?.auto_invoices[0].iva);
@@ -34,56 +35,56 @@ const AutoInvoiceForm = ({ form, userData }: props) => {
       <p className="text-base font-bold text-slate-600">Datos de autofactura</p>
       <div className="flex flex-col gap-5">
         <div className="flex gap-5">
-          <InputText form={form} name="dni" label="DNI" type="text" />
-          <InputText form={form} name="addres" label="Direccion" type="text" />
+          <InputText form={form} label="DNI" name="dni" type="text" />
+          <InputText form={form} label="Direccion" name="addres" type="text" />
         </div>
         <div className="flex gap-5">
           <InputText
             form={form}
-            name="population"
             label="Poblacion"
+            name="population"
             type="text"
           />
           <InputText
             form={form}
-            name="postalCode"
             label="Codigo postal"
+            name="postalCode"
             type="email"
           />
         </div>
         <div className="flex gap-5">
           <InputText
             form={form}
-            name="province"
             label="Provincia"
+            name="province"
             type="text"
           />
           <InputText
             form={form}
-            name="bankAccount"
             label="Cuenta bancaria"
+            name="bankAccount"
             type="number"
           />
         </div>
         <div className="flex gap-5">
-          <InputText form={form} name="iban" label="IBAN" type="text" />
+          <InputText form={form} label="IBAN" name="iban" type="text" />
           <InputText
             form={form}
-            name="retentionImport"
             label="Importe retencion"
+            name="retentionImport"
             type="number"
           />
         </div>
         <div className="flex gap-5 w-1/2 pr-2">
           <SelectComponent
-            form={form}
             dataList={iva}
             displayValue="label"
+            form={form}
             itemValue="value"
-            placeholder="Selecciona el iva"
             keyIdentifier="value"
-            name="iva"
             label="IVA"
+            name="iva"
+            placeholder="Selecciona el iva"
           />
         </div>
       </div>

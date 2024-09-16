@@ -1,15 +1,18 @@
 "use client";
-import { EnumRols } from "@/enums/users/enumRols";
 import { faPlus, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button } from "@nextui-org/button";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+
 import { useCreateOrUpdate } from "../../hooks/useCreateOrUpdate";
+
 import AutoInvoiceForm from "./partials/AutoInvoiceForm";
 import PermissionsForm from "./partials/PermissionsForm";
 import PersonalInformationForm from "./partials/PersonalInformationForm";
+
+import { EnumRols } from "@/enums/users/enumRols";
 import { getUsersById } from "@/services/users/user.service";
 import { usersById } from "@/models/users/userDTO";
 
@@ -30,7 +33,7 @@ const CreateUserForm = ({ id }: { id: string }) => {
     console.log(isEdit);
     if (rol !== undefined) {
       setShowAutoInvoiceForm(
-        rol !== EnumRols.Administrador && rol !== "" ? true : false
+        rol !== EnumRols.Administrador && rol !== "" ? true : false,
       );
     }
   }, [rol]);
@@ -43,6 +46,7 @@ const CreateUserForm = ({ id }: { id: string }) => {
     const fetchExtract = async () => {
       if (isEdit) {
         const response = await getUsersById(id);
+
         if (response) {
           setUserData(response);
         }
@@ -69,7 +73,7 @@ const CreateUserForm = ({ id }: { id: string }) => {
           >
             Guardar
             {loading ? (
-              <FontAwesomeIcon icon={faSpinner} spin />
+              <FontAwesomeIcon spin icon={faSpinner} />
             ) : (
               <FontAwesomeIcon icon={faPlus} />
             )}
