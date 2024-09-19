@@ -1,4 +1,4 @@
 export type KeyValue = {
-    key: number;
-    value: string;
-};
+	key: number
+	value: string
+}

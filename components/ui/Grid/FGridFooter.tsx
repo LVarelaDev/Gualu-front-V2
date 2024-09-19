@@ -1,9 +1,9 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react'
 
 export type TFGridFooterProps = {
-  footerRender: ReactNode;
-};
+	footerRender: ReactNode
+}
 
 export const FGridFooter = ({ footerRender }: TFGridFooterProps) => {
-  return null;
-};
+	return null
+}
