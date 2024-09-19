@@ -1,6 +1,6 @@
 import '@/styles/globals.css'
 import clsx from 'clsx'
-import { Metadata, Viewport } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Toaster } from 'sonner'
 
 import { Providers } from './providers'
@@ -54,7 +54,7 @@ export default function RootLayout({
 							</div>
 						</main>
 					</div>
-					<Toaster />
+					<Toaster richColors position="top-right" closeButton />
 				</Providers>
 			</body>
 		</html>

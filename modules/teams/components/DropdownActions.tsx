@@ -2,7 +2,7 @@
 
 import {
 	Button,
-	ButtonProps,
+	type ButtonProps,
 	Dropdown,
 	DropdownItem,
 	DropdownMenu,
@@ -12,10 +12,10 @@ import { Delete02Icon, MoreVerticalIcon, TaskEdit01Icon } from 'hugeicons-react'
 
 interface Props extends ButtonProps {
 	id: string
-	onOpen: () => void
+	onOpenDeleteModel: () => void
 }
 
-const DropdownActions = ({ id, onOpen, ...props }: Props) => {
+const DropdownActions = ({ id, onOpenDeleteModel, ...props }: Props) => {
 	return (
 		<>
 			<Dropdown>
@@ -29,7 +29,7 @@ const DropdownActions = ({ id, onOpen, ...props }: Props) => {
 						key="editar"
 						className="text-gray-700"
 						startContent={<TaskEdit01Icon size={20} />}
-						href={`/teams/${id}`}
+						href={`/teams/manage/?id=${id}`}
 					>
 						Editar
 					</DropdownItem>
@@ -39,7 +39,7 @@ const DropdownActions = ({ id, onOpen, ...props }: Props) => {
 						color="danger"
 						startContent={<Delete02Icon size={20} />}
 						variant="flat"
-						onClick={onOpen}
+						onClick={onOpenDeleteModel}
 					>
 						Eliminar
 					</DropdownItem>

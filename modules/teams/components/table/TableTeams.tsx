@@ -1,27 +1,33 @@
-'use client'
+"use client"
 import {
-	Table,
-	TableBody,
-	TableColumn,
-	TableCell,
-	TableRow,
-	TableHeader,
 	Chip,
 	Spinner,
+	Table,
+	TableBody,
+	TableCell,
+	TableColumn,
+	TableHeader,
+	TableRow,
 	useDisclosure,
 } from '@nextui-org/react'
 
-import DropdownActions from '@/components/pages/teams/DropdownActions'
-import { Team } from '@/models/teams/team'
+import PaginationWrapper from '@/modules/core/components/PaginationWrapper'
+import DropdownActions from '@/modules/teams/components/DropdownActions'
+import type { Team } from '@/modules/teams/interfaces/team'
 import { formatDate } from '@/utils/formatterDate'
+import dynamic from 'next/dynamic'
 import { useSearchParams } from 'next/navigation'
-import ModalDeleteTeams from './ModalDeleteTeams'
 import { useState } from 'react'
+const ModalDeleteTeams = dynamic(
+	() => import('@/modules/teams/components/ModalDeleteTeams'),
+)
 
 interface Props {
 	data?: Team[]
+	page?: number
+	total_pages?: number
 }
-const TableTeams = ({ data }: Props) => {
+const TableTeams = ({ data, page, total_pages }: Props) => {
 	const colums = [
 		'Nombre',
 		'Jefe de estado',
@@ -34,22 +40,28 @@ const TableTeams = ({ data }: Props) => {
 	const query = searchParams.get('q')
 	const { isOpen, onOpen, onOpenChange } = useDisclosure()
 	const [teamState, setTeamState] = useState({ name: '', id: '' })
-	console.log(teamState)
+
 	return (
 		<>
 			<Table
-				isCompact
 				removeWrapper
 				aria-label="teams table"
 				classNames={{
-					th: 'bg-transparent border-b text-gray-500 text-sm py-4',
+					th: 'text-sm border-b bg-transparent',
 				}}
 				radius="lg"
 				selectionMode="single"
+				bottomContent={
+					<PaginationWrapper
+						initialPage={1}
+						page={page ?? 1}
+						total={total_pages ?? 0}
+					/>
+				}
 			>
 				<TableHeader columns={colums}>
-					{colums.map((column, index) => (
-						<TableColumn key={column + index}>{column} </TableColumn>
+					{colums.map((column) => (
+						<TableColumn key={column}>{column} </TableColumn>
 					))}
 				</TableHeader>
 				<TableBody
@@ -78,16 +90,16 @@ const TableTeams = ({ data }: Props) => {
 									className="border-none text-gray-700"
 									color={row.active ? 'success' : 'danger'}
 									size="sm"
+									radius="sm"
 									variant="dot"
 								>
 									{row.active ? 'Activo' : 'Inactivo'}
 								</Chip>
 							</TableCell>
-
 							<TableCell align="center">
 								<DropdownActions
 									id={row.id}
-									onOpen={onOpen}
+									onOpenDeleteModel={onOpen}
 									onClick={() => setTeamState({ id: row.id, name: row.name })}
 								/>
 							</TableCell>
@@ -95,6 +107,7 @@ const TableTeams = ({ data }: Props) => {
 					)}
 				</TableBody>
 			</Table>
+
 			<ModalDeleteTeams
 				id={teamState.id}
 				name={teamState.name}

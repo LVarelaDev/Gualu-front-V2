@@ -1,11 +1,11 @@
 'use client'
 
-import { Input } from '@nextui-org/input'
+import { Input, type InputProps } from '@nextui-org/input'
 import { Search01Icon } from 'hugeicons-react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useDebouncedCallback } from 'use-debounce'
 
-const SearchInput = () => {
+const SearchInput = ({ ...props }: InputProps) => {
 	//Hooks
 	const searchParams = useSearchParams()
 	const router = useRouter()
@@ -18,6 +18,7 @@ const SearchInput = () => {
 		if (value) {
 			params.set('q', value)
 			params.delete('page')
+			params.delete("sort")
 		} else {
 			params.delete('q')
 		}
@@ -33,11 +34,11 @@ const SearchInput = () => {
 				inputWrapper: 'border-1 bg-transparent',
 			}}
 			defaultValue={query}
-			placeholder="Buscar por nombre..."
 			role="search"
 			startContent={<Search01Icon className="text-default-300" size={20} />}
 			onChange={(event) => handleSearch(event.target.value)}
 			onClear={() => router.replace(pathName)}
+			{...props}
 		/>
 	)
 }

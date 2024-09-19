@@ -6,6 +6,7 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+    "./modules/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     color: {
@@ -22,5 +23,25 @@ module.exports = {
     },
   },
   darkMode: "class",
-  plugins: [nextui()],
+  /* Se cambio el color danger por defecto */
+  plugins: [nextui({
+    themes:{
+      light: {
+        colors:{
+          danger:{
+            DEFAULT: '#EF4444',
+            foreground: '#FFFFFF'
+          }
+        }
+      },
+      dark:{
+        colors:{
+          danger:{
+            DEFAULT: '#EF4444',
+            foreground: '#FFFFFF'
+          }
+        }
+      }
+    }
+  })],
 };

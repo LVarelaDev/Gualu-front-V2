@@ -7,7 +7,7 @@ import {
 	ModalHeader,
 } from '@nextui-org/react'
 
-import { deleteTeam } from '@/services/teams/deleteTeam'
+import { deleteTeam } from '@/modules/teams/services/mutation/deleteTeam'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 
@@ -46,10 +46,7 @@ const ModalDeleteTeams = ({ id, name, isOpen, onOpenChange }: Props) => {
 						</ModalBody>
 						<ModalFooter>
 							<Button onClick={onClose}>Cancelar</Button>
-							<Button
-								className="bg-red-500 text-white"
-								onClick={() => handleDeleteTeam(onClose)}
-							>
+							<Button color="danger" onClick={() => handleDeleteTeam(onClose)}>
 								Sí,Seguro
 							</Button>
 						</ModalFooter>

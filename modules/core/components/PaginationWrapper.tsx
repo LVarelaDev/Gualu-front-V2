@@ -1,8 +1,8 @@
 'use client'
-import { Pagination, PaginationProps } from '@nextui-org/react'
-import { usePathname, useSearchParams, useRouter } from 'next/navigation'
+import { Pagination, type PaginationProps } from '@nextui-org/react'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
-const PaginationTeams = ({ ...props }: PaginationProps) => {
+const PaginationWrapper = ({ ...props }: PaginationProps) => {
 	// Hooks
 	const router = useRouter()
 	const pathName = usePathname()
@@ -10,16 +10,17 @@ const PaginationTeams = ({ ...props }: PaginationProps) => {
 
 	const handlePage = (page: number) => {
 		const params = new URLSearchParams(searchParams)
-
 		params.set('page', page.toString())
+
 		router.replace(`${pathName}?${params.toString()}`)
 	}
 
 	return (
 		<Pagination
 			showControls
+			loop
 			classNames={{
-				cursor: 'bg-foreground text-background',
+				cursor: 'bg-emerald-500 text-background',
 			}}
 			onChange={handlePage}
 			{...props}
@@ -27,4 +28,4 @@ const PaginationTeams = ({ ...props }: PaginationProps) => {
 	)
 }
 
-export default PaginationTeams
+export default PaginationWrapper

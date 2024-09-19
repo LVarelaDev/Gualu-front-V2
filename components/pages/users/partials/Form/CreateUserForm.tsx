@@ -13,8 +13,8 @@ import PermissionsForm from './partials/PermissionsForm'
 import PersonalInformationForm from './partials/PersonalInformationForm'
 
 import { EnumRols } from '@/enums/users/enumRols'
+import type { usersById } from '@/models/users/userDTO'
 import { getUsersById } from '@/services/users/user.service'
-import { usersById } from '@/models/users/userDTO'
 
 const CreateUserForm = ({ id }: { id: string }) => {
 	const isEdit: boolean = id !== 'create' ? true : false
@@ -30,7 +30,6 @@ const CreateUserForm = ({ id }: { id: string }) => {
 	const rol = watch('rol')
 
 	useEffect(() => {
-		console.log(isEdit)
 		if (rol !== undefined) {
 			setShowAutoInvoiceForm(
 				rol !== EnumRols.Administrador && rol !== '' ? true : false,
