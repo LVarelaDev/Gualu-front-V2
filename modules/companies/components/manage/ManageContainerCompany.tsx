@@ -17,7 +17,7 @@ const ManageContainerCompany = async ({ id }: Props) => {
 	}
 
 	return (
-		<section className="mt-10 mx-auto max-w-md">
+		<section className="mt-10 max-w-md">
 			<FormCompany companyData={company} />
 		</section>
 	)

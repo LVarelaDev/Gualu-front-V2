@@ -1,12 +1,9 @@
 import '@/styles/globals.css'
-import clsx from 'clsx'
 import type { Metadata, Viewport } from 'next'
 import { Toaster } from 'sonner'
 
 import { Providers } from './providers'
 
-import NavbarComponent from '@/components/layout/navbar/navbar'
-import Sidenav from '@/components/layout/sidenav'
 import { fontSans } from '@/config/fonts'
 import { siteConfig } from '@/config/site'
 import Sidebar from '@/modules/core/components/layout/sidebar/Sidebar'
@@ -41,7 +38,7 @@ export default function RootLayout({
 				<Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
 					<main className="flex flex-grow overflow-hidden">
 						<Sidebar />
-						<section className="flex-1 overflow-y-auto px-5 py-4 custom-scroll-primary">
+						<section className="flex-1 overflow-y-auto px-5 py-4 custom-scroll-primary bg-slate-100">
 							{children}
 						</section>
 					</main>

@@ -39,7 +39,7 @@ const TeamForm = ({ userData, teamData }: Props) => {
 		<>
 			<form
 				onSubmit={handleSubmit(submitData)}
-				className="w-full flex flex-col gap-y-5 border rounded-2xl px-4 py-8"
+				className="w-full flex flex-col gap-y-5 border rounded-2xl px-4 py-4 bg-white"
 			>
 				<h1 className="text-xl font-bold text-center py-3">
 					{teamData ? 'Editar Equipo' : 'Agregar nuevo Equipo'}

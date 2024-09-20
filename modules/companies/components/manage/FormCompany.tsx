@@ -18,7 +18,7 @@ const FormCompany = ({ companyData }: Props) => {
 	return (
 		<form
 			onSubmit={handleSubmit(handleData)}
-			className="w-full py-8 px-4 flex flex-col gap-y-8 border rounded-2xl"
+			className="w-full py-4 px-4 flex flex-col gap-y-8 border rounded-2xl bg-white"
 		>
 			<h1 className="text-xl font-bold text-center py-3">
 				{companyData ? 'Editar compañia' : 'Agregar nueva compañia'}
