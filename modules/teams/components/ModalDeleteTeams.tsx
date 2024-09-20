@@ -7,7 +7,7 @@ import {
 	ModalHeader,
 } from '@nextui-org/react'
 
-import { deleteTeam } from '@/modules/teams/services/mutation/deleteTeam'
+import { deleteTeam } from '@/modules/teams/services/mutations/deleteTeam'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 

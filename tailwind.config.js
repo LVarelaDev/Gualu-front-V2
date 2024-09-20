@@ -23,7 +23,7 @@ module.exports = {
     },
   },
   darkMode: "class",
-  /* Se cambio el color danger por defecto */
+  /* Se cambio el color primary, danger y success por defecto */
   plugins: [nextui({
     themes:{
       light: {
@@ -31,6 +31,14 @@ module.exports = {
           danger:{
             DEFAULT: '#EF4444',
             foreground: '#FFFFFF'
+          },
+          success:{
+            DEFAULT:"#10b981",
+            foreground:"#fff"
+          },
+          primary:{
+            DEFAULT:"#4f46e5",
+            foreground:"#fff"
           }
         }
       },
@@ -39,6 +47,14 @@ module.exports = {
           danger:{
             DEFAULT: '#EF4444',
             foreground: '#FFFFFF'
+          },
+          success:{
+            DEFAULT:"#10b981",
+            foreground:"#fff"
+          },
+          primary:{
+            DEFAULT:"#4f46e5",
+            foreground:"#fff"
           }
         }
       }

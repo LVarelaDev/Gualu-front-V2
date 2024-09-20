@@ -9,6 +9,7 @@ import NavbarComponent from '@/components/layout/navbar/navbar'
 import Sidenav from '@/components/layout/sidenav'
 import { fontSans } from '@/config/fonts'
 import { siteConfig } from '@/config/site'
+import Sidebar from '@/modules/core/components/layout/sidebar/Sidebar'
 
 export const metadata: Metadata = {
 	title: {
@@ -34,26 +35,16 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html suppressHydrationWarning lang="es">
+		<html suppressHydrationWarning lang="es" className={fontSans.className}>
 			<head />
-			<body
-				className={clsx(
-					'min-h-screen font-sans antialiased',
-					fontSans.variable,
-				)}
-			>
+			<body className="min-h-screen antialiased">
 				<Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
-					<div className="relative flex flex-col h-screen bg-[#511C8E]">
-						<main className="flex flex-grow overflow-hidden">
-							<Sidenav />
-							<div className="flex flex-col flex-1 bg-slate-100 rounded-bl-[45px] rounded-tl-[45px] py-5 shadow-2xl shadow-black">
-								<NavbarComponent />
-								<div className="flex-1 overflow-y-auto px-5 py-4 custom-scroll-primary">
-									{children}
-								</div>
-							</div>
-						</main>
-					</div>
+					<main className="flex flex-grow overflow-hidden">
+						<Sidebar />
+						<section className="flex-1 overflow-y-auto px-5 py-4 custom-scroll-primary">
+							{children}
+						</section>
+					</main>
 					<Toaster richColors position="top-right" closeButton />
 				</Providers>
 			</body>

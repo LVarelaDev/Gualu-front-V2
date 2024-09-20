@@ -13,9 +13,15 @@ import { Delete02Icon, MoreVerticalIcon, TaskEdit01Icon } from 'hugeicons-react'
 interface Props extends ButtonProps {
 	id: string
 	onOpenDeleteModel: () => void
+	editPath: string
 }
 
-const DropdownActions = ({ id, onOpenDeleteModel, ...props }: Props) => {
+const DropdownActions = ({
+	id,
+	onOpenDeleteModel,
+	editPath,
+	...props
+}: Props) => {
 	return (
 		<>
 			<Dropdown>
@@ -29,7 +35,7 @@ const DropdownActions = ({ id, onOpenDeleteModel, ...props }: Props) => {
 						key="editar"
 						className="text-gray-700"
 						startContent={<TaskEdit01Icon size={20} />}
-						href={`/teams/manage/?id=${id}`}
+						href={editPath}
 					>
 						Editar
 					</DropdownItem>

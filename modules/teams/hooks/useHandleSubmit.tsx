@@ -1,8 +1,8 @@
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 import type { InputTeam } from '../interfaces/team'
-import { createTeam } from '../services/mutation/createTeam'
-import { updateTeam } from '../services/mutation/updateTeam'
+import { createTeam } from '../services/mutations/createTeam'
+import { updateTeam } from '../services/mutations/updateTeam'
 
 interface Props {
 	data: InputTeam

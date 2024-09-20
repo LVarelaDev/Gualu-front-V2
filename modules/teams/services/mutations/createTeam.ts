@@ -1,14 +1,10 @@
 import axiosIntance from '@/lib/axios.config'
+import type { MessageResponse } from '@/modules/core/interfaces/messageResponse'
 import type { InputTeam } from '@/modules/teams/interfaces/team'
-
-interface MessageResponse {
-	message: string
-}
 
 export const createTeam = async (newTeam: InputTeam) => {
 	try {
-		const response = await axiosIntance.post('/teams', newTeam)
-		const data: MessageResponse = await response.data
+		const { data } = await axiosIntance.post<MessageResponse>('/teams', newTeam)
 		return data
 	} catch (error) {
 		console.error(error)
