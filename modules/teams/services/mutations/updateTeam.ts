@@ -1,10 +1,7 @@
 import axiosIntance from '@/lib/axios.config'
+import type { MessageResponse } from '@/modules/core/interfaces/messageResponse'
 import type { InputTeam } from '@/modules/teams/interfaces/team'
 import { AxiosError } from 'axios'
-
-interface MessageResponse {
-	message: string
-}
 
 export const updateTeam = async (team: InputTeam, id: string) => {
 	try {

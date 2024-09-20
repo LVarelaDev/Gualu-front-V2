@@ -1,5 +1,5 @@
 import TeamForm from '@/modules/teams/components/manage/TeamForm'
-import { getOneTeam } from '@/modules/teams/services/query/getOneTeam'
+import { getOneTeam } from '@/modules/teams/services/querys/getOneTeam'
 import { getAllUsers } from '@/services/users/user.service'
 import { notFound } from 'next/navigation'
 
@@ -24,9 +24,9 @@ const ManageContainer = async ({ id }: Props) => {
 	}
 
 	return (
-		<main className="mt-10 mx-auto max-w-md">
+		<section className="mt-10 mx-auto max-w-md">
 			<TeamForm userData={userData} teamData={team} />
-		</main>
+		</section>
 	)
 }
 

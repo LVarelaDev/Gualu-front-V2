@@ -9,15 +9,13 @@ import {
 } from '@nextui-org/react'
 import { ArrowDown01Icon, PlusSignIcon } from 'hugeicons-react'
 import Link from 'next/link'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import React from 'react'
 
 const TableHeader = () => {
 	const pathName = usePathname()
-	const searchParams = useSearchParams()
-	const sort = searchParams.get('sort')
 	return (
-		<section className="flex items-center justify-between py-3">
+		<section className="flex items-center justify-between py-5">
 			<SearchInput placeholder="Buscar por nombre..." />
 			<div className="space-x-5">
 				<Dropdown>
@@ -31,11 +29,11 @@ const TableHeader = () => {
 						</Button>
 					</DropdownTrigger>
 					<DropdownMenu aria-label="Selection sort" selectionMode="single">
-						<DropdownItem key="asc" href={`${pathName}?sort=asc`}>
-							Acendente
-						</DropdownItem>
 						<DropdownItem key="desc" href={`${pathName}?sort=desc`}>
-							Decendente
+							Ultimos equipos agregados
+						</DropdownItem>
+						<DropdownItem key="asc" href={`${pathName}?sort=asc`}>
+							Primeros equipos agregados
 						</DropdownItem>
 					</DropdownMenu>
 				</Dropdown>

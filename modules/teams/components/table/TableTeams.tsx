@@ -12,6 +12,8 @@ import {
 } from '@nextui-org/react'
 
 import PaginationWrapper from '@/modules/core/components/PaginationWrapper'
+import ChipStatus from '@/modules/core/components/common/ChipStatus'
+import type { DataResponse } from '@/modules/core/interfaces/dataResponse'
 import DropdownActions from '@/modules/teams/components/DropdownActions'
 import type { Team } from '@/modules/teams/interfaces/team'
 import { formatDate } from '@/utils/formatterDate'
@@ -23,11 +25,9 @@ const ModalDeleteTeams = dynamic(
 )
 
 interface Props {
-	data?: Team[]
-	page?: number
-	total_pages?: number
+	data?: DataResponse<Team>
 }
-const TableTeams = ({ data, page, total_pages }: Props) => {
+const TableTeams = ({ data }: Props) => {
 	const colums = [
 		'Nombre',
 		'Jefe de estado',
@@ -46,59 +46,59 @@ const TableTeams = ({ data, page, total_pages }: Props) => {
 			<Table
 				removeWrapper
 				aria-label="teams table"
+				radius="lg"
+				selectionMode="single"
 				classNames={{
 					th: 'text-sm border-b bg-transparent',
 				}}
-				radius="lg"
-				selectionMode="single"
+				topContent={
+					<span className="text-gray-400 text-sm">
+						Total {data?.total_results} equipos
+					</span>
+				}
 				bottomContent={
 					<PaginationWrapper
 						initialPage={1}
-						page={page ?? 1}
-						total={total_pages ?? 0}
+						page={data?.page ?? 1}
+						total={data?.total_pages ?? 0}
 					/>
 				}
 			>
+				{/* Colums */}
 				<TableHeader columns={colums}>
 					{colums.map((column) => (
 						<TableColumn key={column}>{column} </TableColumn>
 					))}
 				</TableHeader>
+
+				{/* Body rows */}
 				<TableBody
 					emptyContent={
 						query
 							? `No se encontro equipos con el nombre "${query}"`
 							: 'No hay datos'
 					}
-					items={data ?? []}
+					items={data?.results ?? []}
 					loadingContent={<Spinner color="default" />}
 				>
 					{(row) => (
-						<TableRow key={row.id}>
-							<TableCell className="text-gray-700">{row.name}</TableCell>
+						<TableRow key={row.id} className="text-gray-700">
+							<TableCell>{row.name}</TableCell>
 
 							<TableCell className="font-bold text-gray-900">
 								{`${row.users.first_name} ${row.users.last_name}`}
 							</TableCell>
 
-							<TableCell className="text-gray-700">
-								{formatDate(row.created_at)}
-							</TableCell>
+							<TableCell>{formatDate(row.created_at)}</TableCell>
 
 							<TableCell>
-								<Chip
-									className="border-none text-gray-700"
-									color={row.active ? 'success' : 'danger'}
-									size="sm"
-									radius="sm"
-									variant="dot"
-								>
-									{row.active ? 'Activo' : 'Inactivo'}
-								</Chip>
+								<ChipStatus isActive={row.active} />
 							</TableCell>
+
 							<TableCell align="center">
 								<DropdownActions
 									id={row.id}
+									editPath={`/teams/manage/?id=${row.id}`}
 									onOpenDeleteModel={onOpen}
 									onClick={() => setTeamState({ id: row.id, name: row.name })}
 								/>

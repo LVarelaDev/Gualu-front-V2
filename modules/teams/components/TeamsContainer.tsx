@@ -1,7 +1,7 @@
-import TableHeader from '@/modules/teams/components/table/TableHeader'
+import TableHeaderTeams from '@/modules/teams/components/table/TableHeaderTeams'
 import TableTeams from '@/modules/teams/components/table/TableTeams'
-import { getAllTeams } from '@/modules/teams/services/query/getAllTeams'
-import { searchTeam } from '@/modules/teams/services/query/searchTeam'
+import { getAllTeams } from '@/modules/teams/services/querys/getAllTeams'
+import { searchTeam } from '@/modules/teams/services/querys/searchTeam'
 import { Suspense } from 'react'
 
 interface Props {
@@ -15,19 +15,9 @@ const TeamsContainer = async ({ page, query, sort }: Props) => {
 	const data = query ? searchData : dataTeams
 	return (
 		<>
-			<TableHeader />
-			<div className="py-4">
-				<span className="text-gray-400 text-sm">
-					Total {data?.total_results} equipos
-				</span>
-			</div>
-
+			<TableHeaderTeams />
 			<Suspense key={query + data?.page} fallback={<div>Loading...</div>}>
-				<TableTeams
-					data={data?.results}
-					page={data?.page}
-					total_pages={data?.total_pages}
-				/>
+				<TableTeams data={data} />
 			</Suspense>
 		</>
 	)

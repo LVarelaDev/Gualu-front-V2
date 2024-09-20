@@ -35,14 +35,9 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html suppressHydrationWarning lang="es">
+		<html suppressHydrationWarning lang="es" className={fontSans.className}>
 			<head />
-			<body
-				className={clsx(
-					'min-h-screen font-sans antialiased',
-					fontSans.variable,
-				)}
-			>
+			<body className="min-h-screen antialiased">
 				<Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
 					<main className="flex flex-grow overflow-hidden">
 						<Sidebar />

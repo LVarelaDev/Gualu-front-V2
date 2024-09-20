@@ -4,8 +4,13 @@ import type { UserDto } from '@/models/users/userDTO'
 import useHandleSubmit from '@/modules/teams/hooks/useHandleSubmit'
 import type { InputTeam, Team } from '@/modules/teams/interfaces/team'
 import { Button } from '@nextui-org/button'
-import { AutocompleteItem, Input, Select, SelectItem } from '@nextui-org/react'
-import { Switch } from '@nextui-org/switch'
+import {
+	AutocompleteItem,
+	Checkbox,
+	Input,
+	Select,
+	SelectItem,
+} from '@nextui-org/react'
 import { useRouter } from 'next/navigation'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 
@@ -34,8 +39,11 @@ const TeamForm = ({ userData, teamData }: Props) => {
 		<>
 			<form
 				onSubmit={handleSubmit(submitData)}
-				className="w-full p-4 flex flex-col gap-y-5"
+				className="w-full flex flex-col gap-y-5 border rounded-2xl px-4 py-8"
 			>
+				<h1 className="text-xl font-bold text-center py-3">
+					{teamData ? 'Editar Equipo' : 'Agregar nuevo Equipo'}
+				</h1>
 				<Input
 					label=" Nombre del equipo"
 					placeholder="Agregar nombre"
@@ -85,17 +93,15 @@ const TeamForm = ({ userData, teamData }: Props) => {
 					))}
 				</Select>
 
-				<div className="flex items-center justify-between">
-					<label htmlFor="" className="text-gray-800">
-						Equipo Activo
-					</label>
-
-					<Switch
+				<div className="">
+					<Checkbox
 						defaultSelected={teamData?.active ?? true}
-						size="sm"
 						color="primary"
 						{...register('active')}
 					/>
+					<label htmlFor="" className="text-gray-800">
+						Equipo Activo
+					</label>
 				</div>
 
 				<Button type="submit" color="primary">
