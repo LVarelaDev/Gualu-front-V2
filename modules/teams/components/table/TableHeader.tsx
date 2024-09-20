@@ -15,7 +15,7 @@ import React from 'react'
 const TableHeader = () => {
 	const pathName = usePathname()
 	const searchParams = useSearchParams()
-	const sort = searchParams.get("sort")
+	const sort = searchParams.get('sort')
 	return (
 		<section className="flex items-center justify-between py-3">
 			<SearchInput placeholder="Buscar por nombre..." />
@@ -30,10 +30,7 @@ const TableHeader = () => {
 							Ordenar por
 						</Button>
 					</DropdownTrigger>
-					<DropdownMenu
-						aria-label="Selection sort"
-						selectionMode='single'
-					>
+					<DropdownMenu aria-label="Selection sort" selectionMode="single">
 						<DropdownItem key="asc" href={`${pathName}?sort=asc`}>
 							Acendente
 						</DropdownItem>
@@ -44,7 +41,7 @@ const TableHeader = () => {
 				</Dropdown>
 				<Button
 					as={Link}
-					className="bg-emerald-500 text-white"
+					color="primary"
 					endContent={<PlusSignIcon size={20} />}
 					href="/teams/manage"
 				>

@@ -93,14 +93,12 @@ const TeamForm = ({ userData, teamData }: Props) => {
 					<Switch
 						defaultSelected={teamData?.active ?? true}
 						size="sm"
-						classNames={{
-							wrapper: 'group-data-[selected=true]:bg-emerald-500',
-						}}
+						color="primary"
 						{...register('active')}
 					/>
 				</div>
 
-				<Button type="submit" className="bg-emerald-500 text-white">
+				<Button type="submit" color="primary">
 					{teamData ? 'Editar equipo' : 'Crear equipo'}
 				</Button>
 			</form>

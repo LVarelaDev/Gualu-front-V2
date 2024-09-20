@@ -18,7 +18,7 @@ const SearchInput = ({ ...props }: InputProps) => {
 		if (value) {
 			params.set('q', value)
 			params.delete('page')
-			params.delete("sort")
+			params.delete('sort')
 		} else {
 			params.delete('q')
 		}

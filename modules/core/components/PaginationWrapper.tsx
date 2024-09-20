@@ -19,8 +19,9 @@ const PaginationWrapper = ({ ...props }: PaginationProps) => {
 		<Pagination
 			showControls
 			loop
+			color="success"
 			classNames={{
-				cursor: 'bg-emerald-500 text-background',
+				cursor: 'bg-indigo-600 text-background',
 			}}
 			onChange={handlePage}
 			{...props}
