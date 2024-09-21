@@ -1,5 +1,5 @@
 import BackButton from '@/modules/core/components/common/BackButton'
-import ManageContainer from '@/modules/teams/components/manage/ManageContainer'
+import ManageContainer from '@/modules/teams/components/containers/ManageContainer'
 import { Suspense } from 'react'
 
 interface Props {

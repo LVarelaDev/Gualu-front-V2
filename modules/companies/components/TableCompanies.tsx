@@ -36,7 +36,7 @@ const TableCompanies = ({ data }: Props) => {
 				}}
 				radius="lg"
 				topContent={
-					<span className="text-gray-400 text-sm">
+					<span className="text-gray-400 text-sm goup">
 						Total {data?.length} Comercializadoras
 					</span>
 				}

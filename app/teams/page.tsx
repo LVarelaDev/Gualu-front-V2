@@ -1,4 +1,4 @@
-import TeamsContainer from '@/modules/teams/components/TeamsContainer'
+import TeamsContainer from '@/modules/teams/components/containers/TeamsContainer'
 
 interface Props {
 	searchParams: { page?: string; q?: string; sort: 'desc' | 'asc' }

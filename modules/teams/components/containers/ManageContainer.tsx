@@ -1,4 +1,4 @@
-import TeamForm from '@/modules/teams/components/manage/TeamForm'
+import TeamForm from '@/modules/teams/components/TeamForm'
 import { getOneTeam } from '@/modules/teams/services/querys/getOneTeam'
 import { getAllUsers } from '@/services/users/user.service'
 import { notFound } from 'next/navigation'

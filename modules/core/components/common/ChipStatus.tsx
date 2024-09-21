@@ -6,9 +6,11 @@ interface Props {
 const ChipStatus = ({ isActive }: Props) => {
 	return (
 		<Chip
-			className="border-none text-gray-700"
+			classNames={{ content: 'font-semibold' }}
 			color={isActive ? 'success' : 'danger'}
-			variant="dot"
+			size="sm"
+			radius="sm"
+			variant="flat"
 		>
 			{isActive ? 'Activo' : 'Inactivo'}
 		</Chip>

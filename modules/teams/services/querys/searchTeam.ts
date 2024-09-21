@@ -8,7 +8,7 @@ interface Params {
 	page?: number
 	limit?: number
 }
-export const searchTeam = async ({ q, page = 1, limit = 7 }: Params) => {
+export const searchTeam = async ({ q, page = 1, limit = 5 }: Params) => {
 	try {
 		const { data } = await axiosIntance.get<DataResponse<Team>>(
 			`/teams/search?q=${q}&page=${page}&limit=${limit}`,

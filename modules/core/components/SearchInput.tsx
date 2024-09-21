@@ -29,9 +29,9 @@ const SearchInput = ({ ...props }: InputProps) => {
 		<Input
 			isClearable
 			autoComplete="off"
+			variant="bordered"
 			classNames={{
-				base: 'w-full sm:max-w-[25%]',
-				inputWrapper: 'border-1 bg-transparent',
+				base: 'w-64',
 			}}
 			defaultValue={query}
 			role="search"

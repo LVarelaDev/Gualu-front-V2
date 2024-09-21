@@ -15,7 +15,7 @@ interface Props {
 	name: string
 	id: string
 	isOpen: boolean
-	onOpenChange: (value: boolean) => void
+	onOpenChange: () => void
 }
 
 const ModalDeleteTeams = ({ id, name, isOpen, onOpenChange }: Props) => {

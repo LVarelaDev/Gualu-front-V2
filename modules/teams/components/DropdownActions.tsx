@@ -27,7 +27,7 @@ const DropdownActions = ({
 			<Dropdown>
 				<DropdownTrigger {...props}>
 					<Button isIconOnly radius="full" variant="light">
-						<MoreVerticalIcon className="text-gray-700" strokeWidth={3.5} />
+						<MoreVerticalIcon className="text-gray-600" strokeWidth={3.5} />
 					</Button>
 				</DropdownTrigger>
 				<DropdownMenu aria-label="Dropdown Actions">

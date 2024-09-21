@@ -7,7 +7,7 @@ import {
 	DropdownMenu,
 	DropdownTrigger,
 } from '@nextui-org/react'
-import { ArrowDown01Icon, PlusSignIcon } from 'hugeicons-react'
+import { FilterIcon, PlusSignIcon } from 'hugeicons-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
@@ -15,17 +15,22 @@ import React from 'react'
 const TableHeader = () => {
 	const pathName = usePathname()
 	return (
-		<section className="flex items-center justify-between py-5">
-			<SearchInput placeholder="Buscar por nombre..." />
-			<div className="space-x-5">
+		<section className="flex items-center justify-between py-3">
+			<Button
+				as={Link}
+				color="primary"
+				endContent={<PlusSignIcon size={20} />}
+				href="/teams/manage"
+			>
+				Agregar
+			</Button>
+
+			<div className=" flex items-center gap-x-3">
+				<SearchInput placeholder="Buscar por nombre..." />
 				<Dropdown>
 					<DropdownTrigger>
-						<Button
-							endContent={
-								<ArrowDown01Icon size={20} className="text-gray-600" />
-							}
-						>
-							Ordenar por
+						<Button isIconOnly variant="flat" color="primary">
+							<FilterIcon />
 						</Button>
 					</DropdownTrigger>
 					<DropdownMenu aria-label="Selection sort" selectionMode="single">
@@ -37,14 +42,6 @@ const TableHeader = () => {
 						</DropdownItem>
 					</DropdownMenu>
 				</Dropdown>
-				<Button
-					as={Link}
-					color="primary"
-					endContent={<PlusSignIcon size={20} />}
-					href="/teams/manage"
-				>
-					Agregar
-				</Button>
 			</div>
 		</section>
 	)
