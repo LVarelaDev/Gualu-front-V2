@@ -19,27 +19,27 @@ const SidebarItem = () => {
 		{
 			name: 'Dasboard',
 			path: '/dasboard',
-			icon: <DashboardSquare02Icon size={23} strokeWidth={1.8} />,
+			icon: <DashboardSquare02Icon size={21} strokeWidth={1.8} />,
 		},
 		{
 			name: 'Usuarios',
 			path: '/users',
-			icon: <UserMultiple02Icon size={23} strokeWidth={1.8} />,
+			icon: <UserMultiple02Icon size={21} strokeWidth={1.8} />,
 		},
 		{
 			name: 'Contratos',
 			path: '/contracts',
-			icon: <Files01Icon size={23} strokeWidth={1.8} />,
+			icon: <Files01Icon size={21} strokeWidth={1.8} />,
 		},
 		{
 			name: 'Comercializadoras',
 			path: '/companies',
-			icon: <Building02Icon size={23} strokeWidth={1.8} />,
+			icon: <Building02Icon size={21} strokeWidth={1.8} />,
 		},
 		{
 			name: 'Equipos',
 			path: '/teams',
-			icon: <UserGroupIcon size={23} strokeWidth={1.8} />,
+			icon: <UserGroupIcon size={21} strokeWidth={1.8} />,
 		},
 	]
 	const pathName = usePathname()
@@ -56,8 +56,7 @@ const SidebarItem = () => {
 						href={path}
 						className={cn(
 							'flex items-center hover:bg-indigo-100 hover:text-indigo-800 transition-colors p-2 rounded-xl text-gray-600',
-							pathName === path &&
-								'bg-gradient-to-r from-indigo-200 to-indigo-100 text-indigo-800',
+							pathName === path && 'bg-indigo-100 text-indigo-800',
 						)}
 					>
 						{icon}

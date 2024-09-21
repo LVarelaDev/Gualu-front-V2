@@ -1,6 +1,5 @@
 'use client'
 import {
-	Chip,
 	Spinner,
 	Table,
 	TableBody,
@@ -47,7 +46,6 @@ const TableTeams = ({ data }: Props) => {
 				removeWrapper
 				aria-label="teams table"
 				radius="lg"
-				selectionMode="single"
 				classNames={{
 					th: 'text-sm border-b bg-transparent',
 				}}
