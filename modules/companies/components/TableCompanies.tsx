@@ -1,88 +1,68 @@
-'use client'
-
+import { CustomGrid, CustomGridColumn } from '@/components/ui/Table/FTable'
 import type { Company } from '@/modules/companies/interfaces/company'
+import GenericActionButtons from '@/modules/core/components/GenericActionButtons'
+import GenericDeleteModal from '@/modules/core/components/GenericDeleteModal'
 import ChipStatus from '@/modules/core/components/common/ChipStatus'
-import DropdownActions from '@/modules/teams/components/DropdownActions'
-import { formatDate } from '@/utils/formatterDate'
-import {
-	Spinner,
-	Table,
-	TableBody,
-	TableCell,
-	TableColumn,
-	TableHeader,
-	TableRow,
-	useDisclosure,
-} from '@nextui-org/react'
-import { useState } from 'react'
-import ModalDeleteCompany from './ModalDeleteCompany'
+import { formattedDate } from '@/utils/helpers'
+import { Button } from '@nextui-org/button'
+import { Delete02Icon, PlusSignIcon, TaskEdit01Icon } from 'hugeicons-react'
+import Link from 'next/link'
+import { deleteCompany } from '../services/mutations/deleteCompany'
 
 interface Props {
 	data: Company[]
 }
-
 const TableCompanies = ({ data }: Props) => {
-	const colums = ['Nombre', 'Estado', 'Fecha de creacion', 'Acciones']
-	const [companyState, setCompanyState] = useState({ name: '', id: '' })
-
-	const { onOpen, isOpen, onOpenChange } = useDisclosure()
 	return (
 		<>
-			<Table
-				removeWrapper
-				aria-label="companies table"
-				classNames={{
-					th: 'text-sm border-b bg-transparent',
-				}}
-				radius="lg"
-				topContent={
-					<span className="text-gray-400 text-sm goup">
-						Total {data?.length} Comercializadoras
-					</span>
-				}
-			>
-				<TableHeader columns={colums}>
-					{colums.map((column) => (
-						<TableColumn key={column}>{column} </TableColumn>
-					))}
-				</TableHeader>
-				<TableBody
-					loadingContent={<Spinner color="default" />}
-					emptyContent="No hay datos"
-					items={data ?? []}
+			<div className="py-3">
+				<Button
+					as={Link}
+					color="primary"
+					endContent={<PlusSignIcon size={20} />}
+					href="/companies/manage"
 				>
-					{(row) => (
-						<TableRow key={row.id} className="text-gray-700">
-							<TableCell className="font-bold text-gray-900 capitalize">
-								{row.name}
-							</TableCell>
-
-							<TableCell>
-								<ChipStatus isActive={row.active} />
-							</TableCell>
-
-							<TableCell>{formatDate(row.created_at)} </TableCell>
-
-							<TableCell>
-								<DropdownActions
-									id={row.id}
-									editPath={`/companies/manage?id=${row.id}`}
-									onOpenDeleteModel={onOpen}
-									onClick={() =>
-										setCompanyState({ id: row.id, name: row.name })
-									}
-								/>
-							</TableCell>
-						</TableRow>
+					Agregar
+				</Button>
+			</div>
+			<CustomGrid<Company> dataList={data ?? []} keyIdentifier="id">
+				<CustomGridColumn<Company>
+					labelHeader="Nombre"
+					colRender={(_, company) => (
+						<div className="flex items-center gap-x-2">
+							<img
+								src={company.picture}
+								alt={company.name}
+								width={56}
+								height={30}
+								className="w-14 h-auto"
+							/>
+							<span>{company.name} </span>
+						</div>
 					)}
-				</TableBody>
-			</Table>
-			<ModalDeleteCompany
-				id={companyState.id}
-				name={companyState.name}
-				isOpen={isOpen}
-				onOpenChange={onOpenChange}
-			/>
+				/>
+
+				<CustomGridColumn<Company>
+					labelHeader="Status"
+					colRender={(_, company) => <ChipStatus isActive={company.active} />}
+				/>
+				<CustomGridColumn<Company>
+					labelHeader="Fecha de creacion"
+					colRender={(_, company) => formattedDate(company.created_at)}
+				/>
+				<CustomGridColumn<Company>
+					labelHeader="Acciones"
+					colRender={(_, company) => (
+						<GenericActionButtons
+							editPath="/companies/manage"
+							entityName="Compañia"
+							id={company.id}
+							name={company.name}
+							deleteAction={deleteCompany}
+						/>
+					)}
+				/>
+			</CustomGrid>
 		</>
 	)
 }

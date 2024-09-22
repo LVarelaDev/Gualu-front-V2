@@ -1,4 +1,4 @@
-import FormCompany from '@/modules/companies/components/manage/FormCompany'
+import FormCompany from '@/modules/companies/components/FormCompany'
 import { getOneCompany } from '@/modules/companies/services/querys/getOneCompany'
 import { notFound } from 'next/navigation'
 

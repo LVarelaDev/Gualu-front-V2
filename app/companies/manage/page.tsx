@@ -1,4 +1,4 @@
-import ManageContainerCompany from '@/modules/companies/components/manage/ManageContainerCompany'
+import ManageContainerCompany from '@/modules/companies/components/containers/ManageContainerCompany'
 import BackButton from '@/modules/core/components/common/BackButton'
 import { Suspense } from 'react'
 

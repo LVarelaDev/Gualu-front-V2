@@ -1,10 +1,8 @@
+'use server'
 import axiosIntance from '@/lib/axios.config'
 import type { MessageResponse } from '@/modules/core/interfaces/messageResponse'
 
-interface Params {
-	id: string
-}
-export const deleteTeam = async ({ id }: Params) => {
+export const deleteTeam = async (id: string) => {
 	try {
 		const { data } = await axiosIntance.delete<MessageResponse>(`/teams/${id}`)
 		return data

@@ -11,7 +11,6 @@ interface Props {
 const useHandleSubmit = () => {
 	const router = useRouter()
 	const handleSubmitTeam = async ({ data, teamId }: Props) => {
-		// muestra el toast de creando el equipo
 		const team_members = !Array.isArray(data.team_members)
 			? data.team_members?.split(',')
 			: data.team_members

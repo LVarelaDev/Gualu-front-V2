@@ -1,7 +1,7 @@
 'use client'
 
 import type { UserDto } from '@/models/users/userDTO'
-import useHandleSubmit from '@/modules/teams/hooks/useHandleSubmit'
+import { handleSubmitTeam } from '@/modules/teams/helpers/handleSubmitTeam'
 import type { InputTeam, Team } from '@/modules/teams/interfaces/team'
 import { Button } from '@nextui-org/button'
 import {
@@ -19,10 +19,8 @@ interface Props {
 	teamData?: Team
 }
 const TeamForm = ({ userData, teamData }: Props) => {
-	const { refresh } = useRouter()
-	const { handleSubmitTeam } = useHandleSubmit()
+	const router = useRouter()
 	const memberIds = teamData?.team_members.map((member) => member.user_id)
-
 	const {
 		register,
 		reset,
@@ -31,9 +29,18 @@ const TeamForm = ({ userData, teamData }: Props) => {
 	} = useForm<InputTeam>()
 
 	const submitData: SubmitHandler<InputTeam> = (data) => {
-		handleSubmitTeam({ data, teamId: teamData?.id })
+		// Si en la data teams member existe entonces se convierte en un array de string y se pasa al backend
+		let team_members: string[] = []
+
+		if (data.team_members && data.team_members.length > 0) {
+			team_members = data.team_members?.split(',')
+		}
+
+		handleSubmitTeam({ ...data, team_members: team_members }, teamData?.id)
+		console.log(data)
 		reset()
-		refresh()
+		router.push('/teams')
+		router.refresh()
 	}
 	return (
 		<>
@@ -65,7 +72,7 @@ const TeamForm = ({ userData, teamData }: Props) => {
 					variant="bordered"
 					size="lg"
 					labelPlacement="outside"
-					defaultSelectedKeys={[`${teamData?.leader_id}`]}
+					defaultSelectedKeys={[`${teamData?.leader_id ?? ''}`]}
 					{...register('leader_id', { required: true })}
 				>
 					{(user) => (

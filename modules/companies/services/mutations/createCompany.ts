@@ -1,8 +1,11 @@
 import axiosIntance from '@/lib/axios.config'
-import type { InputCompany } from '@/modules/companies/interfaces/inputCompany'
+import type {
+	InputCompany,
+	SubmitCompany,
+} from '@/modules/companies/interfaces/company'
 import type { MessageResponse } from '@/modules/core/interfaces/messageResponse'
 
-export const createTeam = async (newCompany: InputCompany) => {
+export const createCompany = async (newCompany: SubmitCompany) => {
 	try {
 		const { data } = await axiosIntance.post<MessageResponse>(
 			'/companies',

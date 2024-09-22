@@ -1,3 +1,4 @@
+'use server'
 import axiosIntance from '@/lib/axios.config'
 import type { MessageResponse } from '@/modules/core/interfaces/messageResponse'
 

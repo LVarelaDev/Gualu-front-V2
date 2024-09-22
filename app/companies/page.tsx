@@ -1,4 +1,4 @@
-import CompaniesContainer from '@/modules/companies/components/CompaniesContainer'
+import CompaniesContainer from '@/modules/companies/components/containers/CompaniesContainer'
 
 const page = async () => {
 	return <CompaniesContainer />

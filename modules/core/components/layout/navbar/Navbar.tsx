@@ -9,7 +9,12 @@ import { Avatar } from '@nextui-org/react'
 
 const Navbar = () => {
 	return (
-		<NextUiNavbar maxWidth="full" isBordered position="sticky" className='bg-white'>
+		<NextUiNavbar
+			maxWidth="full"
+			isBordered
+			position="sticky"
+			className="bg-white"
+		>
 			<NavbarContent justify="start">
 				<NavbarItem className="text-gray-700">
 					Bienvenido <strong className="text-gray-800">Carlos</strong>

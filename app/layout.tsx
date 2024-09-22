@@ -4,7 +4,7 @@ import { Toaster } from 'sonner'
 
 import { Providers } from './providers'
 
-import { fontSans, open_Sans } from '@/config/fonts'
+import { poppins } from '@/config/fonts'
 import { siteConfig } from '@/config/site'
 import Navbar from '@/modules/core/components/layout/navbar/Navbar'
 import Sidebar from '@/modules/core/components/layout/sidebar/Sidebar'
@@ -33,7 +33,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html suppressHydrationWarning lang="es" className={open_Sans.className}>
+		<html suppressHydrationWarning lang="es" className={poppins.className}>
 			<head />
 			<body className="min-h-screen antialiased">
 				<Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
@@ -41,12 +41,14 @@ export default function RootLayout({
 						<Sidebar />
 						<section className="flex-1 custom-scroll-primary bg-slate-100">
 							<Navbar />
-							<section className="px-4 py-2 overflow-y-auto">
-								{children}
-							</section>
+							<section className="px-4 py-2">{children}</section>
 						</section>
 					</main>
-					<Toaster richColors position="top-right" pauseWhenPageIsHidden={false} />
+					<Toaster
+						richColors
+						position="top-right"
+						pauseWhenPageIsHidden={false}
+					/>
 				</Providers>
 			</body>
 		</html>
