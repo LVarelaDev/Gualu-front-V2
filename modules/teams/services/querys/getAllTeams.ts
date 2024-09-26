@@ -8,7 +8,11 @@ interface Params {
 	limit?: number
 	sort?: string
 }
-export const getAllTeams = async ({ page, limit = 5, sort }: Params) => {
+export const getAllTeams = async ({
+	page = 1,
+	limit = 5,
+	sort = 'desc',
+}: Params) => {
 	try {
 		const response = await axiosIntance.get(
 			`/teams?page=${page}&limit=${limit}&sort=${sort}`,

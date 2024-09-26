@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Custom scrollbar */
+body{
+  background: #ebf1ee;
+@apply scrollbar scrollbar-w-[6px] scrollbar-thumb-rounded-full scrollbar-thumb-[#4f46e5] scrollbar-track-gray-300;
+}

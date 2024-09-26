@@ -1,3 +1,5 @@
+import type { CompanyContracts } from '@/modules/companies/modules/contracts/interfaces/companyContracts'
+
 export interface Company {
 	id: string
 	name: string
@@ -6,6 +8,8 @@ export interface Company {
 	created_at: string
 	updated_at: string
 }
+
+export interface OneCompany extends Company, CompanyContracts {}
 
 export interface InputCompany {
 	name: string

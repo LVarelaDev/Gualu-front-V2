@@ -1,4 +1,4 @@
-import '@/styles/globals.css'
+import '@/assets/styles/globals.css'
 import type { Metadata, Viewport } from 'next'
 import { Toaster } from 'sonner'
 
@@ -39,7 +39,7 @@ export default function RootLayout({
 				<Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
 					<main className="flex flex-grow overflow-hidden">
 						<Sidebar />
-						<section className="flex-1 custom-scroll-primary bg-slate-100">
+						<section className="flex-1">
 							<Navbar />
 							<section className="px-4 py-2">{children}</section>
 						</section>

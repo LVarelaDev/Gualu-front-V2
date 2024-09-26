@@ -1,4 +1,5 @@
 import { nextui } from "@nextui-org/theme";
+import tailwindScrollbar from 'tailwind-scrollbar'
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -15,16 +16,16 @@ module.exports = {
       purplePrimary: "#511C8E",
       purpleSmooth: "#744BA3",
     },
-    extend: {
-      fontFamily: {
-        sans: ["var(--font-sans)"],
-        mono: ["var(--font-mono)"],
-      },
-    },
+    extend: {},
   },
   darkMode: "class",
   /* Se cambio el color primary, danger y success por defecto */
-  plugins: [nextui({
+  plugins: [
+    tailwindScrollbar({
+      nocompatible: true,
+      preferredStrategy: 'pseudoelements'
+    }),
+    nextui({
     themes:{
       light: {
         colors:{
@@ -59,5 +60,6 @@ module.exports = {
         }
       }
     }
-  })],
+  })
+],
 };

@@ -1,13 +1,12 @@
 import { CustomGrid, CustomGridColumn } from '@/components/ui/Table/FTable'
+import TableActionsCompanies from '@/modules/companies/components/TableActionsCompanies'
 import type { Company } from '@/modules/companies/interfaces/company'
-import GenericActionButtons from '@/modules/core/components/GenericActionButtons'
-import GenericDeleteModal from '@/modules/core/components/GenericDeleteModal'
+import { deleteCompany } from '@/modules/companies/services/mutations/deleteCompany'
 import ChipStatus from '@/modules/core/components/common/ChipStatus'
 import { formattedDate } from '@/utils/helpers'
 import { Button } from '@nextui-org/button'
-import { Delete02Icon, PlusSignIcon, TaskEdit01Icon } from 'hugeicons-react'
+import { PlusSignIcon } from 'hugeicons-react'
 import Link from 'next/link'
-import { deleteCompany } from '../services/mutations/deleteCompany'
 
 interface Props {
 	data: Company[]
@@ -53,9 +52,7 @@ const TableCompanies = ({ data }: Props) => {
 				<CustomGridColumn<Company>
 					labelHeader="Acciones"
 					colRender={(_, company) => (
-						<GenericActionButtons
-							editPath="/companies/manage"
-							entityName="Compañia"
+						<TableActionsCompanies
 							id={company.id}
 							name={company.name}
 							deleteAction={deleteCompany}

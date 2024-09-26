@@ -1,5 +1,7 @@
+import ManageContainerContracts from '@/modules/contracts/components/containers/ManageContainerContracts'
+
 const page = () => {
-	return <div>page</div>
+	return <ManageContainerContracts />
 }
 
 export default page

@@ -14,10 +14,12 @@ import { toast } from 'sonner'
 import type { MessageResponse } from '../interfaces/messageResponse'
 
 interface Props {
-	trigger: React.ReactNode
+	trigger?: React.ReactNode
 	itemId: string
 	itemName: string
 	deleteAction: (itemId: string) => Promise<MessageResponse | undefined>
+	isOpenModal?: boolean
+	onOpenChangeModal?: () => void
 }
 
 const GenericDeleteModal = ({
@@ -25,6 +27,8 @@ const GenericDeleteModal = ({
 	itemId,
 	itemName,
 	deleteAction,
+	isOpenModal,
+	onOpenChangeModal,
 }: Props) => {
 	const { isOpen, onOpen, onOpenChange } = useDisclosure()
 	const router = useRouter()
@@ -43,8 +47,13 @@ const GenericDeleteModal = ({
 
 	return (
 		<>
-			{React.cloneElement(trigger as React.ReactElement, { onClick: onOpen })}
-			<Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+			{!isOpenModal &&
+				!onOpenChangeModal &&
+				React.cloneElement(trigger as React.ReactElement, { onClick: onOpen })}
+			<Modal
+				isOpen={isOpenModal ?? isOpen}
+				onOpenChange={onOpenChangeModal ?? onOpenChange}
+			>
 				<ModalContent>
 					{(onClose) => (
 						<>
