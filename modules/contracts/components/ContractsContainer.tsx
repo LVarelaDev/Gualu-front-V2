@@ -1,4 +1,4 @@
-import TableContracts from '@/modules/contracts/components/TableContacts'
+import TableContracts from '@/modules/contracts/components/table/TableContracts'
 import { getAllContracts } from '@/modules/contracts/services/querys/getAllContracts'
 import { Button } from '@nextui-org/button'
 import { PlusSignIcon } from 'hugeicons-react'
@@ -11,8 +11,8 @@ const ContractsContainer = async () => {
 		<>
 			<Button
 				as={Link}
-				href='/contracts/manage'
-				color='primary'
+				href="/contracts/manage"
+				color="primary"
 				endContent={<PlusSignIcon size={20} />}
 			>
 				Agregar

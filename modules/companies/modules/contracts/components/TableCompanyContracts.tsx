@@ -5,7 +5,9 @@ import { deleteContract } from '@/modules/contracts/services/mutations/deleteCon
 import SearchInput from '@/modules/core/components/SearchInput'
 import BackButton from '@/modules/core/components/common/BackButton'
 import ChipStatus from '@/modules/core/components/common/ChipStatus'
-import { formattedDate } from '@/utils/helpers'
+import ContractStatusChip from '@/modules/core/components/common/ContractsStatusChip'
+import { formatCurrency } from '@/modules/core/utils/formatCurrency'
+import { formatDate } from '@/modules/core/utils/formatDate'
 import ContractStatus from './ContractsStatus'
 import TableActionsCompanyContracts from './TableActionsCompanyContracts'
 
@@ -60,18 +62,27 @@ const TableCompanyContracts = ({ data }: Props) => {
 					labelHeader="Tarifa"
 					colRender={(_, contract) => contract.tariffs.name}
 				/>
+
 				<CustomGridColumn<ContractCompany>
-					labelHeader="Fecha de creacion"
-					colRender={(_, contract) => formattedDate(contract.created_at)}
+					labelHeader="Consumo"
+					colRender={(_, contract) => `${contract.consumption} kWh`}
 				/>
-				{/* biome-ignore lint/complexity/noUselessTernary: <explanation> */}
+
+				<CustomGridColumn<ContractCompany>
+					labelHeader="Cuota"
+					colRender={(_, contract) => formatCurrency(contract.fee)}
+				/>
+
 				<CustomGridColumn<ContractCompany>
 					labelHeader="Estado"
 					colRender={(_, contract) => (
-						<ChipStatus
-							isActive={contract.status === 'active' ? true : false}
-						/>
+						<ContractStatusChip status={contract.status} />
 					)}
+				/>
+
+				<CustomGridColumn<ContractCompany>
+					labelHeader="Fecha de creacion"
+					colRender={(_, contract) => formatDate(contract.created_at)}
 				/>
 
 				<CustomGridColumn<ContractCompany>

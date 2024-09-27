@@ -1,8 +1,10 @@
+import type { ContractStatus } from "@/modules/contracts/interfaces/contractStatus"
+
 export interface Contract {
 	id: string
 	company_id: string
 	client_id: string
-	status: string
+	status: ContractStatus
 	comercial_id: string
 	concept_id: string
 	tariff_id: string

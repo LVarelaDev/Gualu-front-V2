@@ -2,18 +2,18 @@
 
 import { CustomGrid, CustomGridColumn } from '@/components/ui/Table/FTable'
 import TableActionsCompanies from '@/modules/companies/components/TableActionsCompanies'
+import TableActionContracts from '@/modules/contracts/components/table/TableActionContracts'
 import type { Contract } from '@/modules/contracts/interfaces/contract'
-import GenericActionButtons from '@/modules/core/components/GenericActionButtons'
-import ChipStatus from '@/modules/core/components/common/ChipStatus'
+import { deleteContract } from '@/modules/contracts/services/mutations/deleteContract'
+import ContractStatusChip from '@/modules/core/components/common/ContractsStatusChip'
 import { formatCurrency } from '@/modules/core/utils/formatCurrency'
 import { formatDate } from '@/modules/core/utils/formatDate'
-import { deleteContract } from '../services/mutations/deleteContract'
 
 interface Props {
 	data: Contract[]
 }
 
-const TableContacts = ({ data }: Props) => {
+const TableContracts = ({ data }: Props) => {
 	return (
 		<CustomGrid<Contract> dataList={data} keyIdentifier="id">
 			<CustomGridColumn<Contract>
@@ -41,7 +41,7 @@ const TableContacts = ({ data }: Props) => {
 			<CustomGridColumn<Contract>
 				labelHeader="Status"
 				colRender={(_, contact) => (
-					<ChipStatus isActive={contact.status === 'active'} />
+					<ContractStatusChip status={contact.status} />
 				)}
 			/>
 			<CustomGridColumn<Contract>
@@ -51,15 +51,16 @@ const TableContacts = ({ data }: Props) => {
 			<CustomGridColumn<Contract>
 				labelHeader="Acciones"
 				colRender={(_, contract) => (
-					<TableActionsCompanies
-						id={contract.id}
-						name={contract.companies.name}
-						deleteAction={deleteContract}
-					/>
+					/* 	<TableActionsCompanies
+							id={contract.id}
+							name={contract.companies.name}
+							deleteAction={deleteContract}
+						/> */
+					<TableActionContracts id={contract.id} />
 				)}
 			/>
 		</CustomGrid>
 	)
 }
 
-export default TableContacts
+export default TableContracts

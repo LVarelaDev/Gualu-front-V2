@@ -1,4 +1,4 @@
-import ContractsContainer from '@/modules/contracts/components/containers/ContractsContainer'
+import ContractsContainer from '@/modules/contracts/components/ContractsContainer'
 const page = async () => {
 	return <ContractsContainer />
 }
