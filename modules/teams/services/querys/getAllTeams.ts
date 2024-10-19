@@ -9,13 +9,13 @@ interface Params {
 	sort?: string
 }
 export const getAllTeams = async ({
-	page = 1,
+	page,
 	limit = 5,
 	sort = 'desc',
 }: Params) => {
 	try {
 		const response = await axiosIntance.get(
-			`/teams?page=${page}&limit=${limit}&sort=${sort}`,
+			`/teams?page=${page ?? 1}&limit=${limit ?? 5}&sort=${sort ?? 'desc'}`,
 		)
 		const data: DataResponse<Team> = await response.data
 

@@ -21,7 +21,7 @@ export interface Team {
 	leader_id: string
 	created_at: string
 	updated_at: string
-	users: User
+	leader_team: User
 	team_members: TeamMember[]
 }
 

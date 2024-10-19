@@ -1,6 +1,10 @@
 'use client'
 
-import GenericDeleteModal from '@/modules/core/components/GenericDeleteModal'
+import dynamic from 'next/dynamic'
+
+const GenericDeleteModal = dynamic(
+	() => import('@/modules/core/components/GenericDeleteModal'),
+)
 import type { MessageResponse } from '@/modules/core/interfaces/messageResponse'
 import {
 	Button,
@@ -31,10 +35,10 @@ const TableActionsCompanies = ({ id, name, deleteAction }: Props) => {
 			<Dropdown>
 				<DropdownTrigger>
 					<Button isIconOnly variant="light" radius="full">
-						<MoreHorizontalIcon strokeWidth={3} color="#374151" />
+						<MoreHorizontalIcon strokeWidth={3} className="text-foreground" />
 					</Button>
 				</DropdownTrigger>
-				<DropdownMenu className="text-gray-800">
+				<DropdownMenu className="text-foreground">
 					<DropdownItem
 						key="editar"
 						startContent={<TaskEdit01Icon size={20} />}

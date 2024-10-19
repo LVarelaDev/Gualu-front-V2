@@ -3,6 +3,7 @@ import GenericActionButtons from '@/modules/core/components/GenericActionButtons
 import PaginationWrapper from '@/modules/core/components/PaginationWrapper'
 import ChipStatus from '@/modules/core/components/common/ChipStatus'
 import type { DataResponse } from '@/modules/core/interfaces/dataResponse'
+import TableActionsTeams from '@/modules/teams/components/table/TableActionsTeams'
 import type { Team } from '@/modules/teams/interfaces/team'
 import { deleteTeam } from '@/modules/teams/services/mutations/deleteTeam'
 import { formattedDate } from '@/utils/helpers'
@@ -23,7 +24,7 @@ const TableTeams = ({ data }: Props) => {
 				<CustomGridColumn<Team>
 					labelHeader="Jefe de estado"
 					colRender={(_, team) =>
-						`${team.users.first_name} ${team.users.last_name}`
+						`${team.leader_team.first_name} ${team.leader_team.last_name}`
 					}
 				/>
 				<CustomGridColumn<Team>
@@ -37,13 +38,14 @@ const TableTeams = ({ data }: Props) => {
 				<CustomGridColumn<Team>
 					labelHeader="Acciones"
 					colRender={(_, team) => (
-						<GenericActionButtons
-							editPath="/teams/manage"
-							entityName="Equipo"
-							id={team.id}
-							name={team.name}
-							deleteAction={deleteTeam}
-						/>
+						/* 	<GenericActionButtons
+								editPath="/teams/manage"
+								entityName="Equipo"
+								id={team.id}
+								name={team.name}
+								deleteAction={deleteTeam}
+							/> */
+						<TableActionsTeams id={team.id} />
 					)}
 				/>
 			</CustomGrid>

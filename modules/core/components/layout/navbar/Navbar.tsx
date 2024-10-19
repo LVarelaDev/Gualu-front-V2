@@ -6,6 +6,7 @@ import {
 	Navbar as NextUiNavbar,
 } from '@nextui-org/navbar'
 import { Avatar } from '@nextui-org/react'
+import ThemeToggle from '../../theme/ThemeToggle'
 
 const Navbar = () => {
 	return (
@@ -13,14 +14,16 @@ const Navbar = () => {
 			maxWidth="full"
 			isBordered
 			position="sticky"
-			className="bg-white"
+			className="bg-background"
 		>
 			<NavbarContent justify="start">
-				<NavbarItem className="text-gray-700">
-					Bienvenido <strong className="text-gray-800">Carlos</strong>
+				<NavbarItem className="text-gray-700 dark:text-foreground">
+					Bienvenido{' '}
+					<strong className="text-gray-800 dark:text-foreground">Carlos</strong>
 				</NavbarItem>
 			</NavbarContent>
 			<NavbarContent justify="end">
+				<ThemeToggle />
 				<Avatar
 					isBordered
 					as="button"

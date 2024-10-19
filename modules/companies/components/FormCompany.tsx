@@ -33,7 +33,6 @@ const FormCompany = ({ companyData }: Props) => {
 			{ ...data, picture: imgBase64 ?? undefined },
 			companyData?.id,
 		)
-		console.log(message)
 		reset()
 		router.push('/companies')
 		router.refresh()

@@ -1,54 +1,52 @@
 'use client'
 
 import { CustomGrid, CustomGridColumn } from '@/components/ui/Table/FTable'
-import TableActionsCompanies from '@/modules/companies/components/TableActionsCompanies'
 import TableActionContracts from '@/modules/contracts/components/table/TableActionContracts'
-import type { Contract } from '@/modules/contracts/interfaces/contract'
-import { deleteContract } from '@/modules/contracts/services/mutations/deleteContract'
+import type { Allcontract } from '@/modules/contracts/interfaces/allContract'
 import ContractStatusChip from '@/modules/core/components/common/ContractsStatusChip'
 import { formatCurrency } from '@/modules/core/utils/formatCurrency'
 import { formatDate } from '@/modules/core/utils/formatDate'
 
 interface Props {
-	data: Contract[]
+	data: Allcontract[]
 }
 
 const TableContracts = ({ data }: Props) => {
 	return (
-		<CustomGrid<Contract> dataList={data} keyIdentifier="id">
-			<CustomGridColumn<Contract>
+		<CustomGrid<Allcontract> dataList={data} keyIdentifier="id">
+			<CustomGridColumn<Allcontract>
 				labelHeader="Cliente"
 				colRender={(_, contact) => (
 					<span className="font-medium">{contact.clients.name} </span>
 				)}
 			/>
-			<CustomGridColumn<Contract>
+			<CustomGridColumn<Allcontract>
 				labelHeader="Compañia"
 				colRender={(_, contact) => contact.companies.name}
 			/>
-			<CustomGridColumn<Contract>
+			<CustomGridColumn<Allcontract>
 				labelHeader="Tarifa"
 				colRender={(_, contact) => contact.tariffs.name}
 			/>
-			<CustomGridColumn<Contract>
+			<CustomGridColumn<Allcontract>
 				labelHeader="Consumo"
 				colRender={(_, contact) => `${contact.consumption} kWh`}
 			/>
-			<CustomGridColumn<Contract>
+			<CustomGridColumn<Allcontract>
 				labelHeader="Cuota"
 				colRender={(_, contact) => formatCurrency(contact.fee)}
 			/>
-			<CustomGridColumn<Contract>
+			<CustomGridColumn<Allcontract>
 				labelHeader="Status"
 				colRender={(_, contact) => (
 					<ContractStatusChip status={contact.status} />
 				)}
 			/>
-			<CustomGridColumn<Contract>
+			<CustomGridColumn<Allcontract>
 				labelHeader="Fecha de creacion"
 				colRender={(_, contact) => formatDate(contact.created_at)}
 			/>
-			<CustomGridColumn<Contract>
+			<CustomGridColumn<Allcontract>
 				labelHeader="Acciones"
 				colRender={(_, contract) => (
 					/* 	<TableActionsCompanies

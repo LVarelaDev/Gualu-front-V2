@@ -1,5 +1,5 @@
 import axiosIntance from '@/lib/axios.config'
-import type { Contract } from '@/modules/contracts/interfaces/contract'
+import type { Contract } from '@/modules/core/interfaces/contract/contract'
 
 export const createContract = async (contract: Contract) => {
 	try {

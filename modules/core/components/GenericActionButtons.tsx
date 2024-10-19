@@ -30,7 +30,7 @@ const GenericActionButtons = ({
 					as={Link}
 					href={`${editPath}?id=${id}`}
 				>
-					<TaskEdit01Icon size={20} className="text-gray-700" />
+					<TaskEdit01Icon size={20} className="text-foreground" />
 				</Button>
 			</Tooltip>
 			<Tooltip content={`Eliminar ${entityName}`}>

@@ -4,9 +4,9 @@ import { Button } from '@nextui-org/button'
 import { PlusSignIcon } from 'hugeicons-react'
 import Link from 'next/link'
 import { Suspense } from 'react'
+
 const ContractsContainer = async () => {
 	const contracts = await getAllContracts()
-	console.log(contracts)
 	return (
 		<>
 			<Button

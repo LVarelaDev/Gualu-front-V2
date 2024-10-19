@@ -37,7 +37,6 @@ const GenericDeleteModal = ({
 		toast.promise(deleteAction(itemId), {
 			loading: `Eliminando ${itemName}...`,
 			success: (response) => {
-				console.log(response)
 				router.refresh()
 				return response?.message ?? `${itemName} eliminado con exito`
 			},

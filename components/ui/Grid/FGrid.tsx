@@ -1,12 +1,12 @@
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { ReactNode, useEffect, useState } from 'react'
-import { UseFormReturn } from 'react-hook-form'
+import React, { type ReactNode, useEffect, useState } from 'react'
+import type { UseFormReturn } from 'react-hook-form'
 
-import { FGridColumn, TFGridColumnProps } from './FGridColumn'
+import { FGridColumn, type TFGridColumnProps } from './FGridColumn'
 import FGridColumnHeader from './FGridColumnHeader'
 import FGridDeleteConfirmation from './FGridDeleteConfirmation'
-import { FGridFooter, TFGridFooterProps } from './FGridFooter'
+import { FGridFooter, type TFGridFooterProps } from './FGridFooter'
 import { GridPaginationSection } from './GridPaginationSection'
 
 import {

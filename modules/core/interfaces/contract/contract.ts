@@ -1,4 +1,4 @@
-import type { ContractStatus } from "@/modules/contracts/interfaces/contractStatus"
+import type { ContractStatus } from '@/modules/core/interfaces/contract/contractStatus'
 
 export interface Contract {
 	id: string
@@ -30,14 +30,4 @@ export interface Contract {
 	delivery_province: string
 	created_at: string
 	updated_at: string
-	clients: {
-		name: string
-	}
-	tariffs: {
-		name: string
-	}
-	companies: {
-		name: string
-		picture: string
-	}
 }

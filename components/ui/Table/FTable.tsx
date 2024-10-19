@@ -47,7 +47,7 @@ const CustomGrid = <T,>({
 							return (
 								<div
 									key={col.props.labelHeader + colIndex} // Puedes usar combinación de labelHeader y colIndex si labelHeader no es único
-									className={`flex items-center flex-1 py-4 bg-white px-3 border-y-1 text-gray-800 ${borderClasses} ${roundedClasses}`}
+									className={`flex items-center flex-1 py-4 bg-white dark:bg-background dark:text-foreground dark:border-white/20 px-3 border-y-1 text-gray-800 ${borderClasses} ${roundedClasses}`}
 								>
 									{col.props.colRender
 										? col.props.colRender(

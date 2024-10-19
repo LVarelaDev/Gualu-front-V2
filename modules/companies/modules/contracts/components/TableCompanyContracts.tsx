@@ -4,11 +4,9 @@ import type { ContractCompany } from '@/modules/companies/modules/contracts/inte
 import { deleteContract } from '@/modules/contracts/services/mutations/deleteContract'
 import SearchInput from '@/modules/core/components/SearchInput'
 import BackButton from '@/modules/core/components/common/BackButton'
-import ChipStatus from '@/modules/core/components/common/ChipStatus'
 import ContractStatusChip from '@/modules/core/components/common/ContractsStatusChip'
 import { formatCurrency } from '@/modules/core/utils/formatCurrency'
 import { formatDate } from '@/modules/core/utils/formatDate'
-import ContractStatus from './ContractsStatus'
 import TableActionsCompanyContracts from './TableActionsCompanyContracts'
 
 interface Props {

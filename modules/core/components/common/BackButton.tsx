@@ -11,7 +11,7 @@ const BackButton = () => {
 			<Button isIconOnly onClick={router.back} color="primary" variant="flat">
 				<ArrowLeft01Icon />
 			</Button>
-			<span className="font-medium text-gray-800 capitalize">Regresar </span>
+			<span className="font-medium text-foreground capitalize">Regresar </span>
 		</div>
 	)
 }

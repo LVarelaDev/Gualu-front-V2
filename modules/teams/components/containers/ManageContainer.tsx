@@ -1,4 +1,4 @@
-import TeamForm from '@/modules/teams/components/TeamForm'
+import TeamForm from '@/modules/teams/components/form/TeamForm'
 import { getOneTeam } from '@/modules/teams/services/querys/getOneTeam'
 import { getAllUsers } from '@/services/users/user.service'
 import { notFound } from 'next/navigation'
@@ -22,10 +22,11 @@ const ManageContainer = async ({ id }: Props) => {
 			notFound()
 		}
 	}
-
+	console.log(team)
 	return (
 		<section className="mt-10 max-w-md">
 			<TeamForm userData={userData} teamData={team} />
+
 		</section>
 	)
 }

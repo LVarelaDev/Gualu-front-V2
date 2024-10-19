@@ -40,6 +40,10 @@ module.exports = {
           primary:{
             DEFAULT:"#4f46e5",
             foreground:"#fff"
+          },
+          background:{
+            DEFAULT:"#f9f9f9",
+            foreground:"#1f2937"
           }
         }
       },
@@ -56,6 +60,10 @@ module.exports = {
           primary:{
             DEFAULT:"#4f46e5",
             foreground:"#fff"
+          },
+          background:{
+            DEFAULT:"#010409",
+            foreground:"#e5e7eb"
           }
         }
       }

@@ -2,19 +2,17 @@
 
 import { NextUIProvider } from '@nextui-org/system'
 import { AppProgressBar as ProgressBar } from 'next-nprogress-bar'
+import { useRouter } from 'next-nprogress-bar'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
-import type { ThemeProviderProps } from 'next-themes/dist/types'
-import { useRouter } from 'next/navigation'
 import type * as React from 'react'
+import { Toaster } from 'sonner'
 
 export interface ProvidersProps {
 	children: React.ReactNode
-	themeProps?: ThemeProviderProps
 }
 
-export function Providers({ children, themeProps }: ProvidersProps) {
+export function Providers({ children }: ProvidersProps) {
 	const router = useRouter()
-
 	return (
 		<>
 			<ProgressBar
@@ -23,10 +21,23 @@ export function Providers({ children, themeProps }: ProvidersProps) {
 				shallowRouting
 			/>
 			<NextUIProvider navigate={router.push}>
-				{children}
-				{/* <NextThemesProvider {...themeProps}>
-					</NextThemesProvider> */}
+				<NextThemesProvider
+					attribute="class"
+					defaultTheme="system"
+					enableSystem
+					disableTransitionOnChange
+				>
+					{children}
+				</NextThemesProvider>
 			</NextUIProvider>
+
+			{/* Notificaciones */}
+			<Toaster
+				richColors
+				position="top-right"
+				pauseWhenPageIsHidden={false}
+				theme='system'
+			/>
 		</>
 	)
 }

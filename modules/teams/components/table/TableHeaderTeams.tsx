@@ -12,7 +12,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 
-const TableHeader = () => {
+const TableHeaderTeams = () => {
 	const pathName = usePathname()
 	return (
 		<section className="flex items-center justify-between py-3">
@@ -47,4 +47,4 @@ const TableHeader = () => {
 	)
 }
 
-export default TableHeader
+export default TableHeaderTeams

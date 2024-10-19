@@ -14,7 +14,7 @@ export const axiosIntance = axios.create({
 	},
 })
 
-axiosIntance.interceptors.response.use(
+/* axiosIntance.interceptors.response.use(
 	(response) => {
 		return response
 	},
@@ -34,6 +34,6 @@ axiosIntance.interceptors.response.use(
 
 		return Promise.reject(new Error(error))
 	},
-)
+) */
 
 export default axiosIntance

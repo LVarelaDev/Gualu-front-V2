@@ -1,7 +1,5 @@
 import '@/assets/styles/globals.css'
 import type { Metadata, Viewport } from 'next'
-import { Toaster } from 'sonner'
-
 import { Providers } from './providers'
 
 import { poppins } from '@/config/fonts'
@@ -35,8 +33,8 @@ export default function RootLayout({
 	return (
 		<html suppressHydrationWarning lang="es" className={poppins.className}>
 			<head />
-			<body className="min-h-screen antialiased">
-				<Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
+			<body className="min-h-screen antialiased bg-background text-foreground">
+				<Providers>
 					<main className="flex flex-grow overflow-hidden">
 						<Sidebar />
 						<section className="flex-1">
@@ -44,11 +42,6 @@ export default function RootLayout({
 							<section className="px-4 py-2">{children}</section>
 						</section>
 					</main>
-					<Toaster
-						richColors
-						position="top-right"
-						pauseWhenPageIsHidden={false}
-					/>
 				</Providers>
 			</body>
 		</html>

@@ -13,7 +13,6 @@ export const handleSubmitTeam = async (data: SubmitTeam, teamId?: string) => {
 			loading: 'Actualizando equipo...',
 			error: 'Error al actualizar equipo',
 			success(response) {
-				console.log(response)
 				return response?.message ?? 'Equipo actualizado con exito'
 			},
 		})

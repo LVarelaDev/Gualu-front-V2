@@ -18,7 +18,7 @@ const SidebarItem = () => {
 	const SidebarLink = [
 		{
 			name: 'Dasboard',
-			path: '/dasboard',
+			path: '/',
 			icon: <DashboardSquare02Icon size={21} strokeWidth={1.8} />,
 		},
 		{
@@ -55,8 +55,9 @@ const SidebarItem = () => {
 					<Link
 						href={path}
 						className={cn(
-							'flex items-center hover:bg-indigo-100 hover:text-indigo-800 transition-colors p-2 rounded-xl text-gray-600',
-							pathName === path && 'bg-indigo-100 text-indigo-800',
+							'flex items-center hover:bg-indigo-100 hover:text-indigo-800 transition-colors p-2 rounded-xl text-gray-600 dark:text-gray-300 dark:hover:bg-indigo-500/10 dark:hover:text-indigo-300',
+							pathName === path &&
+								'bg-indigo-100 text-indigo-800  dark:bg-indigo-500/10 dark:text-indigo-500',
 						)}
 					>
 						{icon}

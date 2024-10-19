@@ -36,7 +36,7 @@ const TableActionsCompanyContracts = ({ id, name, deleteAction }: Props) => {
 					<DropdownItem
 						key="Show details"
 						startContent={<Files01Icon size={20} />}
-						href={`/companies/contracts/details/${id}`}
+						href={`/contracts/details/${id}`}
 					>
 						Ver todos los detalles
 					</DropdownItem>
