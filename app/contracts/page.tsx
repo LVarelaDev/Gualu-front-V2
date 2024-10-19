@@ -1,7 +1,6 @@
-import React from 'react'
-
-const page = () => {
-	return <div>page</div>
+import ContractsContainer from '@/modules/contracts/components/ContractsContainer'
+const page = async () => {
+	return <ContractsContainer />
 }
 
 export default page

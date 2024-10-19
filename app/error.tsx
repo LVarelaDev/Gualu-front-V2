@@ -1,31 +1,23 @@
-'use client'
-
+"use client"
+import { Button } from '@nextui-org/react'
 import { useEffect } from 'react'
 
-export default function Error({
-	error,
-	reset,
-}: {
-	error: Error
+interface Props {
+	error: Error & { digest?: string }
 	reset: () => void
-}) {
+}
+
+export default function ErrorBoundary({ error, reset }: Props) {
 	useEffect(() => {
-		// Log the error to an error reporting service
-		/* eslint-disable no-console */
 		console.error(error)
 	}, [error])
 
 	return (
-		<div>
-			<h2>Something went wrong!</h2>
-			<button
-				onClick={
-					// Attempt to recover by trying to re-render the segment
-					() => reset()
-				}
-			>
+		<main className="flex flex-col items-center justify-center gap-y-5 h-96">
+			<h1 className="text-2xl md:text-4xl font-bold">Something went wrong! </h1>
+			<Button size="lg" onClick={() => reset()}>
 				Try again
-			</button>
-		</div>
+			</Button>
+		</main>
 	)
 }

@@ -21,10 +21,14 @@ export interface Team {
 	leader_id: string
 	created_at: string
 	updated_at: string
-	users: User
+	leader_team: User
 	team_members: TeamMember[]
 }
 
 export interface InputTeam extends Pick<Team, 'name' | 'leader_id' | 'active'> {
-	team_members?: string | string[]
+	team_members?: string
+}
+
+export interface SubmitTeam extends Omit<InputTeam, 'team_members'> {
+	team_members?: string[]
 }

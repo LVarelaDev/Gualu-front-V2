@@ -1,4 +1,4 @@
-import TeamsContainer from '@/modules/teams/components/TeamsContainer'
+import TeamsContainer from '@/modules/teams/components/containers/TeamsContainer'
 
 interface Props {
 	searchParams: { page?: string; q?: string; sort: 'desc' | 'asc' }
@@ -6,9 +6,9 @@ interface Props {
 
 const TeamsPage = async ({ searchParams }: Props) => {
 	const page = searchParams.page ?? 1
-	const query = searchParams.q ?? ''
-	const sort = searchParams.sort ?? 'desc'
+	const query = searchParams.q
+	const sort = searchParams.sort
 
-	return <TeamsContainer page={Number(page)} query={query} sort={sort} />
+	return <TeamsContainer page={Number(page)} query={query ?? ''} sort={sort} />
 }
 export default TeamsPage

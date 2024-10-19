@@ -8,8 +8,13 @@ import { cn } from '@nextui-org/theme'
 const Sidebar = () => {
 	const { isExpanded } = useSidebar()
 	return (
-		<aside className="h-screen">
-			<nav className="h-full flex flex-col bg-white border-r shadow-sm p-4">
+		<aside
+			className={cn(
+				'h-screen flex z-50 transition-all',
+				isExpanded ? 'w-[290px]' : 'w-[73px]',
+			)}
+		>
+			<nav className="h-full flex flex-col bg-background border-r dark:border-white/20 shadow-sm p-4 fixed">
 				<section className="flex items-center justify-between transition-all">
 					<div
 						className={cn(

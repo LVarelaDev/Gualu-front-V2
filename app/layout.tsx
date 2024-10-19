@@ -1,11 +1,10 @@
-import '@/styles/globals.css'
+import '@/assets/styles/globals.css'
 import type { Metadata, Viewport } from 'next'
-import { Toaster } from 'sonner'
-
 import { Providers } from './providers'
 
-import { fontSans } from '@/config/fonts'
+import { poppins } from '@/config/fonts'
 import { siteConfig } from '@/config/site'
+import Navbar from '@/modules/core/components/layout/navbar/Navbar'
 import Sidebar from '@/modules/core/components/layout/sidebar/Sidebar'
 
 export const metadata: Metadata = {
@@ -32,17 +31,17 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html suppressHydrationWarning lang="es" className={fontSans.className}>
+		<html suppressHydrationWarning lang="es" className={poppins.className}>
 			<head />
-			<body className="min-h-screen antialiased">
-				<Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
+			<body className="min-h-screen antialiased bg-background text-foreground">
+				<Providers>
 					<main className="flex flex-grow overflow-hidden">
 						<Sidebar />
-						<section className="flex-1 overflow-y-auto px-5 py-4 custom-scroll-primary bg-slate-100">
-							{children}
+						<section className="flex-1">
+							<Navbar />
+							<section className="px-4 py-2">{children}</section>
 						</section>
 					</main>
-					<Toaster richColors position="top-right" closeButton />
 				</Providers>
 			</body>
 		</html>

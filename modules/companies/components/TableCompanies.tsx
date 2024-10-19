@@ -1,90 +1,67 @@
-"use client";
-
-import type { Company } from "@/modules/companies/interfaces/company";
-import ChipStatus from "@/modules/core/components/common/ChipStatus";
-import DropdownActions from "@/modules/teams/components/DropdownActions";
-import { formatDate } from "@/utils/formatterDate";
-import {
-  Spinner,
-  Table,
-  TableBody,
-  TableCell,
-  TableColumn,
-  TableHeader,
-  TableRow,
-  useDisclosure,
-} from "@nextui-org/react";
-import { useState } from "react";
-import ModalDeleteCompany from "./ModalDeleteCompany";
+import { CustomGrid, CustomGridColumn } from '@/components/ui/Table/FTable'
+import TableActionsCompanies from '@/modules/companies/components/TableActionsCompanies'
+import type { Company } from '@/modules/companies/interfaces/company'
+import { deleteCompany } from '@/modules/companies/services/mutations/deleteCompany'
+import ChipStatus from '@/modules/core/components/common/ChipStatus'
+import { formattedDate } from '@/utils/helpers'
+import { Button } from '@nextui-org/button'
+import { PlusSignIcon } from 'hugeicons-react'
+import Link from 'next/link'
 
 interface Props {
-  data: Company[];
+	data: Company[]
+}
+const TableCompanies = ({ data }: Props) => {
+	return (
+		<>
+			<div className="py-3">
+				<Button
+					as={Link}
+					color="primary"
+					endContent={<PlusSignIcon size={20} />}
+					href="/companies/manage"
+				>
+					Agregar
+				</Button>
+			</div>
+			<CustomGrid<Company> dataList={data ?? []} keyIdentifier="id">
+				<CustomGridColumn<Company>
+					labelHeader="Nombre"
+					colRender={(_, company) => (
+						<div className="flex items-center gap-x-2">
+							<img
+								src={company.picture}
+								alt={company.name}
+								width={56}
+								height={30}
+								className="w-14 h-auto"
+							/>
+							<span>{company.name} </span>
+						</div>
+					)}
+				/>
+
+				<CustomGridColumn<Company>
+					labelHeader="Status"
+					colRender={(_, company) => <ChipStatus isActive={company.active} />}
+				/>
+				<CustomGridColumn<Company>
+					labelHeader="Fecha de creacion"
+					colRender={(_, company) => formattedDate(company.created_at)}
+				/>
+				<CustomGridColumn<Company>
+					labelHeader="Acciones"
+					colRender={(_, company) => (
+						<TableActionsCompanies
+							id={company.id}
+							name={company.name}
+							deleteAction={deleteCompany}
+						/>
+					)}
+				/>
+			</CustomGrid>
+		</>
+	)
 }
 
-const TableCompanies = ({ data }: Props) => {
-  const colums = ["Nombre", "Estado", "Fecha de creacion", "Acciones"];
-  const [companyState, setCompanyState] = useState({ name: "", id: "" });
-
-  const { onOpen, isOpen, onOpenChange } = useDisclosure();
-  return (
-    <>
-      <Table
-        removeWrapper
-        aria-label="companies table"
-        classNames={{
-          th: "text-sm border-b bg-transparent",
-        }}
-        radius="lg"
-        topContent={
-          <span className="text-gray-400 text-sm">
-            Total {data?.length} Comercializadoras
-          </span>
-        }
-      >
-        <TableHeader columns={colums}>
-          {colums.map((column) => (
-            <TableColumn key={column}>{column} </TableColumn>
-          ))}
-        </TableHeader>
-        <TableBody
-          loadingContent={<Spinner color="default" />}
-          emptyContent="No hay datos"
-          items={data ?? []}
-        >
-          {(row) => (
-            <TableRow key={row.id} className="text-gray-700">
-              <TableCell className="font-bold text-gray-900 capitalize">
-                {row.name}
-              </TableCell>
-
-              <TableCell>
-                <ChipStatus isActive={row.active} />
-              </TableCell>
-
-              <TableCell>{formatDate(row.created_at)} </TableCell>
-
-              <TableCell>
-                <DropdownActions
-                  id={row.id}
-                  editPath={`/companies/manage?id=${row.id}`}
-                  onOpenDeleteModel={onOpen}
-                  onClick={() =>
-                    setCompanyState({ id: row.id, name: row.name })
-                  }
-                />
-              </TableCell>
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
-      <ModalDeleteCompany
-        id={companyState.id}
-        name={companyState.name}
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
-      />
-    </>
-  );
-};
-
-export default TableCompanies;
+export default TableCompanies

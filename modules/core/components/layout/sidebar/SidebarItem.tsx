@@ -18,28 +18,28 @@ const SidebarItem = () => {
 	const SidebarLink = [
 		{
 			name: 'Dasboard',
-			path: '/dasboard',
-			icon: <DashboardSquare02Icon size={23} strokeWidth={1.8} />,
+			path: '/',
+			icon: <DashboardSquare02Icon size={21} strokeWidth={1.8} />,
 		},
 		{
 			name: 'Usuarios',
 			path: '/users',
-			icon: <UserMultiple02Icon size={23} strokeWidth={1.8} />,
+			icon: <UserMultiple02Icon size={21} strokeWidth={1.8} />,
 		},
 		{
 			name: 'Contratos',
 			path: '/contracts',
-			icon: <Files01Icon size={23} strokeWidth={1.8} />,
+			icon: <Files01Icon size={21} strokeWidth={1.8} />,
 		},
 		{
 			name: 'Comercializadoras',
 			path: '/companies',
-			icon: <Building02Icon size={23} strokeWidth={1.8} />,
+			icon: <Building02Icon size={21} strokeWidth={1.8} />,
 		},
 		{
 			name: 'Equipos',
 			path: '/teams',
-			icon: <UserGroupIcon size={23} strokeWidth={1.8} />,
+			icon: <UserGroupIcon size={21} strokeWidth={1.8} />,
 		},
 	]
 	const pathName = usePathname()
@@ -55,9 +55,9 @@ const SidebarItem = () => {
 					<Link
 						href={path}
 						className={cn(
-							'flex items-center hover:bg-indigo-100 hover:text-indigo-800 transition-colors p-2 rounded-xl text-gray-600',
+							'flex items-center hover:bg-indigo-100 hover:text-indigo-800 transition-colors p-2 rounded-xl text-gray-600 dark:text-gray-300 dark:hover:bg-indigo-500/10 dark:hover:text-indigo-300',
 							pathName === path &&
-								'bg-gradient-to-r from-indigo-200 to-indigo-100 text-indigo-800',
+								'bg-indigo-100 text-indigo-800  dark:bg-indigo-500/10 dark:text-indigo-500',
 						)}
 					>
 						{icon}
