@@ -32,7 +32,10 @@ const ContractInfoCard = ({
 }: Props) => {
 	return (
 		<article
-			className={cn('border rounded-xl p-4 bg-white dark:bg-background dark:border-white/20', className)}
+			className={cn(
+				'border rounded-xl p-4 bg-white dark:bg-background dark:border-white/20',
+				className,
+			)}
 			{...props}
 		>
 			<h3 className="py-3 font-semibold text-lg flex items-center gap-x-2 dark:text-white">

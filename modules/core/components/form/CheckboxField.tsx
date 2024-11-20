@@ -4,7 +4,7 @@ import { Controller, type FieldValues } from 'react-hook-form'
 
 interface Props<T extends FieldValues>
 	extends FormFieldValues<T>,
-	Omit<CheckboxProps, 'name'> { }
+		Omit<CheckboxProps, 'name'> {}
 
 /**
  * Componente CheckboxField que integra react-hook-form con NextUI Checkbox.

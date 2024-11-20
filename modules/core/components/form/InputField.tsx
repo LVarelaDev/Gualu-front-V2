@@ -11,7 +11,7 @@ import {
 
 interface Props<T extends FieldValues>
 	extends FormFieldValues<T>,
-	Omit<InputProps, 'name'> {
+		Omit<InputProps, 'name'> {
 	defaultValue?: PathValue<T, Path<T>>
 }
 

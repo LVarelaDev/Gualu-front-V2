@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import { Chip } from '@nextui-org/react'
 import {
 	CheckmarkCircle01Icon,

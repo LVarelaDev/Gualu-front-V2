@@ -1,10 +1,5 @@
 'use client'
-import {
-	Autocomplete,
-	AutocompleteItem,
-	type AutocompleteProps,
-} from '@nextui-org/autocomplete'
-import React from 'react'
+import { Autocomplete, type AutocompleteProps } from '@nextui-org/autocomplete'
 import {
 	type Control,
 	Controller,
@@ -15,14 +10,12 @@ import {
 } from 'react-hook-form'
 
 interface Props<TFieldValues extends FieldValues>
-	extends Omit<AutocompleteProps, 'name' | 'children'> {
+	extends Omit<AutocompleteProps, 'name'> {
 	name: Path<TFieldValues>
 	rules?: RegisterOptions<TFieldValues, Path<TFieldValues>>
 	control: Control<TFieldValues, any>
-	defaultSelectedKey: PathValue<TFieldValues, Path<TFieldValues>>
-	options: { label: string; value: string }[]
+	defaultSelectedKey?: PathValue<TFieldValues, Path<TFieldValues>>
 }
-
 
 /**
  * Componente AutoCompleteField que integra react-hook-form con NextUI Autocomplete.
@@ -30,9 +23,8 @@ interface Props<TFieldValues extends FieldValues>
  * @param control - Control del formulario de react-hook-form (requerido).
  * @param rules - Reglas de validacion para el campo (opcional).
  * @param name - Nombre del campo del formulario (requerido).
- * @param options - Opciones para el Autocomplete (requerido).
- * @param defaultSelectedKey - Valor predeterminado para el campo (opcional).
- * @param props - Propiedades adicionales para el Autocomplete (opcional).
+ * @param defaultSelectedKey - Valor predeterminado del campo (opcional).
+ * @param props - Props adicionales que se pasan al componente Autocomplete de NextUI.
  *
  * @example
  * // Ejemplo de uso del componente
@@ -47,13 +39,11 @@ interface Props<TFieldValues extends FieldValues>
  *         control={control}
  *         name="name"
  *         rules={{ required: 'Este campo es requerido' }}
- *         options={[
- *           { label: 'Opcion 1', value: '1' },
- *           { label: 'Opcion 2', value: '2' },
- *         ]}
- *         defaultSelectedKey="1"
  *        //...
- *       />
+ *       >
+ *         <AutocompleteItem value="1">Opcion 1</AutocompleteItem>
+ *         <AutocompleteItem value="2">Opcion 2</AutocompleteItem>
+ *       </AutoCompleteField>
  *     </form>
  *   );
  * }
@@ -62,7 +52,6 @@ function AutoCompleteField<TFieldValues extends FieldValues>({
 	control,
 	rules,
 	name,
-	options,
 	...props
 }: Props<TFieldValues>) {
 	return (
@@ -82,15 +71,11 @@ function AutoCompleteField<TFieldValues extends FieldValues>({
 					isInvalid={!!error}
 					errorMessage={error?.message}
 				>
-					{options.map((option) => (
-						<AutocompleteItem key={option.value} value={option.value}>
-							{option.label}
-						</AutocompleteItem>
-					))}
+					{props.children}
 				</Autocomplete>
 			)}
 		/>
 	)
 }
 
-export default AutoCompleteField
+export { AutoCompleteField }

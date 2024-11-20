@@ -9,9 +9,7 @@ import {
 
 interface Props<T extends FieldValues>
 	extends FormFieldValues<T>,
-	Omit<SelectProps, 'name' | 'children'> {
-	options: { label: string; value: string }[]
-}
+		Omit<SelectProps, 'name'> {}
 
 /**
  * Componente SelectField que integra react-hook-form con NextUI Select.
@@ -19,7 +17,6 @@ interface Props<T extends FieldValues>
  * @param name - Nombre del campo del formulario (requerido).
  * @param control - Control del formulario de react-hook-form (requerido).
  * @param rules - Reglas de validacion para el campo (opcional).
- * @param options - Opciones para el Select (requerido).
  * @param props - Props adicionales que se pasan al componente Select de NextUI.
  *
  * @example
@@ -49,7 +46,6 @@ function SelectField<T extends FieldValues>({
 	name,
 	control,
 	rules,
-	options,
 	...props
 }: Props<T>) {
 	return (
@@ -71,11 +67,7 @@ function SelectField<T extends FieldValues>({
 					isInvalid={!!error}
 					errorMessage={error?.message}
 				>
-					{options.map(({ value, label }) => (
-						<SelectItem key={value} value={value}>
-							{label}
-						</SelectItem>
-					))}
+					{props.children}
 				</Select>
 			)}
 		/>

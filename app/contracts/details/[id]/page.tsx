@@ -1,4 +1,4 @@
-import ContainerContractDetails from '@/modules/contracts/modules/details/components/ContainerContractDetails'
+import ContainerContractDetails from '@/modules/contracts/details/components/ContainerContractDetails'
 
 interface Props {
 	params: { id: string }

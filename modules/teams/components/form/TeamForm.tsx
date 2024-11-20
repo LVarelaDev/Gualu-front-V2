@@ -1,13 +1,14 @@
 'use client'
 
 import type { UserDto } from '@/models/users/userDTO'
-import AutoCompleteField from '@/modules/core/components/form/AutoCompleteField'
+import { AutoCompleteField } from '@/modules/core/components/form/AutoCompleteField'
 import CheckboxField from '@/modules/core/components/form/CheckboxField'
 import InputField from '@/modules/core/components/form/InputField'
 import SelectField from '@/modules/core/components/form/SelectField'
 import { handleSubmitTeam } from '@/modules/teams/helpers/handleSubmitTeam'
 import type { InputTeam, Team } from '@/modules/teams/interfaces/team'
 import { Button } from '@nextui-org/button'
+import { AutocompleteItem } from '@nextui-org/react'
 import { useRouter } from 'next/navigation'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 
@@ -18,16 +19,11 @@ interface Props {
 const TeamForm = ({ userData, teamData }: Props) => {
 	const router = useRouter()
 	const memberIds = teamData?.team_members.map((member) => member.user_id)
-	const {
-		reset,
-		handleSubmit,
-		control,
-		watch
-	} = useForm<InputTeam>()
+	const { reset, handleSubmit, control, watch } = useForm<InputTeam>()
 
-	console.log(watch("team_members"))
-	console.log(watch("leader_id"))
-	const leader_seleted = teamData?.leader_id ?? watch("leader_id")
+	console.log(watch('team_members'))
+	console.log(watch('leader_id'))
+	const leader_seleted = teamData?.leader_id ?? watch('leader_id')
 	const submitData: SubmitHandler<InputTeam> = (data) => {
 		// Si en la data teams member existe entonces se convierte en un array de string y se pasa al backend
 		let team_members: string[] = []
@@ -65,12 +61,14 @@ const TeamForm = ({ userData, teamData }: Props) => {
 					label="Jefe de equipo"
 					placeholder="Selecciona un jefe de equipo"
 					defaultSelectedKey={teamData?.leader_id}
-					options={userData.map((user) => ({
-						value: user.id,
-						label: `${user.first_name} ${user.last_name}`,
-					}))}
 					rules={{ required: 'Este campo es requerido' }}
-				/>
+				>
+					{userData.map((user) => (
+						<AutocompleteItem key={user.id} value={user.id}>
+							{`${user.first_name} ${user.last_name}`}
+						</AutocompleteItem>
+					))}
+				</AutoCompleteField>
 
 				<SelectField
 					name="team_members"
@@ -80,11 +78,13 @@ const TeamForm = ({ userData, teamData }: Props) => {
 					control={control}
 					disabledKeys={[leader_seleted]}
 					defaultSelectedKeys={memberIds}
-					options={userData.map((user) => ({
-						label: `${user.first_name} ${user.last_name}`,
-						value: user.id,
-					}))}
-				/>
+				>
+					{userData.map((user) => (
+						<AutocompleteItem key={user.id} value={user.id}>
+							{`${user.first_name} ${user.last_name}`}
+						</AutocompleteItem>
+					))}
+				</SelectField>
 
 				{/* 	<Select
 					disabledKeys={[`${teamData?.leader_id}`]}

@@ -1,5 +1,5 @@
 const ManageContainerContracts = () => {
-	return <div>ManageContainerContracts</div>
+	return <section>create Contract</section>
 }
 
 export default ManageContainerContracts

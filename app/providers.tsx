@@ -36,7 +36,7 @@ export function Providers({ children }: ProvidersProps) {
 				richColors
 				position="top-right"
 				pauseWhenPageIsHidden={false}
-				theme='system'
+				theme="system"
 			/>
 		</>
 	)

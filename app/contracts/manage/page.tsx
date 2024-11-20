@@ -1,4 +1,4 @@
-import ManageContainerContracts from '@/modules/contracts/modules/manage/components/ManageContainerContracts'
+import ManageContainerContracts from '@/modules/contracts/manage/components/ManageContainerContracts'
 
 const page = () => {
 	return <ManageContainerContracts />

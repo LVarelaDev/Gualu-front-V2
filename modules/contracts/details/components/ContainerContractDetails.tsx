@@ -1,4 +1,4 @@
-import { getOneContract } from '@/modules/contracts/modules/details/services/getOneContract'
+import { getOneContract } from '@/modules/contracts/details/services/getOneContract'
 import BackButton from '@/modules/core/components/common/BackButton'
 import ChipStatus from '@/modules/core/components/common/ChipStatus'
 import ContractStatusChip from '@/modules/core/components/common/ContractsStatusChip'
@@ -38,7 +38,12 @@ const ContainerContractDetails = async ({ id }: Props) => {
 
 				<ContractInfoCard
 					title="Detalles del contrato"
-					icon={<ZapIcon className="text-yellow-500 dark:text-yellow-400" size={20} />}
+					icon={
+						<ZapIcon
+							className="text-yellow-500 dark:text-yellow-400"
+							size={20}
+						/>
+					}
 				>
 					<ContractInfoItem label="Tarifa" value={contract.tariffs.name} />
 					<ContractInfoItem label="Concepto" value={contract.concepts.name} />
@@ -103,7 +108,12 @@ const ContainerContractDetails = async ({ id }: Props) => {
 				{/* Informacion General */}
 				<ContractInfoCard
 					title="Detalles generales"
-					icon={<Files01Icon size={20} className="text-gray-500 dark:text-gray-400" />}
+					icon={
+						<Files01Icon
+							size={20}
+							className="text-gray-500 dark:text-gray-400"
+						/>
+					}
 				>
 					<ContractInfoItem label="Compañia" value={contract.companies.name} />
 					<ContractInfoItem
@@ -124,7 +134,10 @@ const ContainerContractDetails = async ({ id }: Props) => {
 					{/* Direccion */}
 
 					<h4 className="py-3 font-semibold text-lg flex items-center gap-x-2">
-						<Location01Icon className="text-green-500 dark:text-green-400" size={20} />
+						<Location01Icon
+							className="text-green-500 dark:text-green-400"
+							size={20}
+						/>
 						Direccion De suministro
 					</h4>
 					<section className="flex items-center justify-between">
@@ -157,7 +170,12 @@ const ContainerContractDetails = async ({ id }: Props) => {
 
 				<ContractInfoCard
 					title="Detalles del cliente"
-					icon={<UserCircleIcon className="text-blue-500 dark:text-blue-400" size={20} />}
+					icon={
+						<UserCircleIcon
+							className="text-blue-500 dark:text-blue-400"
+							size={20}
+						/>
+					}
 				>
 					<ContractInfoItem label="Nombre" value={contract.clients.name} />
 					<ContractInfoItem
@@ -185,7 +203,12 @@ const ContainerContractDetails = async ({ id }: Props) => {
 				{/* Detalles del comercial */}
 				<ContractInfoCard
 					title="Detalles del comercial"
-					icon={<Briefcase01Icon className="text-purple-500 dark:text-purple-400" size={20} />}
+					icon={
+						<Briefcase01Icon
+							className="text-purple-500 dark:text-purple-400"
+							size={20}
+						/>
+					}
 				>
 					<ContractInfoItem
 						label="Nombre"
@@ -209,7 +232,12 @@ const ContainerContractDetails = async ({ id }: Props) => {
 				{/* Observations */}
 				<ContractInfoCard
 					title="Observaciones"
-					icon={<Message01Icon className="text-green-500 dark:text-green-400" size={20} />}
+					icon={
+						<Message01Icon
+							className="text-green-500 dark:text-green-400"
+							size={20}
+						/>
+					}
 					className="col-span-2 h-64 overflow-y-auto"
 				>
 					<p>{contract.observations} </p>
