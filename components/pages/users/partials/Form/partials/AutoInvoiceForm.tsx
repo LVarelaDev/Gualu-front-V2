@@ -1,95 +1,114 @@
-import React, { useEffect } from 'react'
-import { UseFormReturn } from 'react-hook-form'
+import React, { useEffect } from "react";
+import { UseFormReturn } from "react-hook-form";
 
-import SelectComponent from '@/components/ui/Inputs/AutoComplete'
-import InputText from '@/components/ui/Inputs/InputText'
-import { usersById } from '@/models/users/userDTO'
-import { iva } from '@/utils/constanst/constanst'
+import SelectComponent from "@/components/ui/Inputs/AutoComplete";
+import InputText from "@/components/ui/Inputs/InputText";
+import { usersById } from "@/models/users/userDTO";
+import { iva } from "@/utils/constanst/constanst";
 
 type props = {
-	form: UseFormReturn<any, any>
-	userData: usersById | null
-}
+  form: UseFormReturn<any, any>;
+  userData: usersById | null;
+};
 
 const AutoInvoiceForm = ({ form, userData }: props) => {
-	useEffect(() => {
-		if (userData != null && userData.auto_invoices.length > 0) {
-			form.setValue('dni', userData?.auto_invoices[0].dni)
-			form.setValue('lastNames', userData?.auto_invoices[0].address)
-			form.setValue('nif', userData?.auto_invoices[0].population)
-			form.setValue('email', userData?.auto_invoices[0].postal_code)
-			form.setValue('rol', userData?.auto_invoices[0].province)
-			form.setValue('typeCategory', userData?.kind)
-			form.setValue('bankAccount', userData?.auto_invoices[0].bank_account)
-			form.setValue(
-				'retentionImport',
-				userData?.auto_invoices[0].retention_percent,
-			)
-			form.setValue('iban', userData?.auto_invoices[0].iban)
-			form.setValue('iva', userData?.auto_invoices[0].iva)
-		}
-	}, [userData?.auto_invoices])
+  useEffect(() => {
+    if (userData != null && userData.autoInvoice != null) {
+      form.setValue("dni", userData?.autoInvoice.dni);
+      form.setValue("addres", userData?.autoInvoice.addres);
+      form.setValue("population", userData?.autoInvoice.population);
+      form.setValue("postalCode", userData?.autoInvoice.postalCode);
+      form.setValue("province", userData?.autoInvoice.province);
+      form.setValue("bankAccount", userData?.autoInvoice.bankAccount);
+      form.setValue("retentionImport", userData?.autoInvoice.retentionImport);
+      form.setValue("iban", userData?.autoInvoice.iban);
+      form.setValue("iva", userData?.autoInvoice.iva);
+    }
+  }, [userData?.autoInvoice]);
 
-	return (
-		<div className="rounded-xl shadow flex flex-col gap-6 p-4 bg-white">
-			<p className="text-base font-bold text-slate-600">Datos de autofactura</p>
-			<div className="flex flex-col gap-5">
-				<div className="flex gap-5">
-					<InputText form={form} label="DNI" name="dni" type="text" />
-					<InputText form={form} label="Direccion" name="addres" type="text" />
-				</div>
-				<div className="flex gap-5">
-					<InputText
-						form={form}
-						label="Poblacion"
-						name="population"
-						type="text"
-					/>
-					<InputText
-						form={form}
-						label="Codigo postal"
-						name="postalCode"
-						type="email"
-					/>
-				</div>
-				<div className="flex gap-5">
-					<InputText
-						form={form}
-						label="Provincia"
-						name="province"
-						type="text"
-					/>
-					<InputText
-						form={form}
-						label="Cuenta bancaria"
-						name="bankAccount"
-						type="number"
-					/>
-				</div>
-				<div className="flex gap-5">
-					<InputText form={form} label="IBAN" name="iban" type="text" />
-					<InputText
-						form={form}
-						label="Importe retencion"
-						name="retentionImport"
-						type="number"
-					/>
-				</div>
-				<div className="flex gap-5 w-1/2 pr-2">
-					<SelectComponent
-						dataList={iva}
-						displayValue="label"
-						form={form}
-						itemValue="value"
-						keyIdentifier="value"
-						label="IVA"
-						name="iva"
-						placeholder="Selecciona el iva"
-					/>
-				</div>
-			</div>
-		</div>
-	)
-}
+  return (
+    <div className="rounded-xl shadow flex flex-col gap-6 p-4 bg-white">
+      <p className="text-base font-bold text-slate-600">Datos de autofactura</p>
+      <div className="flex flex-col gap-5">
+        <div className="flex gap-5">
+          <InputText
+            form={form}
+            label="DNI"
+            name="dni"
+            type="text"
+            placeholder="Ingresa tu DNI"
+          />
+          <InputText
+            form={form}
+            label="Direccion"
+            name="addres"
+            type="text"
+            placeholder="Ingresa tu dirección"
+          />
+        </div>
+        <div className="flex gap-5">
+          <InputText
+            form={form}
+            label="Poblacion"
+            name="population"
+            type="text"
+            placeholder="Ingresa la población"
+          />
+          <InputText
+            form={form}
+            label="Codigo postal"
+            name="postalCode"
+            type="email"
+            placeholder="Ingresa el codigo postal"
+          />
+        </div>
+        <div className="flex gap-5">
+          <InputText
+            form={form}
+            label="Provincia"
+            name="province"
+            type="text"
+            placeholder="Ingresa la provincia"
+          />
+          <InputText
+            form={form}
+            label="Cuenta bancaria"
+            name="bankAccount"
+            type="number"
+            placeholder="Ingresa tu cuenta bancaria"
+          />
+        </div>
+        <div className="flex gap-5">
+          <InputText
+            form={form}
+            label="IBAN"
+            name="iban"
+            type="text"
+            placeholder="Ingresa el IBAN"
+          />
+          <InputText
+            form={form}
+            label="Importe retencion"
+            name="retentionImport"
+            type="number"
+            placeholder="Ingresa el importe de retención"
+          />
+        </div>
+        <div className="flex gap-5 w-1/2 pr-2">
+          <SelectComponent
+            dataList={iva}
+            displayValue="label"
+            form={form}
+            itemValue="value"
+            keyIdentifier="value"
+            label="IVA"
+            name="iva"
+            placeholder="Selecciona el iva"
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default AutoInvoiceForm
+export default AutoInvoiceForm;

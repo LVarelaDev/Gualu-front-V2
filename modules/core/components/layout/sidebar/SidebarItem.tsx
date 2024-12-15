@@ -44,7 +44,7 @@ const SidebarItem = () => {
 	]
 	const pathName = usePathname()
 	return (
-		<section className="flex flex-col gap-y-1 mt-5">
+		<section className="flex flex-col gap-y-1 mt-10">
 			{SidebarLink.map(({ name, path, icon }) => (
 				<Tooltip
 					key={name + path}
