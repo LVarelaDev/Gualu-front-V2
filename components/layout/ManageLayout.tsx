@@ -12,8 +12,8 @@ const ManageLayout = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (session && status === "authenticated") {
-      router.push("/");
+    if (session === null && status === "unauthenticated") {
+      router.push("/login");
     }
   }, [session, router]);
 

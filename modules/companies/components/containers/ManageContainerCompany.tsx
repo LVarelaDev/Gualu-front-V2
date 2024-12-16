@@ -8,7 +8,6 @@ interface Props {
 
 const ManageContainerCompany = async ({ id }: Props) => {
 	let company = undefined
-
 	if (id) {
 		company = await getOneCompany(id)
 		if (!company) {

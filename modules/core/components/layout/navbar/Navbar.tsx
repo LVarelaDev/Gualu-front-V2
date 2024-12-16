@@ -26,7 +26,9 @@ const Navbar = () => {
       <NavbarContent justify="start">
         <NavbarItem className="text-gray-700 dark:text-foreground">
           Bienvenido{" "}
-          <strong className="text-gray-800 dark:text-foreground">Carlos</strong>
+          <strong className="text-gray-800 dark:text-foreground">
+            {session?.user.name}
+          </strong>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
@@ -41,7 +43,7 @@ const Navbar = () => {
             />
           </DropdownTrigger>
           <DropdownMenu aria-label="Profile Actions" variant="flat">
-            <DropdownItem key="profile" className="h-14 gap-2">
+            <DropdownItem key="profile" className="p-2">
               <p className="font-semibold">{session?.user.email}</p>
             </DropdownItem>
             <DropdownItem

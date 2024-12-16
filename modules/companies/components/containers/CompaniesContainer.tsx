@@ -4,7 +4,6 @@ import { Suspense } from 'react'
 
 const CompaniesContainer = async () => {
 	const data = await getAllCompanies()
-
 	return (
 		<Suspense fallback={<div>Loading...</div>}>
 			<TableCompanies data={data ?? []} />

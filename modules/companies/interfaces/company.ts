@@ -1,22 +1,22 @@
-import type { CompanyContracts } from '@/modules/companies/modules/contracts/interfaces/companyContracts'
+import type { CompanyContracts } from "@/modules/companies/modules/contracts/interfaces/companyContracts";
 
 export interface Company {
-	id: string
-	name: string
-	picture: string
-	active: boolean
-	created_at: string
-	updated_at: string
+  id: string;
+  name: string;
+  picture: string;
+  active: boolean;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface OneCompany extends Company, CompanyContracts {}
 
 export interface InputCompany {
-	name: string
-	picture: FileList
-	active: boolean
+  name: string;
+  picture: FileList;
+  active: boolean;
 }
 
-export interface SubmitCompany extends Omit<InputCompany, 'picture'> {
-	picture: string
+export interface SubmitCompany extends Omit<InputCompany, "picture"> {
+  picture?: string;
 }
