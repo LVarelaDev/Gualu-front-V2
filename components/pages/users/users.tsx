@@ -18,6 +18,7 @@ import useSWR from "swr";
 import InputSearch from "@/components/ui/Inputs/InputSearch";
 import { EnumRols } from "@/enums/users/enumRols";
 import { EnumEndpoints, getAllUsers } from "@/services/users/user.service";
+import Link from "next/link";
 
 const UsersComponent = () => {
   const { data: users } = useSWR([EnumEndpoints.Users], () => getAllUsers());
@@ -35,7 +36,7 @@ const UsersComponent = () => {
   }
 
   return (
-    <div className="flex flex-col gap-5 pt-8">
+    <div className="flex flex-col gap-5">
       <div className="font-bold text-slate-700 text-xl">
         Gestion de usuarios
       </div>
@@ -46,12 +47,9 @@ const UsersComponent = () => {
             <InputSearch form={form} name="search" placeholder="Buscar..." />
           </div>
 
-          <Button
-            className="bg-sky-900 text-white"
-            onClick={() => handleNavigate()}
-          >
-            Nuevo registro
-          </Button>
+          <Link href="/users/create">
+            <Button className="bg-sky-900 text-white">Nuevo registro</Button>
+          </Link>
         </div>
         <Table aria-label="Example table with custom cells">
           <TableHeader>

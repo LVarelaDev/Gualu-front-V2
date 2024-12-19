@@ -37,9 +37,11 @@ export const useCreateOrUpdate = (id?: string) => {
 
     toast.promise(createUser(payload), {
       loading: "Creando usuario...",
-      error: "Error al crear el usuario",
-      success(response) {
+      error(error) {
         setLoading(false);
+        return "Error al crear el usuario";
+      },
+      success(response) {
         router.push("/users");
         return response?.message ?? "Usuario creado con exito";
       },
@@ -59,7 +61,7 @@ export const useCreateOrUpdate = (id?: string) => {
       autoInvoiceData: {
         dni: data.dni,
         addres: data.addres,
-        bankAccount: data.bankAccount,
+        bankAccount: Number(data.bankAccount),
         iban: data.iban,
         iva: data.iva,
         population: data.population,
