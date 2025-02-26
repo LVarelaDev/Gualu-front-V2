@@ -42,7 +42,7 @@ const Login = () => {
         loading: "Intentando acceder...",
         error: "El correo o la contraseña son incorrectos",
         success(response) {
-          console.log(response);
+          router.push("/")
           return "Bienvenido a GualúCRM!";
         },
       }

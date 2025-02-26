@@ -10,16 +10,29 @@ module.exports = {
     "./modules/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    extend: {
+      screens: {
+        "sm": "640px",
+        // => @media (min-width: 640px) { ... }
+
+        "md": "768px",
+        // => @media (min-width: 768px) { ... }
+
+        "lg": "1024px",
+        // => @media (min-width: 1024px) { ... }
+
+        "xl": "1280px",
+        // => @media (min-width: 1280px) { ... }
+
+        "2xl": "1280px",
+        // => @media (min-width: 1536px) { ... }
+      },
+    },
     color: {
       greenSmooth: "#9AD2A9",
       primaryOrange: "#d87a1c",
       purplePrimary: "#511C8E",
       purpleSmooth: "#744BA3",
-    },
-    extend: {
-      screens: {
-        xl: "1080px",
-      },
     },
   },
   darkMode: "class",

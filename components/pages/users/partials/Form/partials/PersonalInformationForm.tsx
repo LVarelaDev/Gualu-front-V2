@@ -15,7 +15,6 @@ type props = {
 const PersonalInformationForm = ({ form, userData }: props) => {
   useEffect(() => {
   if (userData) {
-	console.log("entre")
     form.reset({
       names: userData.firstName,
       lastNames: userData.lastName,

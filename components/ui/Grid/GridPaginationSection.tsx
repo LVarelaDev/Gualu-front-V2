@@ -91,7 +91,6 @@ export const GridPaginationSection = ({
 									page === currentPage ? 'bg-green-700' : 'bg-greenSmooth'
 								} p-4 text-white`}
 								onClick={() => {
-									console.log(page)
 									setPage(page)
 								}}
 							>

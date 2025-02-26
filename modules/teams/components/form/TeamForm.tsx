@@ -24,7 +24,7 @@ const TeamForm = ({ userData, teamData }: Props) => {
   const leader_seleted = teamData?.leaderId ?? watch("leaderId");
   const submitData: SubmitHandler<InputTeam> = (data) => {
     // Si en la data teams member existe entonces se convierte en un array de string y se pasa al backend
-    console.log("data", data);
+    
     let team_members: number[] = [];
     if (data.membersId && data.membersId.length > 0) {
       team_members = data.membersId.split(",").map(Number);

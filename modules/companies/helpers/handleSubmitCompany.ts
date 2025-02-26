@@ -13,7 +13,6 @@ export const handleSubmitCompany = async (data: SubmitCompany, id?: string) => {
         {
           loading: "Actualizando compañia",
           error: (response) => {
-			console.log(response)
             return response.message;
           },
           success: (response) => {

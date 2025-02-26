@@ -29,10 +29,6 @@ const CreateUserForm = ({ id }: { id: string }) => {
   const { handleSubmit, watch } = form;
   const rol = watch("rol");
 
-  const handleConst = (data: any) => {
-    console.log(data);
-  };
-
   useEffect(() => {
     if (rol !== undefined) {
       setShowAutoInvoiceForm(

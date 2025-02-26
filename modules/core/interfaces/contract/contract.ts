@@ -2,8 +2,8 @@ import type { ContractStatus } from '@/modules/core/interfaces/contract/contract
 
 export interface Contract {
 	id: string
-	company_id: string
-	client_id: string
+	company: any
+	client: any
 	status: ContractStatus
 	comercial_id: string
 	concept_id: string

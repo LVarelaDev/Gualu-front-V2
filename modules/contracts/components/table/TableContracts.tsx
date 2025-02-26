@@ -1,64 +1,77 @@
-'use client'
+"use client";
 
-import { CustomGrid, CustomGridColumn } from '@/components/ui/Table/FTable'
-import TableActionContracts from '@/modules/contracts/components/table/TableActionContracts'
-import type { Allcontract } from '@/modules/contracts/interfaces/allContract'
-import ContractStatusChip from '@/modules/core/components/common/ContractsStatusChip'
-import { formatCurrency } from '@/modules/core/utils/formatCurrency'
-import { formatDate } from '@/modules/core/utils/formatDate'
+import { CustomGrid, CustomGridColumn } from "@/components/ui/Table/FTable";
+import TableActionContracts from "@/modules/contracts/components/table/TableActionContracts";
+import type { Allcontract } from "@/modules/contracts/interfaces/allContract";
+import ContractStatusChip from "@/modules/core/components/common/ContractsStatusChip";
+import { formatCurrency } from "@/modules/core/utils/formatCurrency";
+import { formatDate } from "@/modules/core/utils/formatDate";
+import { faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableColumn,
+  TableHeader,
+  TableRow,
+  Tooltip,
+} from "@nextui-org/react";
 
 interface Props {
-	data: Allcontract[]
+  data: Allcontract[];
 }
 
 const TableContracts = ({ data }: Props) => {
-	return (
-		<CustomGrid<Allcontract> dataList={data} keyIdentifier="id">
-			<CustomGridColumn<Allcontract>
-				labelHeader="Cliente"
-				colRender={(_, contact) => (
-					<span className="font-medium">{contact.clients.name} </span>
-				)}
-			/>
-			<CustomGridColumn<Allcontract>
-				labelHeader="Compañia"
-				colRender={(_, contact) => contact.companies.name}
-			/>
-			<CustomGridColumn<Allcontract>
-				labelHeader="Tarifa"
-				colRender={(_, contact) => contact.tariffs.name}
-			/>
-			<CustomGridColumn<Allcontract>
-				labelHeader="Consumo"
-				colRender={(_, contact) => `${contact.consumption} kWh`}
-			/>
-			<CustomGridColumn<Allcontract>
-				labelHeader="Cuota"
-				colRender={(_, contact) => formatCurrency(contact.fee)}
-			/>
-			<CustomGridColumn<Allcontract>
-				labelHeader="Status"
-				colRender={(_, contact) => (
-					<ContractStatusChip status={contact.status} />
-				)}
-			/>
-			<CustomGridColumn<Allcontract>
-				labelHeader="Fecha de creacion"
-				colRender={(_, contact) => formatDate(contact.created_at)}
-			/>
-			<CustomGridColumn<Allcontract>
-				labelHeader="Acciones"
-				colRender={(_, contract) => (
-					/* 	<TableActionsCompanies
-							id={contract.id}
-							name={contract.companies.name}
-							deleteAction={deleteContract}
-						/> */
-					<TableActionContracts id={contract.id} />
-				)}
-			/>
-		</CustomGrid>
-	)
-}
+  return (
+    <Table aria-label="Example table with custom cells">
+      <TableHeader>
+        <TableColumn>Nombre</TableColumn>
+        <TableColumn>NIF</TableColumn>
+        <TableColumn>Correo</TableColumn>
+        <TableColumn>Estado</TableColumn>
+        <TableColumn>Rol</TableColumn>
+        <TableColumn>Acciones</TableColumn>
+      </TableHeader>
+      <TableBody items={data}>
+        {(item) => (
+          <TableRow key={item.id}>
+            <TableCell>hola</TableCell>
+            <TableCell>Hola</TableCell>
+            <TableCell>Hola</TableCell>
 
-export default TableContracts
+            <TableCell>
+              <div className="flex gap-3">
+                <Tooltip
+                  closeDelay={0}
+                  content="Editar usuario"
+                  delay={0}
+                  color="success"
+                >
+                  <FontAwesomeIcon
+                    className="text-sky-700 cursor-pointer"
+                    icon={faPencilAlt}
+                    onClick={() => {}}
+                  />
+                </Tooltip>
+                <Tooltip
+                  closeDelay={0}
+                  content="Eliminar usuario"
+                  className="bg-red-400 text-white"
+                  delay={0}
+                >
+                  <FontAwesomeIcon
+                    className="text-red-500 cursor-pointer"
+                    icon={faTrash}
+                  />
+                </Tooltip>
+              </div>
+            </TableCell>
+          </TableRow>
+        )}
+      </TableBody>
+    </Table>
+  );
+};
+
+export default TableContracts;

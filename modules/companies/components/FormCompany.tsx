@@ -29,8 +29,6 @@ const FormCompany = ({ companyData }: Props) => {
       imgBase64 = await toBase64(data.picture[0]);
     }
 
-    console.log(imgBase64);
-
     const message = await handleSubmitCompany(
       { ...data, picture: imgBase64 === "" ? undefined : imgBase64 },
       companyData?.id

@@ -14,7 +14,6 @@ interface Props {
 }
 
 const TableCompanyContracts = ({ data }: Props) => {
-	console.log(data?.contracts?.map(({ id, status }) => id))
 	return (
 		<>
 			<BackButton />

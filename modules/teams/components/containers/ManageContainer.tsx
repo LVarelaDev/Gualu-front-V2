@@ -22,7 +22,6 @@ const ManageContainer = async ({ id }: Props) => {
 			notFound()
 		}
 	}
-	console.log(team)
 	return (
 		<section className="mt-10 max-w-md">
 			<TeamForm userData={userData} teamData={team} />

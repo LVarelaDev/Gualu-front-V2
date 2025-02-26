@@ -18,8 +18,9 @@ export const axiosIntance = axios.create({
 axiosIntance.interceptors.response.use(
   async (response) => {
     const session = await getSession();
-
+    console.log("session", session);
     if (session && session.user.token) {
+      console.log("session", session);
       response.headers.Authorization = `Bearer ${session.user.token}`;
     }
     return response;
