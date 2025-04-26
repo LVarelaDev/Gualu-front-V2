@@ -15,6 +15,7 @@ import PersonalInformationForm from "./partials/PersonalInformationForm";
 import { EnumRols } from "@/enums/users/enumRols";
 import type { usersById } from "@/models/users/userDTO";
 import { getUsersById } from "@/services/users/user.service";
+import BackButton from "@/modules/core/components/common/BackButton";
 
 const CreateUserForm = ({ id }: { id: string }) => {
   const isEdit: boolean = id !== "create" ? true : false;
@@ -57,8 +58,8 @@ const CreateUserForm = ({ id }: { id: string }) => {
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="flex justify-between items-center">
-        <p className="text-xl font-bold text-slate-700">Crear usuario</p>
+      <div className="flex justify-between items-center p-3 bg-white rounded-lg shadow-sm border">
+        <BackButton />
         <div className="flex gap-3">
           <Button
             className="bg-default-200 border text-slate-600 shadow"
@@ -69,39 +70,20 @@ const CreateUserForm = ({ id }: { id: string }) => {
           <Button
             disabled={loading}
             className={`flex gap-2 ${loading ? "bg-gray-500 " : "bg-sky-900 text-white"}  shadow`}
-            onClick={handleSubmit(isEdit ? handleUpdateUser : handleCreateUser)}
+            onClick={handleSubmit((e) => console.log(e))}
           >
             Guardar
           </Button>
         </div>
       </div>
-      <div
-        className="grid grid-cols-1 xl:grid-cols-2 gap-5"
-        style={{
-          gridTemplateAreas: `
-          "form1 form2"
-          "form3 form2"
-        `,
-          gridTemplateRows: "auto 1fr",
-        }}
-      >
-        <div style={{ gridArea: "form1" }}>
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+        <div>
           <PersonalInformationForm form={form} userData={userData} />
         </div>
-        {showAutoInvoiceForm ? (
-          <>
-            <div style={{ gridArea: "form2" }}>
-              <AutoInvoiceForm form={form} userData={userData} />
-            </div>
-            <div style={{ gridArea: "form3" }}>
-              <PermissionsForm form={form} userData={userData} />
-            </div>
-          </>
-        ) : (
-          <div style={{ gridArea: "form2" }}>
-            <PermissionsForm form={form} userData={userData} />
-          </div>
+        {showAutoInvoiceForm && (
+          <AutoInvoiceForm form={form} userData={userData} />
         )}
+        <PermissionsForm form={form} userData={userData} />
       </div>
     </div>
   );

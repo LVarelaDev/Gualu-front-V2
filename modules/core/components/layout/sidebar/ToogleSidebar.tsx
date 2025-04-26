@@ -6,7 +6,11 @@ const ToogleSidebar = () => {
   const { isExpanded, setIsExpanded } = useSidebar();
   return (
     <Button isIconOnly variant="light" radius="full" onClick={setIsExpanded}>
-      {isExpanded ? <ArrowLeft03Icon /> : <ArrowRight03Icon />}
+      {isExpanded ? (
+        <ArrowLeft03Icon color="white" />
+      ) : (
+        <ArrowRight03Icon color="white" />
+      )}
     </Button>
   );
 };

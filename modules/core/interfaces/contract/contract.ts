@@ -1,33 +1,46 @@
-import type { ContractStatus } from '@/modules/core/interfaces/contract/contractStatus'
+export interface Client {
+  name: string;
+  type: string;
+  nif: string;
+  address: string;
+  cp: string;
+  population: string;
+  province: string;
+  phone: string;
+  email: string;
+  iban: string;
+  typeNif: string;
+}
 
-export interface Contract {
-	id: string
-	company: any
-	client: any
-	status: ContractStatus
-	comercial_id: string
-	concept_id: string
-	tariff_id: string
-	cups: string
-	consumption: string
-	fee: number
-	contact_person: string
-	observations: string
-	power_one: number
-	power_two: number
-	power_three: number
-	power_four: number
-	power_five: number
-	delivery_address: string
-	delivery_road_type: string
-	delivery_number: number
-	delivery_portal: string
-	delivery_ladder: string
-	delivery_floor: string
-	delivery_door: string
-	delivery_postal_code: string
-	delivery_population: string
-	delivery_province: string
-	created_at: string
-	updated_at: string
+export interface Consumption {
+  cups: string;
+  consumption: number;
+  fee: number;
+  iban: string;
+}
+
+export interface ContractPayload {
+  companyId: number;
+  client: Client;
+  commercialId: number;
+  contractType: string;
+  statusId: number;
+  consumptionEnergy: Consumption;
+  consumptionGas: Consumption | null;
+  operation: string;
+  address: string;
+  postalCode: string;
+  population: string;
+  province: string;
+  accessTariffId: number;
+  planId: number;
+  concepto: number;
+  powerOne: number;
+  powerTwo: number;
+  powerThree: number | null;
+  powerFour: number | null;
+  powerFive: number | null;
+  powerSix: number | null;
+  internsObservation: string;
+  observations: string;
 }

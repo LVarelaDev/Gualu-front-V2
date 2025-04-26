@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="es" className={poppins.className}>
       <head />
-      <body className="min-h-screen antialiased bg-gray-50 text-foreground">
+      <body className="min-h-screen antialiased bg-slate-50 text-foreground">
         <Providers>
           <ManageLayout>{children}</ManageLayout>
         </Providers>

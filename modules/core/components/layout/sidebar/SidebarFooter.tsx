@@ -9,6 +9,7 @@ import { cn } from "@nextui-org/theme";
 import { Settings02Icon } from "hugeicons-react";
 import ImportTariff from "./ModalsConfiguration/ImportTariff";
 import { items } from "./Sidebar";
+import { useRouter } from "next/navigation";
 
 interface SidebarFooterProps {
   isExpanded: boolean;
@@ -16,6 +17,7 @@ interface SidebarFooterProps {
 
 const SidebarFooter = ({ isExpanded }: SidebarFooterProps) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const router = useRouter();
 
   return (
     <footer className="mt-auto">
@@ -23,7 +25,7 @@ const SidebarFooter = ({ isExpanded }: SidebarFooterProps) => {
         <DropdownTrigger>
           <div
             className={cn(
-              "flex items-center hover:bg-indigo-100 hover:text-indigo-800 transition-colors p-2 rounded-xl text-gray-600 dark:text-gray-300 dark:hover:bg-indigo-500/10 dark:hover:text-indigo-300",
+              "flex items-center hover:bg-indigo-100 hover:text-indigo-800 transition-colors p-2 rounded-xl text-white dark:text-gray-300 dark:hover:bg-indigo-500/10 dark:hover:text-indigo-500",
               "w-full"
             )}
           >
@@ -44,7 +46,10 @@ const SidebarFooter = ({ isExpanded }: SidebarFooterProps) => {
           items={items}
         >
           {(item) => (
-            <DropdownItem onClick={() => onOpen()} key={item.key}>
+            <DropdownItem
+              onClick={() => router.push("/importCommisionsCatalog")}
+              key={item.key}
+            >
               {item.label}
             </DropdownItem>
           )}

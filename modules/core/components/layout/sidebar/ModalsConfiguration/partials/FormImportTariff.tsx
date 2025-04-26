@@ -1,5 +1,5 @@
 import SelectComponent from "@/components/ui/Inputs/AutoComplete";
-import { Company } from "@/modules/companies/interfaces/company";
+import { CompanyDto } from "@/modules/companies/interfaces/company";
 import { getAllCompanies } from "@/modules/companies/services/querys/getAllCompanies";
 import { Input } from "@nextui-org/input";
 import { useEffect, useState } from "react";
@@ -17,11 +17,11 @@ interface FormImportTariff {
 }
 
 const FormImportTariff = ({ form }: FormImportTariff) => {
-  const [companies, setCompanies] = useState<Company[]>([]);
+  const [companies, setCompanies] = useState<CompanyDto[]>([]);
 
   useEffect(() => {
     const fetch = async () => {
-      if (companies && companies.length == 0) {
+      if (companies && companies.length === 0) {
         setCompanies((await getAllCompanies()) ?? []);
       }
     };
@@ -31,12 +31,10 @@ const FormImportTariff = ({ form }: FormImportTariff) => {
 
   const company = form.watch("companyId");
 
-  
-
   return (
     <div className="flex flex-col gap-5">
       <SelectComponent
-        dataList={companies ?? []}
+        dataList={companies}
         displayValue="name"
         form={form}
         itemValue="id"

@@ -16,20 +16,25 @@ const handler = NextAuth({
       },
       authorize: async (credentials) => {
         try {
-          const response = await axiosIntance.post("Auth", {
+          const response = await axiosIntance.post("Auth/SignIn", {
             email: credentials?.email,
             password: credentials?.password,
           });
 
-          const user = response.data.data;
+          const userData = response.data.data.user;
+          const token = response.data.data.token;
 
-          if (user && user.token) {
+          if (userData && token) {
             return {
-              id: user.userId, // ID único del usuario
-              email: user.email,
-              name: user.name,
-              role: user.role,
-              token: user.token,
+              id: userData.id.toString(),
+              firstName: userData.firstName,
+              lastName: userData.lastName,
+              email: userData.email,
+              active: userData.active,
+              role: userData.role,
+              nif: userData.nif,
+              kind: userData.kind,
+              token: token,
             };
           }
           return null;
@@ -44,28 +49,36 @@ const handler = NextAuth({
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
-        token.name = user.name;
+        token.firstName = user.firstName;
+        token.lastName = user.lastName;
         token.email = user.email;
+        token.active = user.active;
         token.role = user.role;
+        token.nif = user.nif;
+        token.kind = user.kind;
         token.token = user.token;
       }
       return token;
     },
     async session({ session, token }) {
       session.user = {
-        id: token.id as string, // `id` ya está permitido por el tipo extendido
-        name: token.name as string,
+        id: token.id as string,
+        firstName: token.firstName as string,
+        lastName: token.lastName as string,
         email: token.email as string,
+        active: token.active as boolean,
         role: token.role as string,
+        nif: token.nif as string,
+        kind: token.kind as string,
         token: token.token as string,
       };
       return session;
     },
   },
   pages: {
-    signIn: "/login", // Ruta personalizada para el login
+    signIn: "/login",
   },
-  secret: process.env.NEXTAUTH_SECRET, // Configura esto en tu archivo .env
+  secret: process.env.NEXTAUTH_SECRET,
 });
 
 export { handler as GET, handler as POST };

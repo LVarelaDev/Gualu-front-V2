@@ -1,7 +1,7 @@
 import type { CompanyContracts } from "@/modules/companies/modules/contracts/interfaces/companyContracts";
 
 export interface Company {
-  id: string;
+  id: number;
   name: string;
   picture: string;
   active: boolean;
@@ -15,6 +15,11 @@ export interface InputCompany {
   name: string;
   picture: FileList;
   active: boolean;
+}
+
+export interface CompanyDto {
+  name: string;
+  id: string;
 }
 
 export interface SubmitCompany extends Omit<InputCompany, "picture"> {

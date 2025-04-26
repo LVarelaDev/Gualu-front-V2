@@ -12,6 +12,7 @@ import {
   DropdownTrigger,
 } from "@nextui-org/react";
 import { signOut, useSession } from "next-auth/react";
+import CustomBreadcrumbs from "./partials/Breadcrumbs";
 
 const Navbar = () => {
   const { data: session } = useSession();
@@ -24,14 +25,19 @@ const Navbar = () => {
     >
       <NavbarContent justify="start">
         <NavbarItem className="text-gray-700 dark:text-foreground">
-          Bienvenido{" "}
-          <strong className="text-gray-800 dark:text-foreground">
-            {session?.user.name}
-          </strong>
+          <div className="flex gap-3 items-center pl-4">
+            <CustomBreadcrumbs />
+          </div>
+          {/* */}
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
-        {/* <ThemeToggle /> */}
+        <NavbarItem className="text-gray-700 dark:text-foreground">
+          Bienvenido{" "}
+          <strong className="text-gray-800 dark:text-foreground">
+            {session?.user.firstName}
+          </strong>
+        </NavbarItem>
         <Dropdown placement="bottom-end">
           <DropdownTrigger>
             <Avatar

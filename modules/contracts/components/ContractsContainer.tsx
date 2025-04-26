@@ -1,27 +1,24 @@
-import TableContracts from '@/modules/contracts/components/table/TableContracts'
-import { getAllContracts } from '@/modules/contracts/services/querys/getAllContracts'
-import { Button } from '@nextui-org/button'
-import { PlusSignIcon } from 'hugeicons-react'
-import Link from 'next/link'
-import { Suspense } from 'react'
+"use client";
+import TableContracts from "@/modules/contracts/components/table/TableContracts";
+import {
+  EndpointsContract,
+  getAllContracts,
+} from "@/modules/contracts/services/querys/getAllContracts";
+import useSWR from "swr";
 
-const ContractsContainer = async () => {
-	const contracts = await getAllContracts()
-	return (
-		<>
-			<Button
-				as={Link}
-				href="/contracts/manage"
-				color="primary"
-				endContent={<PlusSignIcon size={20} />}
-			>
-				Agregar
-			</Button>
-			<Suspense fallback={<span>cargando...</span>}>
-				<TableContracts data={contracts ?? []} />
-			</Suspense>
-		</>
-	)
-}
+const ContractsContainer = () => {
+  const { data: contracts, isLoading } = useSWR(
+    [EndpointsContract.Contract],
+    () => getAllContracts()
+  );
 
-export default ContractsContainer
+  return (
+    <>
+      {contracts && contracts.length != 0 && (
+        <TableContracts data={contracts} isLoading={isLoading} />
+      )}
+    </>
+  );
+};
+
+export default ContractsContainer;

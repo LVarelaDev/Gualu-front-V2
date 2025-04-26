@@ -12,11 +12,10 @@ export const items = [
   {
     key: "tariffImport",
     label: "Importar tarifas",
-  }
+  },
 ];
 
 const Sidebar = () => {
-  
   const { isExpanded } = useSidebar();
 
   return (
@@ -26,7 +25,7 @@ const Sidebar = () => {
         isExpanded ? "w-[290px]" : "w-[73px]"
       )}
     >
-      <nav className="h-full flex flex-col bg-white border-r dark:border-white/20 shadow-sm p-4 fixed">
+      <nav className="h-full flex flex-col bg-purple-900 border-r dark:border-white/20 shadow-sm p-4 fixed">
         {/* Header Section */}
         <section className="flex items-center justify-between transition-all">
           <div
@@ -35,7 +34,7 @@ const Sidebar = () => {
               isExpanded ? "w-52" : "w-0"
             )}
           >
-            <Logo />
+            <p className="text-3xl font-semibold text-white">Gualú CRM</p>
           </div>
           <ToogleSidebar />
         </section>
@@ -44,7 +43,7 @@ const Sidebar = () => {
           <SidebarItem />
         </div>
 
-        <SidebarFooter isExpanded={isExpanded}/>
+        <SidebarFooter isExpanded={isExpanded} />
       </nav>
     </aside>
   );

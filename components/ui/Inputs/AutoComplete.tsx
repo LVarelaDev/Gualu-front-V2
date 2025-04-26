@@ -28,20 +28,23 @@ const SelectComponent = ({
 }: props) => {
   const { register, setValue, watch } = form;
 
-  // Obtenemos el valor actual del campo desde el formulario
   const selectedValue = watch(name);
 
   return (
     <Select
       className="w-full"
+      isDisabled={dataList.length === 0}
       label={label}
       placeholder={placeholder}
       variant={variant}
       {...register(name, rules)}
       selectedKeys={selectedValue ? [selectedValue] : undefined}
-      onSelectionChange={(keys) => {
+      onSelectionChange={(keys: any) => {
         const value = Array.from(keys).join("");
         setValue(name, value, { shouldValidate: true });
+      }}
+      classNames={{
+        selectorIcon: "right-2 left-auto",
       }}
     >
       {dataList.map((item) => (

@@ -9,7 +9,6 @@ export type UserDto = {
   role: string;
   nif: string;
   kind: string;
-  permissions: Permissions[];
 };
 
 export type AutoInvoiceData = {

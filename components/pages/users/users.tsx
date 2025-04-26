@@ -1,27 +1,22 @@
 "use client";
 import { faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  Button,
-  Table,
-  TableBody,
-  TableCell,
-  TableColumn,
-  TableHeader,
-  TableRow,
-  Tooltip,
-} from "@nextui-org/react";
+import { Button, Tooltip } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import useSWR from "swr";
 
 import InputSearch from "@/components/ui/Inputs/InputSearch";
-import { EnumRols } from "@/enums/users/enumRols";
+import { FTable, FTableColumn } from "@/components/ui/Table/FTable";
+import { UserDto } from "@/models/users/userDTO";
 import { EnumEndpoints, getAllUsers } from "@/services/users/user.service";
 import Link from "next/link";
+import { Fragment } from "react";
 
 const UsersComponent = () => {
-  const { data: users } = useSWR([EnumEndpoints.Users], () => getAllUsers());
+  const { data: users, isLoading } = useSWR([EnumEndpoints.Users], () =>
+    getAllUsers()
+  );
 
   const router = useRouter();
 
@@ -30,10 +25,6 @@ const UsersComponent = () => {
   };
 
   const form = useForm();
-
-  if (users === null || users === undefined) {
-    return <div>Cargando</div>;
-  }
 
   return (
     <div className="flex flex-col gap-5">
@@ -51,81 +42,78 @@ const UsersComponent = () => {
             <Button className="bg-sky-900 text-white">Nuevo registro</Button>
           </Link>
         </div>
-        <Table aria-label="Example table with custom cells">
-          <TableHeader>
-            <TableColumn>Nombre</TableColumn>
-            <TableColumn>NIF</TableColumn>
-            <TableColumn>Correo</TableColumn>
-            <TableColumn>Estado</TableColumn>
-            <TableColumn>Rol</TableColumn>
-            <TableColumn>Acciones</TableColumn>
-          </TableHeader>
-          <TableBody items={users}>
-            {(item) => (
-              <TableRow key={item.id}>
-                <TableCell>{`${item.firstName} ${item.lastName}`}</TableCell>
-                <TableCell>{item.nif}</TableCell>
-                <TableCell>{item.email}</TableCell>
-                <TableCell>
-                  {item.active ? (
-                    <div className="flex">
-                      <span className="flex-shrink bg-green-300 text-green-800 rounded-full py-1 px-3">
-                        Activo
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="flex">
-                      <span className="flex-shrink bg-red-300 text-red-800 rounded-full py-1 px-3">
-                        Inactivo
-                      </span>
-                    </div>
-                  )}
-                </TableCell>
-                <TableCell>
-                  {(() => {
-                    switch (item.role) {
-                      case EnumRols.Administrador:
-                        return "Administrador";
-                      case EnumRols.CommerTeam:
-                        return "Jefe de equipo";
-                      case EnumRols.Commerce:
-                        return "Comercial";
-                      default:
-                        return "-";
-                    }
-                  })()}
-                </TableCell>
-                <TableCell>
-                  <div className="flex gap-3">
-                    <Tooltip
-                      closeDelay={0}
-                      content="Editar usuario"
-                      delay={0}
-                      color="success"
-                    >
-                      <FontAwesomeIcon
-                        className="text-sky-700 cursor-pointer"
-                        icon={faPencilAlt}
-                        onClick={() => router.push("/users/" + item.id)}
-                      />
-                    </Tooltip>
-                    <Tooltip
-                      closeDelay={0}
-                      content="Eliminar usuario"
-                      className="bg-red-400 text-white"
-                      delay={0}
-                    >
-                      <FontAwesomeIcon
-                        className="text-red-500 cursor-pointer"
-                        icon={faTrash}
-                      />
-                    </Tooltip>
+        <FTable<UserDto>
+          dataList={users ?? []}
+          isLoading={isLoading}
+          keyIdentifier="id"
+        >
+          <FTableColumn<UserDto>
+            labelHeader="Nombre"
+            colRender={(_, user) => `${user.firstName} ${user.lastName}`}
+          />
+          <FTableColumn<UserDto>
+            labelHeader="Documento"
+            colRender={(_, user) => user.nif ?? "no hay registro"}
+          />
+          <FTableColumn<UserDto>
+            labelHeader="Correo"
+            colRender={(_, user) => user.email ?? "no hay registro"}
+          />
+          <FTableColumn<UserDto>
+            labelHeader="Estado"
+            colRender={(_, user) => (
+              <Fragment>
+                {user.active ? (
+                  <div className="flex">
+                    <span className="flex-shrink bg-green-300 text-green-800 rounded-full py-1 px-3">
+                      Activo
+                    </span>
                   </div>
-                </TableCell>
-              </TableRow>
+                ) : (
+                  <div className="flex">
+                    <span className="flex-shrink bg-red-300 text-red-800 rounded-full py-1 px-3">
+                      Inactivo
+                    </span>
+                  </div>
+                )}
+              </Fragment>
             )}
-          </TableBody>
-        </Table>
+          />
+          <FTableColumn<UserDto>
+            labelHeader="Rol"
+            colRender={(_, user) => user.role ?? "no hay registro"}
+          />
+          <FTableColumn<UserDto>
+            labelHeader="Acciones"
+            colRender={(_, user) => (
+              <div className="flex gap-3">
+                <Tooltip
+                  closeDelay={0}
+                  content="Editar usuario"
+                  delay={0}
+                  color="success"
+                >
+                  <FontAwesomeIcon
+                    className="text-sky-700 cursor-pointer"
+                    icon={faPencilAlt}
+                    onClick={() => router.push("/users/" + user.id)}
+                  />
+                </Tooltip>
+                <Tooltip
+                  closeDelay={0}
+                  content="Eliminar usuario"
+                  className="bg-red-400 text-white"
+                  delay={0}
+                >
+                  <FontAwesomeIcon
+                    className="text-red-500 cursor-pointer"
+                    icon={faTrash}
+                  />
+                </Tooltip>
+              </div>
+            )}
+          />
+        </FTable>
       </div>
     </div>
   );

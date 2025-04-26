@@ -1,3 +1,4 @@
+const {heroui} = require('@heroui/theme');
 import { nextui } from "@nextui-org/theme";
 import tailwindScrollbar from "tailwind-scrollbar";
 
@@ -8,6 +9,7 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
     "./modules/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@heroui/theme/dist/components/(checkbox|form).js"
   ],
   theme: {
     extend: {
@@ -37,54 +39,20 @@ module.exports = {
   },
   darkMode: "class",
   /* Se cambio el color primary, danger y success por defecto */
-  plugins: [
-    tailwindScrollbar({
-      nocompatible: true,
-      preferredStrategy: "pseudoelements",
-    }),
-    nextui({
+  plugins: [tailwindScrollbar({
+      nocompatible: true,preferredStrategy: "pseudoelements",}),nextui({
       themes: {
         light: {
           colors: {
             danger: {
-              DEFAULT: "#EF4444",
-              foreground: "#FFFFFF",
-            },
-            success: {
-              DEFAULT: "#10b981",
-              foreground: "#fff",
-            },
-            primary: {
-              DEFAULT: "#4f46e5",
-              foreground: "#fff",
-            },
-            background: {
-              DEFAULT: "#f9f9f9",
-              foreground: "#1f2937",
-            },
-          },
-        },
-        dark: {
+              DEFAULT: "#EF4444",foreground: "#FFFFFF",},success: {
+              DEFAULT: "#10b981",foreground: "#fff",},primary: {
+              DEFAULT: "#4f46e5",foreground: "#fff",},background: {
+              DEFAULT: "#f9f9f9",foreground: "#1f2937",},},},dark: {
           colors: {
             danger: {
-              DEFAULT: "#EF4444",
-              foreground: "#FFFFFF",
-            },
-            success: {
-              DEFAULT: "#10b981",
-              foreground: "#fff",
-            },
-            primary: {
-              DEFAULT: "#4f46e5",
-              foreground: "#fff",
-            },
-            background: {
-              DEFAULT: "#010409",
-              foreground: "#e5e7eb",
-            },
-          },
-        },
-      },
-    }),
-  ],
+              DEFAULT: "#EF4444",foreground: "#FFFFFF",},success: {
+              DEFAULT: "#10b981",foreground: "#fff",},primary: {
+              DEFAULT: "#4f46e5",foreground: "#fff",},background: {
+              DEFAULT: "#010409",foreground: "#e5e7eb",},},},},}),heroui()],
 };

@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import { UseFormReturn } from "react-hook-form";
-
-import SelectComponent from "@/components/ui/Inputs/AutoComplete";
 import InputText from "@/components/ui/Inputs/InputText";
 import Toggle from "@/components/ui/Toggle/Toggle";
 import { usersById } from "@/models/users/userDTO";
 import { categories, rols } from "@/utils/constanst/constanst";
+import SelectComponent from "@/components/ui/Inputs/AutoComplete";
 
 type props = {
   form: UseFormReturn<any, any>;
@@ -14,23 +13,23 @@ type props = {
 
 const PersonalInformationForm = ({ form, userData }: props) => {
   useEffect(() => {
-  if (userData) {
-    form.reset({
-      names: userData.firstName,
-      lastNames: userData.lastName,
-      nif: userData.nif,
-      email: userData.email,
-      rol: userData.role,
-      typeCategory: userData.kind,
-    });
-  }
-}, [userData, form]);
+    if (userData) {
+      form.reset({
+        names: userData.firstName,
+        lastNames: userData.lastName,
+        nif: userData.nif,
+        email: userData.email,
+        rol: userData.role,
+        typeCategory: userData.kind,
+      });
+    }
+  }, [userData, form]);
 
   return (
     <div className="rounded-xl shadow flex flex-col gap-6 p-4 bg-white">
       <p className="text-base font-bold text-slate-600">Información personal</p>
       <div className="flex flex-col gap-5">
-        <div className="flex gap-5">
+        <div className="flex gap-5 ">
           <InputText
             form={form}
             label="Nombres"
@@ -46,7 +45,7 @@ const PersonalInformationForm = ({ form, userData }: props) => {
             placeholder="Ingresa los apellidos"
           />
         </div>
-        <div className="flex gap-5">
+        <div className="flex gap-5 ">
           <InputText
             form={form}
             label="NIF"
@@ -62,7 +61,7 @@ const PersonalInformationForm = ({ form, userData }: props) => {
             placeholder="Ingresa el correo"
           />
         </div>
-        <div className="flex gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           <SelectComponent
             dataList={rols}
             displayValue="label"

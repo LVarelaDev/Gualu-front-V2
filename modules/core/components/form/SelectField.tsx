@@ -1,15 +1,15 @@
-import type { FormFieldValues } from '@/modules/core/interfaces/formFieldValues'
-import { Select, SelectItem, type SelectProps } from '@nextui-org/react'
+import type { FormFieldValues } from "@/modules/core/interfaces/formFieldValues";
+import { Select, SelectItem, type SelectProps } from "@nextui-org/react";
 import {
-	Controller,
-	type FieldValues,
-	type Path,
-	type PathValue,
-} from 'react-hook-form'
+  Controller,
+  type FieldValues,
+  type Path,
+  type PathValue,
+} from "react-hook-form";
 
 interface Props<T extends FieldValues>
-	extends FormFieldValues<T>,
-		Omit<SelectProps, 'name'> {}
+  extends FormFieldValues<T>,
+    Omit<SelectProps, "name"> {}
 
 /**
  * Componente SelectField que integra react-hook-form con NextUI Select.
@@ -43,35 +43,35 @@ interface Props<T extends FieldValues>
  * }
  */
 function SelectField<T extends FieldValues>({
-	name,
-	control,
-	rules,
-	...props
+  name,
+  control,
+  rules,
+  ...props
 }: Props<T>) {
-	return (
-		<Controller
-			control={control}
-			name={name}
-			rules={rules}
-			render={({ field, fieldState: { error } }) => (
-				<Select
-					{...field}
-					{...props}
-					labelPlacement={props.labelPlacement ?? 'outside'}
-					size={props.size ?? 'lg'}
-					variant={props.variant ?? 'bordered'}
-					defaultSelectedKeys={props.defaultSelectedKeys}
-					onSelectionChange={(value) => {
-						field.onChange(value)
-					}}
-					isInvalid={!!error}
-					errorMessage={error?.message}
-				>
-					{props.children}
-				</Select>
-			)}
-		/>
-	)
+  return (
+    <Controller
+      control={control}
+      name={name}
+      rules={rules}
+      render={({ field, fieldState: { error } }) => (
+        <Select
+          {...field}
+          {...props}
+          labelPlacement={props.labelPlacement ?? "outside"}
+          size={props.size ?? "lg"}
+          variant={props.variant ?? "bordered"}
+          defaultSelectedKeys={props.defaultSelectedKeys}
+          onSelectionChange={(value) => {
+            field.onChange(value);
+          }}
+          isInvalid={!!error}
+          errorMessage={error?.message}
+        >
+          {props.children}
+        </Select>
+      )}
+    />
+  );
 }
 
-export default SelectField
+export default SelectField;

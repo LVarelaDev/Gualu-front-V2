@@ -1,63 +1,46 @@
-'use client'
+"use client";
 
-import type { MessageResponse } from '@/modules/core/interfaces/messageResponse'
+import { Tooltip } from "@nextui-org/react";
 import {
-	Button,
-	Dropdown,
-	DropdownItem,
-	DropdownMenu,
-	DropdownTrigger,
-	useDisclosure,
-} from '@nextui-org/react'
-import {
-	Delete02Icon,
-	MoreHorizontalIcon,
-	TaskEdit01Icon,
-	ViewIcon,
-} from 'hugeicons-react'
+  Cash01Icon,
+  Configuration01Icon,
+  DocumentAttachmentIcon,
+  Dollar01Icon,
+  DollarCircleIcon,
+  EyeIcon,
+} from "hugeicons-react";
+import Link from "next/link";
+import { ContractDto } from "../../manage/types/contractDto";
 
 interface Props {
-	id: string
-	name: string
-	deleteAction: (id: string) => Promise<MessageResponse | undefined>
+  contract: ContractDto;
 }
 
-const TableActionContracts = ({ id }: Props) => {
-	const { isOpen, onOpen, onOpenChange } = useDisclosure()
-	return (
-		<Dropdown>
-			<DropdownTrigger>
-				<Button isIconOnly radius="full" variant="light">
-					<MoreHorizontalIcon strokeWidth={3} />
-				</Button>
-			</DropdownTrigger>
-			<DropdownMenu className="text-foreground">
-				<DropdownItem
-					key="show-details"
-					startContent={<ViewIcon size={20} />}
-					href={`/contracts/details/${id}`}
-				>
-					Ver Detalles
-				</DropdownItem>
-				<DropdownItem
-					key="edit-contract"
-					startContent={<TaskEdit01Icon size={20} />}
-					href={`/contracts/manage/${id}`}
-				>
-					Editar contrato
-				</DropdownItem>
-				<DropdownItem
-					key="delete-contract"
-					variant="flat"
-					color="danger"
-					className="text-danger"
-					startContent={<Delete02Icon size={20} />}
-				>
-					Eliminar contrato
-				</DropdownItem>
-			</DropdownMenu>
-		</Dropdown>
-	)
-}
+const TableActionContracts = ({ contract }: Props) => {
+  return (
+    <div className="flex gap-2 items-center justify-center">
+      <Tooltip
+        closeDelay={0}
+        content="Ver contrato"
+        className="bg-slate-700 text-white"
+        delay={0}
+      >
+        <Link href={`/contracts/edit/${contract.id}`}>
+          <EyeIcon size={17} className="text-slate-500" />
+        </Link>
+      </Tooltip>
+      <Tooltip
+        closeDelay={0}
+        content="Ver documentos"
+        className="bg-purple-700 text-white"
+        delay={0}
+      >
+        <Link href={`/contracts/actions/${contract.cups}`}>
+          <Configuration01Icon size={17} className="text-purple-800" />
+        </Link>
+      </Tooltip>
+    </div>
+  );
+};
 
-export default TableActionContracts
+export default TableActionContracts;

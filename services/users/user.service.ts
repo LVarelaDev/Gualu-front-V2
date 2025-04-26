@@ -4,9 +4,7 @@ import { KeyValue } from "@/models/responses/KeyValue.model";
 import { CreateUserDto, UserDto, usersById } from "@/models/users/userDTO";
 
 export enum EnumEndpoints {
-  Users = "Users",
-  CreateUser = "Users/CreateUser",
-  UpdateUser = "Users/UpdateUser",
+  Users = "User",
 }
 
 export const getAllUsers = async (): Promise<UserDto[]> => {
@@ -53,7 +51,7 @@ export const updateUser = async (
 ): Promise<KeyValue> => {
   try {
     const response = await axiosIntance.post<KeyValue>(
-      `${EnumEndpoints.CreateUser}?id=${id}`,
+      `${EnumEndpoints.Users}?id=${id}`,
       payload
     );
 
