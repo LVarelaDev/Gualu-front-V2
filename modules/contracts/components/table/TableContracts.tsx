@@ -7,13 +7,17 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { ContractDto } from "../../manage/types/contractDto";
 import TableActionContracts from "./TableActionContracts";
+import { PaginationDto } from "@/modules/core/interfaces/paginationDto";
+import { Dispatch, SetStateAction, useState } from "react";
 
 interface Props {
-  data: ContractDto[];
+  contract: PaginationDto<ContractDto[]>;
   isLoading?: boolean;
+  setCurrentPage: Dispatch<SetStateAction<number>>;
 }
 
-const TableContracts = ({ data, isLoading }: Props) => {
+const TableContracts = ({ contract, isLoading, setCurrentPage }: Props) => {
+  const onChangePage = (page: number) => setCurrentPage(page);
   const form = useForm();
   return (
     <div className="flex flex-col gap-5">
@@ -31,11 +35,14 @@ const TableContracts = ({ data, isLoading }: Props) => {
             <Button className="bg-sky-900 text-white">Nuevo registro</Button>
           </Link>
         </div>
-        {data.length !== 0 && (
+        {contract.items.length !== 0 && (
           <FTable<ContractDto>
-            dataList={data}
+            dataList={contract.items}
             keyIdentifier="id"
             isLoading={isLoading}
+            currentPage={contract.currentPage}
+            onPageChange={(page: number) => onChangePage(page)}
+            totalPages={contract.totalPages}
           >
             <FTableColumn<ContractDto>
               labelHeader="Cups"

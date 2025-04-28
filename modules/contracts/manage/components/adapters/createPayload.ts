@@ -1,8 +1,9 @@
 import { ContractPayload } from "@/modules/core/interfaces/contract/contract";
 
 export const createPayload = (data: any): ContractPayload => {
+  console.log("data", data);
   return {
-    accessTariffId: data.accessTariffId,
+    accessTariffId: +data.accessTariffId,
     client: {
       address: data.address,
       cp: data.postalCode,
@@ -18,7 +19,7 @@ export const createPayload = (data: any): ContractPayload => {
     },
     commercialId: 5,
     companyId: 1,
-    concepto: +data.conceptId,
+    conceptId: +data.conceptId,
     consumptionEnergy: {
       consumption: data.consumptionEnergy,
       cups: data.cupsEnergy,

@@ -2,16 +2,20 @@ import axiosIntance from "@/lib/axios.config";
 import { ContractDto } from "../../manage/types/contractDto";
 import { GenericResponse } from "@/models/responses/GenericResponse.model";
 import { InformationActionsContractDto } from "../../acitions/interfaces/InformationAction";
+import { PaginationDto } from "@/modules/core/interfaces/paginationDto";
 
 export enum EndpointsContract {
   Contract = "Contract",
 }
 
-export const getAllContracts = async (): Promise<ContractDto[]> => {
+export const getAllContracts = async (
+  currentPage: number,
+  pageSize: number
+): Promise<PaginationDto<ContractDto[]>> => {
   try {
-    const { data } = await axiosIntance.get<GenericResponse<ContractDto[]>>(
-      EndpointsContract.Contract
-    );
+    const { data } = await axiosIntance.get<
+      GenericResponse<PaginationDto<ContractDto[]>>
+    >(`${EndpointsContract.Contract}/${currentPage}/${pageSize}`);
     return data.data;
   } catch (error) {
     console.error(error);

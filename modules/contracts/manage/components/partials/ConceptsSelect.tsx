@@ -29,7 +29,7 @@ const ConceptsSelect = ({ planId = null, form }: SelectComponentProps) => {
       dataList={concepts}
       displayValue="name"
       form={form}
-      itemValue="id"
+      itemValue="name"
       keyIdentifier="id"
       label="Concepto"
       name="conceptId"

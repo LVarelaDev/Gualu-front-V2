@@ -25,7 +25,7 @@ const ExtrasSelect = ({ planId, form }: ExtrasSelectProps) => {
       dataList={extras}
       displayValue="name"
       form={form}
-      itemValue="id"
+      itemValue="name"
       keyIdentifier="id"
       label="Servicio extra"
       name="extraId"

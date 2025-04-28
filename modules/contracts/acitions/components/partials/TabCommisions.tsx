@@ -4,21 +4,27 @@ import { formatDate } from "@/modules/core/utils/formatDate";
 import { Button } from "@nextui-org/react";
 import { PlusMinusIcon } from "hugeicons-react";
 import { CommissionDto } from "../../interfaces/InformationAction";
+import InputSearch from "@/components/ui/Inputs/InputSearch";
+import { useForm } from "react-hook-form";
 
 interface TabCommisionsProps {
   comisiones: CommissionDto[];
 }
 
 const TabCommisions = ({ comisiones }: TabCommisionsProps) => {
+  const form = useForm();
   return (
     <FCard title="Comisiones del Contrato">
-      <div className="p-4 flex justify-between">
+      <div className="flex justify-between items-center">
+        <div className="w-1/4">
+          <InputSearch form={form} name="search" placeholder="Buscar..." />
+        </div>
         <Button
-          color="primary"
+          className="bg-purple-800 text-white"
           size="sm"
-          startContent={<PlusMinusIcon size={24} />}
+          startContent={<PlusMinusIcon size={20} />}
         >
-          Agregar Comisión
+          Crear comisión
         </Button>
       </div>
       <FTable<CommissionDto>

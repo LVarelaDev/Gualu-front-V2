@@ -29,9 +29,9 @@ const ManageContainerContracts = () => {
         router.push("/contracts");
         return;
       }
-    } catch (error) {
+    } catch (e: any) {
       setLoading(false);
-      toast.error("Error al crear el contrato");
+      toast.error(e.message || "Error al crear el contrato");
     }
 
     setLoading(false);

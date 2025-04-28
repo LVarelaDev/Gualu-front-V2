@@ -34,7 +34,7 @@ export interface ContractPayload {
   province: string;
   accessTariffId: number;
   planId: number;
-  concepto: number;
+  conceptId: number;
   powerOne: number;
   powerTwo: number;
   powerThree: number | null;

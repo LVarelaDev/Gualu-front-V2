@@ -52,7 +52,7 @@ const GeneralInformation = ({ data }: GeneralInformationProps) => {
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-3 md:grid-cols-4 gap-6">
           <div className="flex flex-col gap-2">
             <span className="text-sm text-gray-500">Número de contrato</span>
             <Skeleton className="h-4 w-48 rounded" />

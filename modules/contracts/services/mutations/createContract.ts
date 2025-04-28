@@ -11,8 +11,7 @@ export const createContract = async (
       contract
     );
     return data;
-  } catch (error) {
-    console.error(error);
-    throw new Error("Error creating contract");
+  } catch (error: any) {
+    throw new Error(error.message);
   }
 };

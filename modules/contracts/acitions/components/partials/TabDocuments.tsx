@@ -50,7 +50,6 @@ const TabDocuments = ({ form, data }: TabDocumentsProps) => {
         </FTable>
       ) : (
         <div className="flex gap-4 items-center justify-center p-4">
-          <Image src={imageNotFount} width={250} height={250} alt="not found" />
           <span className="text-slate-500 font-bold">
             No hay documentos para mostrar
           </span>

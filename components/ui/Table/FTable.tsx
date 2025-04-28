@@ -1,4 +1,5 @@
 import {
+  Pagination,
   Spinner,
   Table,
   TableBody,
@@ -21,6 +22,9 @@ type FTableProps<T> = {
   children: ReactNode;
   isLoading?: boolean;
   shadow?: "sm" | "md" | "lg" | "none" | undefined;
+  totalPages?: number;
+  currentPage?: number;
+  onPageChange?: (page: number) => void;
 };
 
 const FTable = <T,>({
@@ -29,65 +33,85 @@ const FTable = <T,>({
   children,
   isLoading,
   shadow = "sm",
+  totalPages,
+  currentPage,
+  onPageChange,
 }: FTableProps<T>) => {
   const columns = React.Children.toArray(children);
 
   return (
-    <Table shadow={shadow} aria-label="Example static collection table">
-      <TableHeader>
-        {columns.map((column, index) => {
-          const col = column as React.ReactElement<FTableColumnProps<T>>;
-          const isFirstColumn = index === 0;
-          const isLastColumn = index === columns.length - 1;
+    <div className="flex flex-col gap-4">
+      <Table shadow={shadow} aria-label="Example static collection table">
+        <TableHeader>
+          {columns.map((column, index) => {
+            const col = column as React.ReactElement<FTableColumnProps<T>>;
+            const isFirstColumn = index === 0;
+            const isLastColumn = index === columns.length - 1;
 
-          return (
-            <TableColumn
-              key={index}
-              className={
-                isFirstColumn
-                  ? "rounded-l-lg"
-                  : isLastColumn
-                    ? "rounded-r-lg"
-                    : ""
-              }
-            >
-              {col.props.labelHeader}
-            </TableColumn>
-          );
-        })}
-      </TableHeader>
-      <TableBody
-        loadingContent={<Spinner label="Loading..." />}
-        isLoading={isLoading}
-      >
-        {dataList.map((item) => (
-          <TableRow key={item[keyIdentifier] as React.Key}>
-            {columns.map((column, colIndex) => {
-              const col = column as React.ReactElement<FTableColumnProps<T>>;
-              return (
-                <TableCell key={colIndex} className="text-xs pl-2">
-                  {col.props.colRender
-                    ? col.props.colRender(
-                        item[col.props.keyColumnIdentifier as keyof T],
-                        item
-                      )
-                    : typeof item[col.props.keyColumnIdentifier as keyof T] ===
-                          "string" ||
-                        typeof item[
-                          col.props.keyColumnIdentifier as keyof T
-                        ] === "number" ||
-                        typeof item[
-                          col.props.keyColumnIdentifier as keyof T
-                        ] === "boolean"
-                      ? String(item[col.props.keyColumnIdentifier as keyof T])
-                      : null}
-                </TableCell>
-              );
-            })}
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+            return (
+              <TableColumn
+                key={index}
+                className={
+                  isFirstColumn
+                    ? "rounded-l-lg"
+                    : isLastColumn
+                      ? "rounded-r-lg"
+                      : ""
+                }
+              >
+                {col.props.labelHeader}
+              </TableColumn>
+            );
+          })}
+        </TableHeader>
+        <TableBody
+          loadingContent={<Spinner label="Loading..." />}
+          isLoading={isLoading}
+        >
+          {dataList.map((item) => (
+            <TableRow key={item[keyIdentifier] as React.Key}>
+              {columns.map((column, colIndex) => {
+                const col = column as React.ReactElement<FTableColumnProps<T>>;
+                return (
+                  <TableCell key={colIndex} className="text-xs pl-2">
+                    {col.props.colRender
+                      ? col.props.colRender(
+                          item[col.props.keyColumnIdentifier as keyof T],
+                          item
+                        )
+                      : typeof item[
+                            col.props.keyColumnIdentifier as keyof T
+                          ] === "string" ||
+                          typeof item[
+                            col.props.keyColumnIdentifier as keyof T
+                          ] === "number" ||
+                          typeof item[
+                            col.props.keyColumnIdentifier as keyof T
+                          ] === "boolean"
+                        ? String(item[col.props.keyColumnIdentifier as keyof T])
+                        : null}
+                  </TableCell>
+                );
+              })}
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+
+      {totalPages &&
+        totalPages > 1 &&
+        currentPage !== undefined &&
+        onPageChange && (
+          <div className="flex justify-center items-center">
+            <Pagination
+              total={totalPages}
+              initialPage={currentPage}
+              page={currentPage}
+              onChange={onPageChange}
+            />
+          </div>
+        )}
+    </div>
   );
 };
 

@@ -30,6 +30,7 @@ const SelectComponent = ({
 
   const selectedValue = watch(name);
 
+  console.log("selectedValue", selectedValue);
   return (
     <Select
       className="w-full"
@@ -40,7 +41,11 @@ const SelectComponent = ({
       {...register(name, rules)}
       selectedKeys={selectedValue ? [selectedValue] : undefined}
       onSelectionChange={(keys: any) => {
-        const value = Array.from(keys).join("");
+        const selectedKey = Array.from(keys).join("");
+        const selectedItem = dataList.find(
+          (item) => item[keyIdentifier].toString() === selectedKey
+        );
+        const value = selectedItem ? selectedItem[itemValue] : "";
         setValue(name, value, { shouldValidate: true });
       }}
       classNames={{

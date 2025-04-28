@@ -25,7 +25,7 @@ const PlansSelect = ({ accessTariffId, form }: PlansSelectProps) => {
       dataList={plans}
       displayValue="name"
       form={form}
-      itemValue="id"
+      itemValue="name"
       keyIdentifier="id"
       label="Plan"
       name="planId"

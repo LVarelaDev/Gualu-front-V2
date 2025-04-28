@@ -16,7 +16,9 @@ const AccessTariffsSelect = ({
   form,
   setSelectedAccessTariff,
 }: AccessTariffsSelectProps) => {
-  const [accessTariffs, setAccessTariffs] = useState<any[]>([]);
+  const [accessTariffs, setAccessTariffs] = useState<
+    { id: number; name: string }[]
+  >([]);
 
   useEffect(() => {
     const fetchAccessTariffs = async () => {
@@ -41,7 +43,7 @@ const AccessTariffsSelect = ({
         dataList={accessTariffs}
         displayValue="name"
         form={form}
-        itemValue="id"
+        itemValue="name"
         keyIdentifier="id"
         label="Tarifa de acceso"
         name="accessTariffId"
