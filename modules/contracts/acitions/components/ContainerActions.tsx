@@ -21,6 +21,9 @@ import {
   getContractByCups,
 } from "../../services/querys/getAllContracts";
 import { Chip, Tab, Tabs } from "@heroui/react";
+import TabDocuments from "./partials/TabDocuments";
+import TabCommisions from "./partials/TabCommisions";
+import GeneralInformation from "./partials/GeneralInformation";
 
 interface Props {
   cups: string;
