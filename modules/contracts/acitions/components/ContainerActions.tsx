@@ -4,20 +4,7 @@ import InputSearch from "@/components/ui/Inputs/InputSearch";
 import InputText from "@/components/ui/Inputs/InputText";
 import HeaderForms from "@/modules/core/components/common/HeaderForms";
 import SearchInput from "@/modules/core/components/SearchInput";
-import {
-  Button,
-  Card,
-  Chip,
-  Divider,
-  Tab,
-  Table,
-  TableBody,
-  TableCell,
-  TableColumn,
-  TableHeader,
-  TableRow,
-  Tabs,
-} from "@nextui-org/react";
+
 import {
   DollarCircleIcon,
   Download01Icon,
@@ -39,6 +26,7 @@ import {
   EndpointsContract,
   getContractByCups,
 } from "../../services/querys/getAllContracts";
+import { Chip, Tab, Tabs } from "@heroui/react";
 
 interface Props {
   cups: string;

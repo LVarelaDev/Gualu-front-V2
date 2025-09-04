@@ -1,5 +1,5 @@
 import type { FormFieldValues } from "@/modules/core/interfaces/formFieldValues";
-import { Select, SelectItem, type SelectProps } from "@nextui-org/react";
+import { Select, SelectProps } from "@heroui/react";
 import {
   Controller,
   type FieldValues,

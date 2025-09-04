@@ -7,8 +7,7 @@ import InputField from "@/modules/core/components/form/InputField";
 import SelectField from "@/modules/core/components/form/SelectField";
 import { handleSubmitTeam } from "@/modules/teams/helpers/handleSubmitTeam";
 import type { InputTeam, Team } from "@/modules/teams/interfaces/team";
-import { Button } from "@nextui-org/button";
-import { AutocompleteItem } from "@nextui-org/react";
+import { AutocompleteItem, Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { type SubmitHandler, useForm } from "react-hook-form";
 
@@ -63,7 +62,7 @@ const TeamForm = ({ userData, teamData }: Props) => {
           rules={{ required: "Este campo es requerido" }}
         >
           {userData.map((user) => (
-            <AutocompleteItem key={user.id} value={user.id}>
+            <AutocompleteItem key={user.id} textValue={user.id.toString()}>
               {`${user.firstName} ${user.lastName}`}
             </AutocompleteItem>
           ))}
@@ -79,7 +78,7 @@ const TeamForm = ({ userData, teamData }: Props) => {
           defaultSelectedKeys={memberIds}
         >
           {userData.map((user) => (
-            <AutocompleteItem key={user.id} value={user.id}>
+            <AutocompleteItem key={user.id} textValue={user.id}>
               {`${user.firstName} ${user.lastName}`}
             </AutocompleteItem>
           ))}
@@ -111,7 +110,8 @@ const TeamForm = ({ userData, teamData }: Props) => {
           Equipo Activo
         </CheckboxField>
 
-        <Button type="submit" color="primary">
+        <Button
+         type="submit" color="primary">
           {teamData ? "Editar equipo" : "Crear equipo"}
         </Button>
       </form>

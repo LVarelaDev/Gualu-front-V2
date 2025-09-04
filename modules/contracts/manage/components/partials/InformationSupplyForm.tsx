@@ -11,7 +11,7 @@ import { ContractTypesEnum } from "../enums/contractType";
 import ManageCardConsumptionForm from "./ManageCardConsumptionForm";
 import PowerForm from "./PowerForm";
 import TariffForm from "./TariffForm";
-import { Textarea } from "@nextui-org/input";
+import { Textarea } from "@heroui/react";
 
 type InformationSupplyFormProps = {
   form: UseFormReturn<any, any>;

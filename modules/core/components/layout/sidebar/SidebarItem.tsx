@@ -1,8 +1,7 @@
 "use client";
 
 import { useSidebar } from "@/modules/core/store/sidebarStore";
-import { Tooltip } from "@nextui-org/react";
-import { cn } from "@nextui-org/theme";
+import { cn, Tooltip } from "@heroui/react";
 import {
   Building02Icon,
   DashboardSquare02Icon,

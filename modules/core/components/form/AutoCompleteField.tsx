@@ -1,5 +1,5 @@
 'use client'
-import { Autocomplete, type AutocompleteProps } from '@nextui-org/autocomplete'
+import { Autocomplete, AutocompleteProps } from '@heroui/react'
 import {
 	type Control,
 	Controller,

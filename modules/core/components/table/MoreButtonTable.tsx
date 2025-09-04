@@ -1,4 +1,5 @@
-import { Button, type ButtonProps } from '@nextui-org/button'
+
+import { Button, ButtonProps } from '@heroui/react'
 import { MoreHorizontalIcon } from 'hugeicons-react'
 import type { FC } from 'react'
 

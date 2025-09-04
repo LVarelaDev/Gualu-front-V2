@@ -5,16 +5,8 @@ import ChipStatus from "@/modules/core/components/common/ChipStatus";
 import { formattedDate } from "@/utils/helpers";
 import { faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button } from "@nextui-org/button";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableColumn,
-  TableHeader,
-  TableRow,
-  Tooltip,
-} from "@nextui-org/react";
+import { Button, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Tooltip } from "@heroui/react";
+
 import { PlusSignIcon } from "hugeicons-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -85,7 +77,7 @@ const TableCompanies = ({ data }: Props) => {
                     <FontAwesomeIcon
                       className="text-red-500 cursor-pointer"
                       icon={faTrash}
-                      onClick={() => deleteCompany(company.id)} // Método para eliminar
+                      onClick={() => deleteCompany(company.id.toString())} // Método para eliminar
                     />
                   </Tooltip>
                 </div>

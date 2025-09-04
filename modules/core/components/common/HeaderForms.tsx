@@ -1,12 +1,12 @@
 import React from "react";
 import BackButton from "./BackButton";
-import { Button } from "@nextui-org/button";
 import {
   FieldValues,
   SubmitErrorHandler,
   SubmitHandler,
   UseFormReturn,
 } from "react-hook-form";
+import { Button } from "@heroui/react";
 
 interface HeaderFormsProps {
   handleCancel?: () => void;

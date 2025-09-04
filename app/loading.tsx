@@ -1,4 +1,6 @@
-import { Spinner } from '@nextui-org/react'
+import { Spinner } from "@heroui/react"
+
+
 
 const loading = () => {
 	return (

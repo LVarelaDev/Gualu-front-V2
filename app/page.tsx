@@ -1,7 +1,7 @@
 "use client";
 
 import InputText from "@/components/ui/Inputs/InputText";
-import { Button } from "@nextui-org/button";
+import { Button } from "@heroui/react";
 import { useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 

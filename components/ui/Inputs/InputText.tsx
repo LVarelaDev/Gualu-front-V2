@@ -1,5 +1,4 @@
 import React from "react";
-import { Input } from "@nextui-org/react";
 import {
   RegisterOptions,
   UseFormReturn,
@@ -7,6 +6,7 @@ import {
   Controller,
 } from "react-hook-form";
 import { useValidationInputTypes } from "./hooks/useValidationInputTypes";
+import { Input } from "@heroui/react";
 
 export type typeValidationDocumento =
   | "DNI"
@@ -95,7 +95,7 @@ const InputText = ({
           />
           {errors[name] && (
             <p className="text-red-500 text-xs mt-0.5 ml-0.5">
-              {errors[name].message ?? ""}
+              {""}
             </p>
           )}
         </div>

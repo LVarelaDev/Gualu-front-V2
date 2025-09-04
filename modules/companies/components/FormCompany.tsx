@@ -5,8 +5,7 @@ import type {
   InputCompany,
 } from "@/modules/companies/interfaces/company";
 import { toBase64 } from "@/modules/core/utils/convertToBase64";
-import { Input } from "@nextui-org/input";
-import { Button, Checkbox } from "@nextui-org/react";
+import { Button, Checkbox, Input } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { type SubmitHandler, useForm } from "react-hook-form";
 
@@ -31,7 +30,7 @@ const FormCompany = ({ companyData }: Props) => {
 
     const message = await handleSubmitCompany(
       { ...data, picture: imgBase64 === "" ? undefined : imgBase64 },
-      companyData?.id
+      companyData?.id.toString()
     );
     reset();
     router.push("/companies");

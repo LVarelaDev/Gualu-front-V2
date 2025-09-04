@@ -6,20 +6,14 @@ const GenericDeleteModal = dynamic(
 	() => import('@/modules/core/components/GenericDeleteModal'),
 )
 import type { MessageResponse } from '@/modules/core/interfaces/messageResponse'
-import {
-	Button,
-	Dropdown,
-	DropdownItem,
-	DropdownMenu,
-	DropdownTrigger,
-	useDisclosure,
-} from '@nextui-org/react'
+
 import {
 	Delete02Icon,
 	Files01Icon,
 	MoreHorizontalIcon,
 	TaskEdit01Icon,
 } from 'hugeicons-react'
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, useDisclosure } from '@heroui/react'
 
 interface Props {
 	id: string

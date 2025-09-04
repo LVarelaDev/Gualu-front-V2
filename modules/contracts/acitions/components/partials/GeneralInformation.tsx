@@ -1,7 +1,7 @@
 import FCard from "@/components/ui/Card/FCard";
-import { Chip, Skeleton } from "@nextui-org/react";
 import React from "react";
 import { InformationActionsContractDto } from "../../interfaces/InformationAction";
+import { Chip, Skeleton } from "@heroui/react";
 
 interface GeneralInformationProps {
   data: InformationActionsContractDto | undefined;

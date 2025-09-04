@@ -1,12 +1,7 @@
 'use client'
 import MoreButtonTable from '@/modules/core/components/table/MoreButtonTable'
-import {
-	Button,
-	Dropdown,
-	DropdownItem,
-	DropdownMenu,
-	DropdownTrigger,
-} from '@nextui-org/react'
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react'
+
 import {
 	Delete02Icon,
 	MoreHorizontalIcon,

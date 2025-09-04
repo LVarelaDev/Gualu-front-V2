@@ -1,15 +1,9 @@
-import {
-  Table,
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-} from "@nextui-org/react";
+
 import TableActionsTeams from "@/modules/teams/components/table/TableActionsTeams";
 import ChipStatus from "@/modules/core/components/common/ChipStatus";
 import { formattedDate } from "@/utils/helpers";
 import type { TeamTable } from "@/modules/teams/interfaces/team";
+import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@heroui/react";
 
 interface Props {
   data?: TeamTable[];

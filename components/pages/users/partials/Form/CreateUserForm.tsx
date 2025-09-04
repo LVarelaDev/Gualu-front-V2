@@ -1,7 +1,6 @@
 "use client";
 import { faPlus, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button } from "@nextui-org/button";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -16,6 +15,7 @@ import { EnumRols } from "@/enums/users/enumRols";
 import type { usersById } from "@/models/users/userDTO";
 import { getUsersById } from "@/services/users/user.service";
 import BackButton from "@/modules/core/components/common/BackButton";
+import { Button } from "@heroui/react";
 
 const CreateUserForm = ({ id }: { id: string }) => {
   const isEdit: boolean = id !== "create" ? true : false;

@@ -4,9 +4,9 @@ import SidebarItem from "@/modules/core/components/layout/sidebar/SidebarItem";
 import ToogleSidebar from "@/modules/core/components/layout/sidebar/ToogleSidebar";
 import { useSidebar } from "@/modules/core/store/sidebarStore";
 
-import { cn } from "@nextui-org/theme";
 
 import SidebarFooter from "./SidebarFooter";
+import { cn } from "@heroui/theme";
 
 export const items = [
   {

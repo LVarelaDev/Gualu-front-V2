@@ -1,7 +1,6 @@
 "use client";
 import { faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Tooltip } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import useSWR from "swr";
@@ -12,6 +11,7 @@ import { UserDto } from "@/models/users/userDTO";
 import { EnumEndpoints, getAllUsers } from "@/services/users/user.service";
 import Link from "next/link";
 import { Fragment } from "react";
+import { Button, Tooltip } from "@heroui/react";
 
 const UsersComponent = () => {
   const { data: users, isLoading } = useSWR([EnumEndpoints.Users], () =>

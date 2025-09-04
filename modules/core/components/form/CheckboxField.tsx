@@ -1,5 +1,5 @@
 import type { FormFieldValues } from '@/modules/core/interfaces/formFieldValues'
-import { Checkbox, type CheckboxProps } from '@nextui-org/react'
+import { Checkbox, CheckboxProps } from '@heroui/checkbox'
 import { Controller, type FieldValues } from 'react-hook-form'
 
 interface Props<T extends FieldValues>

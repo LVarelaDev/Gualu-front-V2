@@ -1,6 +1,5 @@
 "use client";
 
-import { Tooltip } from "@nextui-org/react";
 import {
   Cash01Icon,
   Configuration01Icon,
@@ -11,6 +10,7 @@ import {
 } from "hugeicons-react";
 import Link from "next/link";
 import { ContractDto } from "../../manage/types/contractDto";
+import { Tooltip } from "@heroui/react";
 
 interface Props {
   contract: ContractDto;

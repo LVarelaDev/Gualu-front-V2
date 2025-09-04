@@ -1,7 +1,7 @@
 'use client'
 
 import type { FormFieldValues } from '@/modules/core/interfaces/formFieldValues'
-import { Input, type InputProps } from '@nextui-org/input'
+import { Input, InputProps } from '@heroui/react'
 import {
 	Controller,
 	type FieldValues,

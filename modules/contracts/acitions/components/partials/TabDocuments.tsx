@@ -1,12 +1,12 @@
 import FCard from "@/components/ui/Card/FCard";
 import InputSearch from "@/components/ui/Inputs/InputSearch";
 import { FTable, FTableColumn } from "@/components/ui/Table/FTable";
-import { Button } from "@nextui-org/react";
 import { FileUploadIcon } from "hugeicons-react";
 import { UseFormReturn } from "react-hook-form";
 import { DocumentsDto } from "../../interfaces/InformationAction";
 import imageNotFount from "../../../../../assets/images/Documents-bro.svg";
 import Image from "next/image";
+import { Button } from "@heroui/react";
 
 interface TabDocumentsProps {
   form: UseFormReturn<any, any>;
