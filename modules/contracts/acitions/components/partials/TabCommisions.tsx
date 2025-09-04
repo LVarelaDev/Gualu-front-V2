@@ -6,6 +6,7 @@ import { PlusMinusIcon } from "hugeicons-react";
 import { CommissionDto } from "../../interfaces/InformationAction";
 import InputSearch from "@/components/ui/Inputs/InputSearch";
 import { useForm } from "react-hook-form";
+import { convertToCLP } from "@/utils/helpers";
 
 interface TabCommisionsProps {
   comisiones: CommissionDto[];
@@ -41,19 +42,19 @@ const TabCommisions = ({ comisiones }: TabCommisionsProps) => {
         />
         <FTableColumn<CommissionDto>
           labelHeader="Tarifa de acceso"
-          colRender={(_, commision) => `${commision.accessTariff.name}`}
+          colRender={(_, commision) => `${commision.accessTariff}`}
         />
         <FTableColumn<CommissionDto>
           labelHeader="Plan"
-          colRender={(_, commision) => `${commision.plan.name}`}
+          colRender={(_, commision) => `${commision.plan}`}
         />
         <FTableColumn<CommissionDto>
           labelHeader="Concepto"
-          colRender={(_, commision) => `${commision.concepto.name}`}
+          colRender={(_, commision) => `${commision.concept}`}
         />
         <FTableColumn<CommissionDto>
           labelHeader="Valor"
-          colRender={(_, commision) => `$${commision.value}`}
+          colRender={(_, commision) => `$${convertToCLP(commision.value)}`}
         />
         <FTableColumn<CommissionDto>
           labelHeader="Fecha creacion"

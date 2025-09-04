@@ -13,8 +13,7 @@ export interface OneCompany extends Company, CompanyContracts {}
 
 export interface InputCompany {
   name: string;
-  picture: FileList;
-  active: boolean;
+  picture: File;
 }
 
 export interface CompanyDto {

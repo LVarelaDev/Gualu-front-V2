@@ -1,4 +1,5 @@
 import { Select, SelectItem } from "@nextui-org/react";
+import { useEffect, useState } from "react";
 import { RegisterOptions, UseFormReturn } from "react-hook-form";
 
 type props = {
@@ -29,8 +30,8 @@ const SelectComponent = ({
   const { register, setValue, watch } = form;
 
   const selectedValue = watch(name);
-
   console.log("selectedValue", selectedValue);
+
   return (
     <Select
       className="w-full"

@@ -12,6 +12,12 @@ import { UserDto } from "@/models/users/userDTO";
 import { EnumEndpoints, getAllUsers } from "@/services/users/user.service";
 import Link from "next/link";
 import { Fragment } from "react";
+import {
+  Delete01Icon,
+  Delete02Icon,
+  Edit01Icon,
+  Edit02Icon,
+} from "hugeicons-react";
 
 const UsersComponent = () => {
   const { data: users, isLoading } = useSWR([EnumEndpoints.Users], () =>
@@ -93,11 +99,12 @@ const UsersComponent = () => {
                   delay={0}
                   color="success"
                 >
-                  <FontAwesomeIcon
-                    className="text-sky-700 cursor-pointer"
-                    icon={faPencilAlt}
-                    onClick={() => router.push("/users/" + user.id)}
-                  />
+                  <Link href={"/users/" + user.id}>
+                    <Edit02Icon
+                      className="text-sky-700 cursor-pointer"
+                      size={17}
+                    />
+                  </Link>
                 </Tooltip>
                 <Tooltip
                   closeDelay={0}
@@ -105,10 +112,7 @@ const UsersComponent = () => {
                   className="bg-red-400 text-white"
                   delay={0}
                 >
-                  <FontAwesomeIcon
-                    className="text-red-500 cursor-pointer"
-                    icon={faTrash}
-                  />
+                  <Delete02Icon size={17} color="#f87171" />
                 </Tooltip>
               </div>
             )}

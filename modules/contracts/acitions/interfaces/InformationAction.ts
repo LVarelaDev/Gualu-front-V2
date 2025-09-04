@@ -17,24 +17,16 @@ export interface CommissionDto {
     nif: string;
     kind: string;
   };
-  accessTariff: {
-    id: number;
-    name: string;
-  };
-  plan: {
-    id: number;
-    name: string;
-  };
-  concepto: {
-    id: number;
-    name: string;
-  };
+  accessTariff: string;
+  plan: string;
+  concept: string;
   value: number;
   principalValue: number;
   createdAt: string;
 }
 
 export interface InformationActionsContractDto {
+  id: number;
   cups: string;
   consumption: number;
   fee: number;

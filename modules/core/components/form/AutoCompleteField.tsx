@@ -1,20 +1,19 @@
-'use client'
-import { Autocomplete, type AutocompleteProps } from '@nextui-org/autocomplete'
+"use client";
 import {
-	type Control,
-	Controller,
-	type FieldValues,
-	type Path,
-	type PathValue,
-	type RegisterOptions,
-} from 'react-hook-form'
+  type Control,
+  Controller,
+  type FieldValues,
+  type Path,
+  type PathValue,
+  type RegisterOptions,
+} from "react-hook-form";
 
 interface Props<TFieldValues extends FieldValues>
-	extends Omit<AutocompleteProps, 'name'> {
-	name: Path<TFieldValues>
-	rules?: RegisterOptions<TFieldValues, Path<TFieldValues>>
-	control: Control<TFieldValues, any>
-	defaultSelectedKey?: PathValue<TFieldValues, Path<TFieldValues>>
+  extends Omit<AutocompleteProps, "name"> {
+  name: Path<TFieldValues>;
+  rules?: RegisterOptions<TFieldValues, Path<TFieldValues>>;
+  control: Control<TFieldValues, any>;
+  defaultSelectedKey?: PathValue<TFieldValues, Path<TFieldValues>>;
 }
 
 /**
@@ -49,33 +48,33 @@ interface Props<TFieldValues extends FieldValues>
  * }
  */
 function AutoCompleteField<TFieldValues extends FieldValues>({
-	control,
-	rules,
-	name,
-	...props
+  control,
+  rules,
+  name,
+  ...props
 }: Props<TFieldValues>) {
-	return (
-		<Controller
-			control={control}
-			name={name}
-			rules={rules}
-			defaultValue={props.defaultSelectedKey}
-			render={({ field, fieldState: { error } }) => (
-				<Autocomplete
-					{...field}
-					{...props}
-					labelPlacement={props.labelPlacement ?? 'outside'}
-					variant={props.variant ?? 'bordered'}
-					size={props.size ?? 'lg'}
-					onSelectionChange={(value) => field.onChange(value)}
-					isInvalid={!!error}
-					errorMessage={error?.message}
-				>
-					{props.children}
-				</Autocomplete>
-			)}
-		/>
-	)
+  return (
+    <Controller
+      control={control}
+      name={name}
+      rules={rules}
+      defaultValue={props.defaultSelectedKey}
+      render={({ field, fieldState: { error } }) => (
+        <Autocomplete
+          {...field}
+          {...props}
+          labelPlacement={props.labelPlacement ?? "outside"}
+          variant={props.variant ?? "bordered"}
+          size={props.size ?? "lg"}
+          onSelectionChange={(value) => field.onChange(value)}
+          isInvalid={!!error}
+          errorMessage={error?.message}
+        >
+          {props.children}
+        </Autocomplete>
+      )}
+    />
+  );
 }
 
-export { AutoCompleteField }
+export { AutoCompleteField };

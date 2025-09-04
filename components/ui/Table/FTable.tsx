@@ -97,7 +97,6 @@ const FTable = <T,>({
           ))}
         </TableBody>
       </Table>
-
       {totalPages &&
         totalPages > 1 &&
         currentPage !== undefined &&

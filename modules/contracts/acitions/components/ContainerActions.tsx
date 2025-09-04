@@ -1,44 +1,16 @@
 "use client";
-import FCard from "@/components/ui/Card/FCard";
-import InputSearch from "@/components/ui/Inputs/InputSearch";
-import InputText from "@/components/ui/Inputs/InputText";
 import HeaderForms from "@/modules/core/components/common/HeaderForms";
-import SearchInput from "@/modules/core/components/SearchInput";
-import {
-  Button,
-  Card,
-  Chip,
-  Divider,
-  Tab,
-  Table,
-  TableBody,
-  TableCell,
-  TableColumn,
-  TableHeader,
-  TableRow,
-  Tabs,
-} from "@nextui-org/react";
-import {
-  DollarCircleIcon,
-  Download01Icon,
-  Download05Icon,
-  Edit01Icon,
-  EyeIcon,
-  File01Icon,
-  FileUploadIcon,
-  PlusMinusIcon,
-  Upload01Icon,
-} from "hugeicons-react";
-import React from "react";
+import { Chip, Tab, Tabs } from "@nextui-org/react";
+import { DollarCircleIcon, File01Icon } from "hugeicons-react";
 import { useForm } from "react-hook-form";
-import TabDocuments from "./partials/TabDocuments";
-import GeneralInformation from "./partials/GeneralInformation";
-import TabCommisions from "./partials/TabCommisions";
 import useSWR from "swr";
 import {
   EndpointsContract,
   getContractByCups,
 } from "../../services/querys/getAllContracts";
+import GeneralInformation from "./partials/GeneralInformation";
+import TabCommisions from "./partials/TabCommisions";
+import TabDocuments from "./partials/TabDocuments";
 
 interface Props {
   cups: string;
@@ -74,7 +46,7 @@ const ContainerActions = ({ cups }: Props) => {
             </div>
           }
         >
-          <TabDocuments form={form} data={data?.documents ?? []} />
+          <TabDocuments form={form} data={data?.documents ?? []} cups={cups} />
         </Tab>
         <Tab
           key="comisiones"

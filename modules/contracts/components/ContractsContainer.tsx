@@ -19,8 +19,6 @@ const ContractsContainer = () => {
     () => getAllContracts(currentPage, INIT_PAGE_SIZE)
   );
 
-  console.log("contracts", contracts);
-
   return (
     <>
       {contracts && contracts.items && contracts.items.length != 0 && (

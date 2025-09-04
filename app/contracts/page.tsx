@@ -1,6 +1,6 @@
-import ContractsContainer from '@/modules/contracts/components/ContractsContainer'
-const page = async () => {
-	return <ContractsContainer />
-}
+import ContractsContainer from "@/modules/contracts/components/ContractsContainer";
+const page = () => {
+  return <ContractsContainer />;
+};
 
-export default page
+export default page;

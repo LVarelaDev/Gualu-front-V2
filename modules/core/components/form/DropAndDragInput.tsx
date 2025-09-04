@@ -2,6 +2,8 @@
 import { useFileUpload } from "@/modules/commisions/hooks/useFileUpload";
 import React from "react";
 import { UseFormSetValue } from "react-hook-form";
+import FileIconSvg from "../common/FileIconSvg";
+import DeleteIconSvg from "../common/DeleteIconSvg";
 
 interface DragDropFileUploadProps {
   accept?: string;
@@ -10,6 +12,7 @@ interface DragDropFileUploadProps {
   className?: string;
   // Nuevas props para integración con react-hook-form
   name: string;
+  showFileList?: boolean;
   setValue: UseFormSetValue<any>;
 }
 
@@ -19,6 +22,7 @@ const DragDropFileUpload: React.FC<DragDropFileUploadProps> = ({
   description = "Drag & drop your file here or click to browse",
   className = "",
   name,
+  showFileList = true,
   setValue,
 }) => {
   const {
@@ -92,24 +96,11 @@ const DragDropFileUpload: React.FC<DragDropFileUploadProps> = ({
         </div>
       </div>
 
-      {selectedFile && (
+      {selectedFile && showFileList && (
         <div className="mt-6 p-4 bg-gray-50 rounded-lg">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <svg
-                className="w-6 h-6 text-gray-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                />
-              </svg>
+              <FileIconSvg />
               <div>
                 <p className="font-medium text-gray-700">{selectedFile.name}</p>
                 <p className="text-sm text-gray-500">
@@ -122,20 +113,7 @@ const DragDropFileUpload: React.FC<DragDropFileUploadProps> = ({
               className="text-red-500 hover:text-red-700"
               type="button"
             >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                />
-              </svg>
+              <DeleteIconSvg />
             </button>
           </div>
 
