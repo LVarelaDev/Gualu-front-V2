@@ -1,12 +1,7 @@
 'use client'
 import SearchInput from '@/modules/core/components/SearchInput'
-import { Button } from '@nextui-org/button'
-import {
-	Dropdown,
-	DropdownItem,
-	DropdownMenu,
-	DropdownTrigger,
-} from '@nextui-org/react'
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react'
+
 import { FilterIcon, PlusSignIcon } from 'hugeicons-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'

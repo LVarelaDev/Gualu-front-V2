@@ -1,4 +1,5 @@
 import { heroui } from "@heroui/react";
+import { heroui } from "@heroui/react";
 import tailwindScrollbar from "tailwind-scrollbar";
 
 /** @type {import('tailwindcss').Config} */

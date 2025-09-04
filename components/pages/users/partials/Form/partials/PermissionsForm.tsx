@@ -1,5 +1,5 @@
-import { CheckboxGroup } from "@nextui-org/react";
-import { Checkbox } from "@heroui/checkbox";
+
+import { Checkbox, CheckboxGroup } from "@heroui/checkbox";
 import React, { useEffect } from "react";
 import { UseFormReturn } from "react-hook-form";
 

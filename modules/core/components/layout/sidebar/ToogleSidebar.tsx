@@ -1,5 +1,6 @@
 import { useSidebar } from "@/modules/core/store/sidebarStore";
-import { Button } from "@nextui-org/button";
+import { Button } from "@heroui/react";
+
 import { ArrowLeft03Icon, ArrowRight03Icon } from "hugeicons-react";
 
 const ToogleSidebar = () => {

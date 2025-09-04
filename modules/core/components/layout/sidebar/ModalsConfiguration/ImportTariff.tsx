@@ -1,15 +1,9 @@
-import {
-  Button,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-} from "@nextui-org/react";
+
 import FormImportTariff from "./partials/FormImportTariff";
 import { useForm } from "react-hook-form";
 import { importTariffFile } from "@/modules/core/services/configurations/configurationService";
 import { toast } from "sonner";
+import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@heroui/react";
 
 interface ImportTariffPros {
   isOpen: boolean;

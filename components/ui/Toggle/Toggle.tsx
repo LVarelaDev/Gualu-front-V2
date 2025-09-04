@@ -1,5 +1,5 @@
+import { Switch } from '@heroui/react'
 import React from 'react'
-import { Switch } from '@nextui-org/react'
 import { RegisterOptions, UseFormReturn } from 'react-hook-form'
 
 type props = {

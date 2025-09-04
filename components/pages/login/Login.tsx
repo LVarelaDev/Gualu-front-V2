@@ -1,6 +1,4 @@
 "use client";
-import { Button } from "@nextui-org/button";
-import { Input } from "@nextui-org/input";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -9,6 +7,7 @@ import { toast } from "sonner";
 import imageLogin from "../../../assets/images/Login-amico.svg";
 import gualuImage from "../../../public/logo_gualu.png";
 import Image from "next/image";
+import { Button, Input } from "@heroui/react";
 
 interface LoginFormInputs {
   email: string;

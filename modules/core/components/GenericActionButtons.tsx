@@ -1,10 +1,10 @@
 'use client'
 
 import type { MessageResponse } from '@/modules/core/interfaces/messageResponse'
-import { Button, Tooltip } from '@nextui-org/react'
 import { Delete02Icon, TaskEdit01Icon } from 'hugeicons-react'
 import Link from 'next/link'
 import GenericDeleteModal from './GenericDeleteModal'
+import { Button, Tooltip } from '@heroui/react'
 
 interface Props {
 	id: string

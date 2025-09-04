@@ -1,18 +1,14 @@
 import SelectComponent from "@/components/ui/Inputs/AutoComplete";
 import { CompanyDto } from "@/modules/companies/interfaces/company";
 import { getAllCompanies } from "@/modules/companies/services/querys/getAllCompanies";
-import { Input } from "@nextui-org/input";
+import { Input } from "@heroui/react";
 import { useEffect, useState } from "react";
 import { useForm, UseFormReturn } from "react-hook-form";
 
 interface FormImportTariff {
   form: UseFormReturn<
-    {
-      companyId: string;
-      file: File[];
-    },
     any,
-    undefined
+    any
   >;
 }
 

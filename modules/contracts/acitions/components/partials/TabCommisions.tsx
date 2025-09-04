@@ -1,12 +1,12 @@
 import FCard from "@/components/ui/Card/FCard";
 import { FTable, FTableColumn } from "@/components/ui/Table/FTable";
 import { formatDate } from "@/modules/core/utils/formatDate";
-import { Button } from "@nextui-org/react";
 import { PlusMinusIcon } from "hugeicons-react";
 import { CommissionDto } from "../../interfaces/InformationAction";
 import InputSearch from "@/components/ui/Inputs/InputSearch";
 import { useForm } from "react-hook-form";
 import { convertToCLP } from "@/utils/helpers";
+import { Button } from "@heroui/react";
 
 interface TabCommisionsProps {
   comisiones: CommissionDto[];

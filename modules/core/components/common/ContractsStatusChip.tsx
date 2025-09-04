@@ -1,7 +1,8 @@
 'use client'
 
 import type { ContractStatus } from '@/modules/core/interfaces/contract/contractStatus'
-import { Chip, Tooltip } from '@nextui-org/react'
+import { Chip, Tooltip } from '@heroui/react';
+
 
 import {
 	AlertCircleIcon,

@@ -1,6 +1,6 @@
 'use client'
 
-import { Input, type InputProps } from '@nextui-org/input'
+import { Input, InputProps } from '@heroui/react'
 import { Search01Icon } from 'hugeicons-react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useDebouncedCallback } from 'use-debounce'

@@ -4,7 +4,6 @@ import ChipStatus from '@/modules/core/components/common/ChipStatus'
 import ContractStatusChip from '@/modules/core/components/common/ContractsStatusChip'
 import { formatCurrency } from '@/modules/core/utils/formatCurrency'
 import { formatDate } from '@/modules/core/utils/formatDate'
-import { Chip, Divider, Progress } from '@nextui-org/react'
 import {
 	Briefcase01Icon,
 	CreditCardIcon,
@@ -19,6 +18,7 @@ import {
 import { notFound } from 'next/navigation'
 import ContractInfoCard from './ContractInfoCard'
 import ContractInfoItem from './ContractInfoItem'
+import { Chip, Divider, Progress } from '@heroui/react'
 
 interface Props {
 	id: string

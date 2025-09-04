@@ -1,17 +1,10 @@
 'use client'
-import {
-	Button,
-	Modal,
-	ModalBody,
-	ModalContent,
-	ModalFooter,
-	ModalHeader,
-	useDisclosure,
-} from '@nextui-org/react'
+
 import { useRouter } from 'next/navigation'
 import React from 'react'
 import { toast } from 'sonner'
 import type { MessageResponse } from '../interfaces/messageResponse'
+import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from '@heroui/react'
 
 interface Props {
 	trigger?: React.ReactNode

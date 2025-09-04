@@ -1,6 +1,5 @@
 "use client";
 import BackButton from "@/modules/core/components/common/BackButton";
-import { Button } from "@nextui-org/button";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -10,6 +9,7 @@ import { createContract } from "../../services/mutations/createContract";
 import { createPayload } from "./adapters/createPayload";
 import InformationClientForm from "./partials/InformationClientForm";
 import InformationSupplyForm from "./partials/InformationSupplyForm";
+import { Button } from "@heroui/react";
 
 const ManageContainerContracts = () => {
   const form = useForm();

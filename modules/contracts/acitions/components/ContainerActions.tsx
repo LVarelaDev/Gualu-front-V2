@@ -1,16 +1,26 @@
 "use client";
 import HeaderForms from "@/modules/core/components/common/HeaderForms";
-import { Chip, Tab, Tabs } from "@nextui-org/react";
-import { DollarCircleIcon, File01Icon } from "hugeicons-react";
+import SearchInput from "@/modules/core/components/SearchInput";
+
+import {
+  DollarCircleIcon,
+  Download01Icon,
+  Download05Icon,
+  Edit01Icon,
+  EyeIcon,
+  File01Icon,
+  FileUploadIcon,
+  PlusMinusIcon,
+  Upload01Icon,
+} from "hugeicons-react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import useSWR from "swr";
 import {
   EndpointsContract,
   getContractByCups,
 } from "../../services/querys/getAllContracts";
-import GeneralInformation from "./partials/GeneralInformation";
-import TabCommisions from "./partials/TabCommisions";
-import TabDocuments from "./partials/TabDocuments";
+import { Chip, Tab, Tabs } from "@heroui/react";
 
 interface Props {
   cups: string;

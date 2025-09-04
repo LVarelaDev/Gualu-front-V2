@@ -1,4 +1,5 @@
-import { BreadcrumbItem, Breadcrumbs } from "@nextui-org/react";
+
+import { BreadcrumbItem, Breadcrumbs } from "@heroui/react";
 import { useCreateBreadcrumbPath } from "../hooks/useManageRouters";
 
 const CustomBreadcrumbs = () => {

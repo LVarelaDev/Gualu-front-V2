@@ -1,4 +1,5 @@
-import { Button } from '@nextui-org/button'
+
+import { Button } from '@heroui/react'
 import React, { ReactNode } from 'react'
 
 type TFGridDeleteConfirmation<T> = {
@@ -47,7 +48,7 @@ const FGridDeleteConfirmation = <T,>({
 						</Button>
 						<Button
 							className="bg-red-500 text-white"
-							onClick={() => handleDeleteRow(element)}
+							onPress={() => handleDeleteRow(element)}
 						>
 							{buttonDeleteText ?? 'Confirmar'}
 						</Button>

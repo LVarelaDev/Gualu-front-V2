@@ -1,6 +1,5 @@
 "use client";
 
-import { NextUIProvider } from "@nextui-org/system";
 import { SessionProvider } from "next-auth/react";
 import { AppProgressBar as ProgressBar, useRouter } from "next-nprogress-bar";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
@@ -20,7 +19,6 @@ export function Providers({ children }: ProvidersProps) {
         options={{ showSpinner: false }}
         shallowRouting
       />
-      <NextUIProvider navigate={router.push}>
         <NextThemesProvider
           attribute="class"
           defaultTheme="system"
@@ -29,7 +27,6 @@ export function Providers({ children }: ProvidersProps) {
         >
           {children}
         </NextThemesProvider>
-      </NextUIProvider>
 
       {/* Notificaciones */}
       <Toaster

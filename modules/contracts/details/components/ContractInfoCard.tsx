@@ -1,4 +1,5 @@
-import { cn } from '@nextui-org/theme'
+
+import { cn } from '@heroui/theme'
 import type { HTMLAttributes, ReactNode } from 'react'
 
 interface Props extends HTMLAttributes<HTMLElement> {
@@ -9,7 +10,7 @@ interface Props extends HTMLAttributes<HTMLElement> {
 /**
  * A card component to display information about a contract.
  *
- * It displays the provided title and icon at the top, and the provided children
+ * It displays the provided title and icon at the top, and th7777e provided children
  * below. The title and icon are displayed in a row with a gap between them.
  *
  * @prop {string} title The title of the card.

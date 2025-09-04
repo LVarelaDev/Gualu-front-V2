@@ -1,8 +1,12 @@
-import { Fragment, useState } from "react";
+import FCard from "@/components/ui/Card/FCard";
+import InputSearch from "@/components/ui/Inputs/InputSearch";
+import { FTable, FTableColumn } from "@/components/ui/Table/FTable";
+import { FileUploadIcon } from "hugeicons-react";
 import { UseFormReturn } from "react-hook-form";
 import { DocumentsDto } from "../../interfaces/InformationAction";
 import Documents from "./documents/Documents";
 import DocumentsForm from "./documents/DocumentsForm";
+import { Button } from "@heroui/react";
 
 interface TabDocumentsProps {
   form: UseFormReturn<any, any>;

@@ -1,11 +1,5 @@
-import {
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-  useDisclosure,
-} from "@nextui-org/react";
-import { cn } from "@nextui-org/theme";
+
+import { cn, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, useDisclosure } from "@heroui/react";
 import { Settings02Icon } from "hugeicons-react";
 import ImportTariff from "./ModalsConfiguration/ImportTariff";
 import { items } from "./Sidebar";
